@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="slides-format" content="viewport">
+    <title>IA i Pantalles: Riscos i Oportunitats · Famílies Cicle Superior</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-bg: #f0f6ff;
+            --color-bg-deep: #e4eefb;
+            --color-surface: #ffffff;
+            --color-text: #0f172a;
+            --color-text-secondary: #334155;
+            --color-text-muted: #64748b;
+            --color-accent-1: #1d4ed8;
+            --color-accent-2: #f97316;
+            --color-accent-3: #16a34a;
+            --color-glass-bg: rgba(255,255,255,0.82);
+            --color-glass-border: rgba(29,78,216,0.10);
+            --color-vignette: rgba(0,0,0,0.05);
+            --font-display: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+    <style>
+        :root { --color-bg: #f0f6ff; --color-text: #0f172a; --glow-color-rgb: 29,78,216; }
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { background: var(--color-bg); margin: 0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--color-text); overflow: hidden; height: 100vh; width: 100vw; }
+        .deck { width: 100vw; height: 100vh; position: relative; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-bg); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transform: scale(0.96); transition: opacity 0.6s ease, transform 0.6s ease; pointer-events: none; overflow: hidden; }
+        .slide.active { opacity: 1; transform: scale(1); pointer-events: all; }
+        .slide > .content { position: relative; z-index: 2; width: 100%; max-width: 1100px; padding: clamp(1.5rem, 3.5vw, 3.5rem); }
+        .nav-controls { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 14px; z-index: 100; background: rgba(255,255,255,0.88); backdrop-filter: blur(12px); padding: 8px 20px; border-radius: 40px; border: 1px solid rgba(29,78,216,0.12); box-shadow: 0 4px 20px rgba(29,78,216,0.08); }
+        .nav-btn { width: 36px; height: 36px; border: none; background: rgba(29,78,216,0.08); color: #1d4ed8; border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+        .nav-btn:hover { background: rgba(29,78,216,0.18); }
+        .slide-dots { display: flex; gap: 6px; }
+        .slide-dots .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(29,78,216,0.20); cursor: pointer; transition: background 0.3s, transform 0.3s; }
+        .slide-dots .dot.active { background: #1d4ed8; transform: scale(1.3); }
+        .slide-counter { font-size: 0.75rem; color: #64748b; min-width: 36px; text-align: center; font-weight: 600; }
+        .reveal { opacity: 0; transform: translateY(18px); }
+        .gradient-mesh { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+        @keyframes float-slow { 0%{transform:translate(0,0) scale(1);} 33%{transform:translate(50px,-40px) scale(1.1);} 66%{transform:translate(-30px,35px) scale(0.92);} 100%{transform:translate(0,0) scale(1);} }
+        @keyframes float-drift { 0%{transform:translate(0,0) scale(1);} 40%{transform:translate(-45px,-55px) scale(1.12);} 80%{transform:translate(35px,25px) scale(0.9);} 100%{transform:translate(0,0) scale(1);} }
+        @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
+        .blob { position: absolute; border-radius: 50%; filter: blur(70px); animation: float-slow 12s ease-in-out infinite; }
+        .blob:nth-child(2) { animation: float-drift 16s ease-in-out infinite; }
+        .blob:nth-child(3) { animation: float-slow 20s ease-in-out infinite reverse; }
+        .slide::after { content:''; position:absolute; inset:0; z-index:1; pointer-events:none; background: radial-gradient(ellipse at center, transparent 55%, var(--color-vignette) 100%); }
+        .text-glow { text-shadow: 0 0 20px rgba(29,78,216,0.25); }
+        .stat-glow { text-shadow: 0 0 30px rgba(29,78,216,0.35); }
+        @keyframes glow-pulse { 0%,100%{text-shadow:0 0 20px rgba(29,78,216,0.3);} 50%{text-shadow:0 0 35px rgba(29,78,216,0.5);} }
+        .glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
+        .bar-fill { border-radius: 6px; height: 100%; transition: width 0.8s ease; }
+        .bar-track { background: rgba(29,78,216,0.08); border-radius: 6px; height: 24px; overflow: hidden; }
+        @keyframes pulse-ring { 0%{box-shadow:0 0 0 0 rgba(249,115,22,0.4);} 70%{box-shadow:0 0 0 12px rgba(249,115,22,0);} 100%{box-shadow:0 0 0 0 rgba(249,115,22,0);} }
+        .pulse-ring { animation: pulse-ring 2.2s ease-in-out infinite; }
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.2s!important;}}
+    </style>
+</head>
+<body>
+<div class="mouse-spotlight" style="position:fixed;inset:0;z-index:99;pointer-events:none;"></div>
+<div class="deck">
+
+<!-- SLIDE 1: TÍTOL -->
+<div class="slide slide-1 active" data-slide="1">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:520px;height:520px;top:-120px;right:-100px;background:#bfdbfe;opacity:0.55;"></div>
+    <div class="blob" style="width:380px;height:380px;bottom:-80px;left:-80px;background:#fed7aa;opacity:0.35;"></div>
+    <div class="blob" style="width:250px;height:250px;top:35%;left:10%;background:#bbf7d0;opacity:0.30;"></div>
+  </div>
+  <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1;"></canvas>
+  <div class="content text-center">
+    <div style="font-size:clamp(3.5rem,8vw,7rem);margin-bottom:1rem;animation:float 3s ease-in-out infinite;" class="reveal">🤖</div>
+    <h1 class="reveal" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:800;background:linear-gradient(135deg,#1d4ed8 0%,#7c3aed 50%,#f97316 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:1rem;">Intel·ligència Artificial i Pantalles</h1>
+    <p class="reveal" style="font-size:clamp(1rem,2vw,1.4rem);color:#334155;font-weight:600;letter-spacing:0.05em;margin-bottom:0.5rem;">Riscos i Oportunitats per a les Famílies</p>
+    <p class="reveal" style="font-size:clamp(0.8rem,1.3vw,1rem);color:#64748b;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;">Cicle Superior de Primària</p>
+    <div class="reveal" style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <span style="background:rgba(29,78,216,0.08);border:1px solid rgba(29,78,216,0.2);padding:0.4rem 1rem;border-radius:20px;font-size:0.85rem;font-weight:600;color:#1d4ed8;">🌐 Entorn digital</span>
+      <span style="background:rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.2);padding:0.4rem 1rem;border-radius:20px;font-size:0.85rem;font-weight:600;color:#ea580c;">⚠️ Riscos</span>
+      <span style="background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);padding:0.4rem 1rem;border-radius:20px;font-size:0.85rem;font-weight:600;color:#16a34a;">🎓 Oportunitats</span>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2: ÍNDEX -->
+<div class="slide slide-2" data-slide="2">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:400px;height:400px;top:-80px;right:-60px;background:#bfdbfe;opacity:0.35;"></div>
+    <div class="blob" style="width:300px;height:300px;bottom:-60px;left:-40px;background:#bbf7d0;opacity:0.25;"></div>
+  </div>
+  <div class="content">
+    <p class="reveal" style="font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1d4ed8;margin-bottom:0.5rem;">Continguts de la xerrada</p>
+    <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:#0f172a;margin-bottom:1.8rem;line-height:1.2;">Què parlarem avui?</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;">
+      <div class="reveal" style="background:white;border:1px solid rgba(29,78,216,0.10);border-left:4px solid #1d4ed8;border-radius:12px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(29,78,216,0.06);">
+        <div style="font-size:1.5rem;margin-bottom:0.3rem;">🌐</div>
+        <div style="font-weight:700;font-size:0.95rem;color:#1d4ed8;margin-bottom:0.2rem;">Entorn digital</div>
+        <div style="font-size:0.8rem;color:#64748b;">Què fan els vostres fills amb les pantalles · Introducció a la IA</div>
+      </div>
+      <div class="reveal" style="background:white;border:1px solid rgba(249,115,22,0.10);border-left:4px solid #f97316;border-radius:12px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(249,115,22,0.06);">
+        <div style="font-size:1.5rem;margin-bottom:0.3rem;">⚠️</div>
+        <div style="font-weight:700;font-size:0.95rem;color:#ea580c;margin-bottom:0.2rem;">Riscos i prevenció</div>
+        <div style="font-size:0.8rem;color:#64748b;">Temps, dependència, desinformació, privacitat</div>
+      </div>
+      <div class="reveal" style="background:white;border:1px solid rgba(239,68,68,0.10);border-left:4px solid #ef4444;border-radius:12px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(239,68,68,0.06);">
+        <div style="font-size:1.5rem;margin-bottom:0.3rem;">🤖</div>
+        <div style="font-weight:700;font-size:0.95rem;color:#dc2626;margin-bottom:0.2rem;">Perills de la IA</div>
+        <div style="font-size:0.8rem;color:#64748b;">Pensament crític, dependència, mal ús</div>
+      </div>
+      <div class="reveal" style="background:white;border:1px solid rgba(22,163,74,0.10);border-left:4px solid #16a34a;border-radius:12px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(22,163,74,0.06);">
+        <div style="font-size:1.5rem;margin-bottom:0.3rem;">🎓</div>
+        <div style="font-weight:700;font-size:0.95rem;color:#16a34a;margin-bottom:0.2rem;">Oportunitats educatives</div>
+        <div style="font-size:0.8rem;color:#64748b;">Eines per estudiar, creativitat i organització</div>
+      </div>
+      <div class="reveal" style="background:white;border:1px solid rgba(124,58,237,0.10);border-left:4px solid #7c3aed;border-radius:12px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(124,58,237,0.06);grid-column:span 2;">
+        <div style="font-size:1.5rem;margin-bottom:0.3rem;">🏠</div>
+        <div style="font-weight:700;font-size:0.95rem;color:#7c3aed;margin-bottom:0.2rem;">Eines per a famílies</div>
+        <div style="font-size:0.8rem;color:#64748b;">Pacte digital familiar · Control parental · L'exemple adult</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: DADES ENTORN DIGITAL -->
+<div class="slide slide-3" data-slide="3">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:450px;height:450px;top:-100px;right:-80px;background:#bfdbfe;opacity:0.35;"></div>
+    <div class="blob" style="width:280px;height:280px;bottom:-50px;left:-30px;background:#e0e7ff;opacity:0.25;"></div>
+  </div>
+  <div class="content">
+    <p class="reveal" style="font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1d4ed8;margin-bottom:0.5rem;">Bloc 1 · Entorn Digital</p>
+    <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#0f172a;margin-bottom:1.5rem;line-height:1.2;">La realitat digital dels vostres fills</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.2rem;">
+      <div class="reveal" style="background:white;border-radius:14px;padding:1.2rem;text-align:center;box-shadow:0 2px 16px rgba(29,78,216,0.08);border:1px solid rgba(29,78,216,0.08);">
+        <div style="font-size:2.2rem;font-weight:800;color:#1d4ed8;" data-count="96" data-suffix="%">0%</div>
+        <div style="font-size:0.75rem;color:#64748b;font-weight:600;margin-top:0.3rem;">Nens 10-15 anys a Catalunya que usen internet</div>
+        <div style="font-size:0.65rem;color:#94a3b8;margin-top:0.2rem;">Idescat, 2024</div>
+      </div>
+      <div class="reveal" style="background:white;border-radius:14px;padding:1.2rem;text-align:center;box-shadow:0 2px 16px rgba(249,115,22,0.08);border:1px solid rgba(249,115,22,0.08);">
+        <div style="font-size:2.2rem;font-weight:800;color:#ea580c;">2h 15m</div>
+        <div style="font-size:0.75rem;color:#64748b;font-weight:600;margin-top:0.3rem;">De pantalles al dia entre setmana (menors de 12 anys)</div>
+        <div style="font-size:0.65rem;color:#94a3b8;margin-top:0.2rem;">ASPB, 2024</div>
+      </div>
+      <div class="reveal" style="background:white;border-radius:14px;padding:1.2rem;text-align:center;box-shadow:0 2px 16px rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.08);">
+        <div style="font-size:2.2rem;font-weight:800;color:#dc2626;" data-count="44" data-suffix="%">0%</div>
+        <div style="font-size:0.75rem;color:#64748b;font-weight:600;margin-top:0.3rem;">Menors espanyols que han usat ChatGPT el 2025</div>
+        <div style="font-size:0.65rem;color:#94a3b8;margin-top:0.2rem;">Vs. 14% el 2024 · Font: AV, 2026</div>
+      </div>
+    </div>
+    <div class="reveal" style="background:white;border-radius:12px;padding:1rem 1.4rem;border-left:4px solid #1d4ed8;box-shadow:0 2px 12px rgba(29,78,216,0.06);">
+      <p style="font-size:0.9rem;color:#334155;font-weight:500;margin:0;">📱 <strong>Usos habituals als 10-12 anys:</strong> Videojocs (Roblox, Minecraft, Fortnite) · YouTube · TikTok · WhatsApp familiar · Fer deures · <strong>Preguntar a la IA</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: QUÈ ÉS LA IA -->
+<div class="slide slide-4" data-slide="4">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:420px;height:420px;top:-90px;left:-60px;background:#e0e7ff;opacity:0.40;"></div>
+    <div class="blob" style="width:300px;height:300px;bottom:-70px;right:-40px;background:#bfdbfe;opacity:0.30;"></div>
+  </div>
+  <div class="content">
+    <p class="reveal" style="font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1d4ed8;margin-bottom:0.5rem;">Bloc 1 · Entorn Digital</p>
+    <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#0f172a;margin-bottom:1.4rem;">Però... Que és exactament la IA?</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+      <div class="reveal" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:14px;padding:1.2rem;border:1px solid rgba(29,78,216,0.12);">
+        <div style="font-size:1.4rem;margin-bottom:0.5rem;">🧠</div>
+        <div style="font-weight:700;font-size:0.9rem;color:#1e40af;margin-bottom:0.4rem;">La IA generativa</div>
+        <div style="font-size:0.82rem;color:#334155;line-height:1.5;">Un sistema que ha après de milers de milions de textos i imatges, i genera respostes noves. <strong>No pensa, no sent, no entén</strong>: prediu paraules.</div>
+      </div>
+      <div class="reveal" style="background:linear-gradient(135deg,#fef9c3,#fef3c7);border-radius:14px;padding:1.2rem;border:1px solid rgba(234,179,8,0.2);">
+        <div style="font-size:1.4rem;margin-bottom:0.5rem;">⚠️</div>
+        <div style="font-weight:700;font-size:0.9rem;color:#92400e;margin-bottom:0.4rem;">Pot inventar-se coses</div>
+        <div style="font-size:0.82rem;color:#334155;line-height:1.5;">Les "al·lucinacions" de la IA: respostes que semblen certes però són falses. Cal sempre verificar la informació.</div>
+      </div>
+    </div>
+    <div class="reveal" style="background:white;border-radius:12px;padding:1rem 1.4rem;box-shadow:0 2px 12px rgba(29,78,216,0.06);border:1px solid rgba(29,78,216,0.08);">
+      <p style="font-size:0.88rem;color:#334155;font-weight:600;margin:0 0 0.5rem 0;">🔍 La IA que ja useu cada dia (algunes potser sense saber-ho):</p>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <span style="background:#eff6ff;border:1px solid #bfdbfe;padding:0.25rem 0.7rem;border-radius:20px;font-size:0.78rem;font-weight:600;color:#1d4ed8;">📺 Netflix recomanador</span>
+        <span style="background:#fff7ed;border:1px solid #fed7aa;padding:0.25rem 0.7rem;border-radius:20px;font-size:0.78rem;font-weight:600;color:#ea580c;">📷 Filtres de càmera</span>
+        <span style="background:#f0fdf4;border:1px solid #bbf7d0;padding:0.25rem 0.7rem;border-radius:20px;font-size:0.78rem;font-weight:600;color:#16a34a;">✅ Corrector ortogràfic</span>
+        <span style="background:#fdf4ff;border:1px solid #e9d5ff;padding:0.25rem 0.7rem;border-radius:20px;font-size:0.78rem;font-weight:600;color:#7c3aed;">🗣️ Siri / Alexa</span>
+        <span style="background:#fff1f2;border:1px solid #fecdd3;padding:0.25rem 0.7rem;border-radius:20px;font-size:0.78rem;font-weight:600;color:#dc2626;">💬 ChatGPT / Gemini</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: RISCOS - TEMPS I DEPENDÈNCIA -->
+<div class="slide slide-5" data-slide="5">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:450px;height:450px;top:-80px;right:-80px;background:#fed7aa;opacity:0.35;"></div>
+    <div class="blob" style="width:320px;height:320px;bottom:-60px;left:-50px;background:#fecaca;opacity:0.28;"></div>
+  </div>
+  <div class="content">
+    <p class="reveal" style="font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#ea580c;margin-bottom:0.5rem;">Bloc 2 · Riscos i Prevenció</p>
+    <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#0f172a;margin-bottom:1.4rem;">Gestió del temps i dependència</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start;">
+      <div>
+        <div class="reveal" style="background:white;border-radius:12px;padding:1rem 1.2rem;margin-bottom:0.8rem;border-left:4px solid #ef4444;box-shadow:0 2px 12px rgba(239,68,68,0.07);">
+          <div style="font-weight:700;font-size:0.88rem;color:#dc2626;margin-bottom:0.4rem;">📊 Una dada alarmant</div>
+          <div style="font-size:0.82rem;color:#334155;line-height:1.5;">El <strong>36,7% de les atencions a joves per addiccions</strong> als centres SPOTT ja és per mal ús de pantalles (2024).</div>
+        </div>
+        <div class="reveal" style="background:white;border-radius:12px;padding:1rem 1.2rem;border-left:4px solid #f97316;box-shadow:0 2px 12px rgba(249,115,22,0.07);">
+          <div style="font-weight:700;font-size:0.88rem;color:#ea580c;margin-bottom:0.4rem;">⏰ Recomanacions (AEPed)</div>
+          <ul style="font-size:0.82rem;color:#334155;line-height:1.7;margin:0;padding-left:1.2rem;">
+            <li><strong>7-12 anys:</strong> &lt; 1 h diària entre setmana</li>
+            <li>Màxim 2 h els caps de setmana</li>
+            <li>Cap pantalla 1 h abans de dormir</li>
+            <li>Dormitori i menjador: zona lliure de mòbils</li>
+          </ul>
+        </div>
+      </div>
+      <div class="reveal" style="background:linear-gradient(135deg,#fff7ed,#ffedd5);border-radius:14px;padding:1.2rem;border:1px solid rgba(249,115,22,0.15);">
+        <div style="font-weight:700;font-size:0.92rem;color:#9a3412;margin-bottom:0.8rem;">🚨 Senyals d'alarma a casa</div>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;">
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#334155;">
+            <span style="color:#ef4444;font-size:1rem;">●</span> Irritabilitat en apagar la pantalla.
+          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#334155;">
+            <span style="color:#ef4444;font-size:1rem;">●</span> Deixa de fer activitats que li agradaven.
+          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#334155;">
+            <span style="color:#ef4444;font-size:1rem;">●</span> Dorm menys per seguir connectat/da.
+          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#334155;">
+            <span style="color:#ef4444;font-size:1rem;">●</span> Menteix sobre el temps d'ús.
+          </div>
+          <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#334155;">
+            <span style="color:#ef4444;font-size:1rem;">●</span> Pèrdua d'interès pel món real.
+          </div>
+        </div>
+        <div style="margin-top:0.8rem;font-size:0.75rem;color:#92400e;font-style:italic;">3 o més senyals persistents → parleu amb el pediatre o psicòleg escolar</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: DESINFORMACIÓ, PRIVACITAT I JOCS -->
+<div class="slide slide-6" data-slide="6">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:400px;height:400px;top:-70px;right:-60px;background:#fecaca;opacity:0.30;"></div>
+    <div class="blob" style="width:320px;height:320px;bottom:-60px;left:-40px;background:#fed7aa;opacity:0.25;"></div>
+  </div>
+  <div class="content">
+    <p class="reveal" style="font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#ea580c;margin-bottom:0.5rem;">Bloc 2 · Riscos i Prevenció</p>
+    <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#0f172a;margin-bottom:1.4rem;">Desinformació, privacitat i jocs en línia</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.9rem;margin-bottom:1rem;">
+      <div class="reveal" style="background:white;border-radius:12px;padding:1rem;box-shadow:0 2px 12px rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.10);">
+        <div style="font-size:1.6rem;margin-bottom:0.4rem;">🎭</div>
+        <div style="font-weight:700;font-size:0.85rem;color:#dc2626;margin-bottom:0.3rem;">Deepfakes i desinformació</div>
+        <div style="font-size:0.78rem;color:#334155;line-height:1.5;">
+          La IA pot crear vídeos i fotos falses molt convincents. Poden manipular opinions i provocar por o odi.
+        </div>
+      </div>
+
+      <div class="reveal" style="background:white;border-radius:12px;padding:1rem;box-shadow:0 2px 12px rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.10);">
+        <div style="font-size:1.6rem;margin-bottom:0.4rem;">🔒</div>
+        <div style="font-weight:700;font-size:0.85rem;color:#dc2626;margin-bottom:0.3rem;">Privacitat</div>
+        <div style="font-size:0.78rem;color:#334155;line-height:1.5;">
+          El que es publica a internet hi queda gairebé per sempre. 
+          Fotos, nom, escola, barri: dades que no s’han de compartir amb desconeguts.
+        </div>
+      </div>
+
+      <div class="reveal" style="background:white;border-radius:12px;padding:1rem;box-shadow:0 2px 12px rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.10);">
+        <div style="font-size:1.6rem;margin-bottom:0.4rem;">⚖️</div>
+        <div style="font-weight:700;font-size:0.85rem;color:#dc2626;margin-bottom:0.3rem;">Normativa XTEC</div>
+        <div style="font-size:0.78rem;color:#334155;line-height:1.5;">
+          <strong>Menors de 14 anys NO poden usar IA generativa</strong> (ChatGPT, Gemini...) sense supervisió adulta i criteri educatiu del centre.
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:0.9rem;">
+      <div class="reveal" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:12px;padding:1rem 1.4rem;border:1px solid rgba(29,78,216,0.12);">
+        <p style="font-size:0.88rem;font-weight:700;color:#1e40af;margin-bottom:0.4rem;">✅ Consell "Verificació 3-2-1" per ensenyar als fills i filles:</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <span style="font-size:0.82rem;color:#334155;"><strong>1.</strong> Busca la font original</span>
+          <span style="font-size:0.82rem;color:#334155;"><strong>2.</strong> Contrasta amb altres fonts fiables</span>
+          <span style="font-size:0.82rem;color:#334155;"><strong>3.</strong> Dubta si et genera una emoció molt intensa</span>
+        </div>
+      </div>
+
+ <div class="reveal" style="background:linear-gradient(135deg,#fef2f2,#fee2e2);border-radius:12px;padding:0.95rem 1.1rem;border:1px solid rgba(239,68,68,0.20);box-shadow:0 2px 12px rgba(239,68,68,0.10);">
+  <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;">
+    <div style="width:30px;height:30px;border-radius:999px;background:#fee2e2;display:flex;align-items:center;justify-content:center;font-size:1rem;">🎮</div>
+    <div style="font-weight:800;font-size:0.86rem;color:#b91c1c;">Jocs amb loot boxes (Fortnite, FIFA...)</div>
+  </div>
+
+ <p style="font-size:0.78rem;color:#334155;line-height:1.55;margin:0 0 0.55rem 0;">
+  Molts jocs incorporen <strong>caixes de recompenses aleatòries</strong> que es poden obrir una vegada i una altra.
+  Funcionen amb una <strong>recompensa imprevisible</strong> (com una escurabutxaques), que pot fer difícil
+  <strong>parar de jugar o deixar d’obrir caixes</strong>, i sovint impliquen gastar diners, encara que siguin petites quantitats.
+</p>
+
+<div style="margin:0;border-radius:10px;background:rgba(248,250,252,0.8);padding:0.6rem 0.75rem;">
+  <p style="font-size:0.78rem;color:#334155;line-height:1.5;margin:0 0 0.25rem 0;">
+    • Generen sensació de “quasi ho tinc” i ganes de tornar a provar.
+  </p>
+  <p style="font-size:0.78rem;color:#334155;line-height:1.5;margin:0 0 0.25rem 0;">
+    • Poden allargar molt el temps de joc i fer gastar més del que s’havia pensat.
+  </p>
+  <p style="font-size:0.78rem;color:#334155;line-height:1.5;margin:0;">
+    • Cal parlar de <strong>límits de temps i de diners</strong> i recordar que el joc està dissenyat perquè costi aturar-se.
+  </p>
+</div>
+</div>
+    </div>
+  </div>
+</div>
+<!-- SLIDE 7: PERILLS DE LA IA -->
+<div class="slide slide-7" data-slide="7">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:480px;height:480px;top:-100px;right:-90px;background:#fecaca;opacity:0.32;"></div>
+    <div class="blob" style="width:350px;height:350px;bottom:-80px;left:-60px;background:#fed7aa;opacity:0.28;"></div>
+  </div>
+  <canvas class="particle-canvas-ambient" style="position:absolute;inset:0;z-index:1;"></canvas>
+  <div class="content">
+    <p class="reveal" style="font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#dc2626;margin-bottom:0.5rem;">Bloc 3 · Perills de la IA</p>
+    <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#0f172a;margin-bottom:1.4rem;">El risc més gran: deixar de pensar</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+      <div class="reveal" style="background:white;border-radius:14px;padding:1.2rem;box-shadow:0 2px 16px rgba(220,38,38,0.08);border:1px solid rgba(220,38,38,0.10);">
+        <div style="font-size:1.4rem;margin-bottom:0.4rem;">🧩</div>
+        <div style="font-weight:700;font-size:0.9rem;color:#dc2626;margin-bottom:0.4rem;">Pèrdua del pensament crític</div>
+        <div style="font-size:0.82rem;color:#334155;line-height:1.5;">L'estudi del MIT Media Lab (2025) adverteix que l'ús intensiu de ChatGPT pot afectar les capacitats cognitives dels estudiants: raonament, argumentació, resolució autònoma de problemes.</div>
+      </div>
+      <div class="reveal" style="background:white;border-radius:14px;padding:1.2rem;box-shadow:0 2px 16px rgba(220,38,38,0.08);border:1px solid rgba(220,38,38,0.10);">
+        <div style="font-size:1.4rem;margin-bottom:0.4rem;">💊</div>
+        <div style="font-weight:700;font-size:0.9rem;color:#dc2626;margin-bottom:0.4rem;">Dependència i dreceres</div>
+        <div style="font-size:0.82rem;color:#334155;line-height:1.5;">El <strong>17% dels pares</strong> reconeix que els seus fills usen la IA per conversar, com a substitut de les relacions humanes. La IA fa els deures en comptes d'ajudar a aprendre'ls.</div>
+      </div>
+    </div>
+    <div class="reveal" style="background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:14px;padding:1.2rem 1.5rem;border:1px solid rgba(220,38,38,0.20);">
+      <p style="font-size:0.9rem;color:#f1f5f9;font-style:italic;margin:0 0 0.4rem 0;">"La clau és entendre la IA com un <strong style="color:#fbbf24;">suport</strong>, no com un <strong style="color:#f87171;">substitut</strong>: ha de complementar l'esforç personal, el pensament crític i l'acompanyament de les famílies."</p>
+      <p style="font-size:0.75rem;color:#94a3b8;margin:0;">— Glòria Rodríguez Ben, psicòloga</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: OPORTUNITATS EDUCATIVES -->
+<div class="slide slide-8" data-slide="8">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:460px;height:460px;top:-100px;right:-80px;background:#bbf7d0;opacity:0.38;"></div>
+    <div class="blob" style="width:300px;height:300px;bottom:-50px;left:-40px;background:#dbeafe;opacity:0.28;"></div>
+  </div>
+
+  <div class="content">
+    <p class="reveal" style="font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#16a34a;margin-bottom:0.45rem;">Bloc 4 · Oportunitats Educatives</p>
+    <h2 class="reveal" style="font-size:clamp(1.65rem,3vw,2.45rem);font-weight:800;color:#0f172a;margin-bottom:1.2rem;">La diferència clau: que la IA no pensi per ell</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;align-items:stretch;">
+
+      <!-- MAL ÚS -->
+      <div class="reveal" style="background:white;border-radius:16px;padding:1.1rem 1.2rem;border:1px solid rgba(239,68,68,0.14);box-shadow:0 4px 16px rgba(239,68,68,0.08);">
+        <div style="display:flex;align-items:center;gap:0.55rem;margin-bottom:0.6rem;">
+          <div style="width:34px;height:34px;border-radius:999px;background:#fee2e2;display:flex;align-items:center;justify-content:center;font-size:1rem;">❌</div>
+          <div style="font-weight:800;font-size:0.95rem;color:#b91c1c;">Mal ús de la IA</div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,#fff1f2,#fee2e2);border-radius:12px;padding:0.8rem 0.95rem;border:1px solid rgba(239,68,68,0.12);margin-bottom:0.7rem;">
+          <div style="font-size:0.74rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#b91c1c;margin-bottom:0.3rem;">Exemple</div>
+          <p style="font-size:0.8rem;color:#334155;line-height:1.5;margin:0;font-style:italic;">
+            “Fes-me el resum del tema dels aparells del cos humà i les respostes dels exercicis.”
+          </p>
+        </div>
+
+        <ul style="margin:0;padding-left:1.1rem;font-size:0.8rem;color:#334155;line-height:1.65;">
+          <li>El nen o nena <strong>rep el resultat fet</strong>.</li>
+          <li>Hi ha menys esforç, menys memòria i menys comprensió.</li>
+          <li>Pot semblar que estudia, però en realitat <strong>substitueix el treball mental</strong>.</li>
+          <li>Si després no sap explicar-ho sol, és que no ho ha après.</li>
+        </ul>
+
+        <div style="margin-top:0.75rem;background:#fef2f2;border-radius:12px;padding:0.75rem 0.9rem;border-left:4px solid #ef4444;">
+          <p style="margin:0;font-size:0.8rem;color:#7f1d1d;line-height:1.5;">
+            <strong>Missatge per a les famílies:</strong> comoditat no és aprenentatge.
+          </p>
+        </div>
+      </div>
+
+      <!-- BON ÚS -->
+      <div class="reveal" style="background:white;border-radius:16px;padding:1.1rem 1.2rem;border:1px solid rgba(34,197,94,0.14);box-shadow:0 4px 16px rgba(34,197,94,0.08);">
+        <div style="display:flex;align-items:center;gap:0.55rem;margin-bottom:0.6rem;">
+          <div style="width:34px;height:34px;border-radius:999px;background:#dcfce7;display:flex;align-items:center;justify-content:center;font-size:1rem;">✅</div>
+          <div style="font-weight:800;font-size:0.95rem;color:#15803d;">Bon ús de la IA</div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-radius:12px;padding:0.8rem 0.95rem;border:1px solid rgba(34,197,94,0.12);margin-bottom:0.7rem;">
+          <div style="font-size:0.74rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:#15803d;margin-bottom:0.3rem;">Exemple</div>
+          <p style="font-size:0.8rem;color:#334155;line-height:1.5;margin:0;font-style:italic;">
+            “Ajuda’m a estudiar aquest tema com si fos de 5è. Explica-me’l fàcil, fes-me preguntes i posa’m un mini test al final.”
+          </p>
+        </div>
+
+        <ul style="margin:0;padding-left:1.1rem;font-size:0.8rem;color:#334155;line-height:1.65;">
+          <li>La IA <strong>acompanya</strong>, però no resol per l’infant.</li>
+          <li>Fa d’explicador, entrenador i eina de pràctica.</li>
+          <li>Ajuda a detectar dubtes i a reforçar allò que no entén.</li>
+          <li>L’objectiu final és que l’alumne <strong>ho pugui explicar amb les seves paraules</strong>.</li>
+        </ul>
+
+        <div style="margin-top:0.75rem;background:#f0fdf4;border-radius:12px;padding:0.75rem 0.9rem;border-left:4px solid #22c55e;">
+          <p style="margin:0;font-size:0.8rem;color:#166534;line-height:1.5;">
+            <strong>Missatge per a les famílies:</strong> la IA funciona millor com a tutor que com a substitut.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:0.9rem;align-items:stretch;">
+      <div style="background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:14px;padding:0.9rem 1.1rem;border:1px solid rgba(29,78,216,0.12);box-shadow:0 2px 12px rgba(29,78,216,0.08);">
+        <div style="font-size:0.82rem;font-weight:800;color:#1d4ed8;margin-bottom:0.35rem;">🗣️ Què pot fer l’adult?</div>
+        <p style="font-size:0.8rem;color:#334155;line-height:1.55;margin:0;">
+          Supervisar l’activitat, ajudar a formular la pregunta i, sobretot, demanar després:
+          <strong>“Ara explica-m’ho tu sense mirar la pantalla.”</strong>
+        </p>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#f8fafc,#f0fdf4);border-radius:14px;padding:0.9rem 1.1rem;border:1px solid rgba(22,163,74,0.12);box-shadow:0 2px 12px rgba(22,163,74,0.08);display:flex;align-items:center;">
+        <p style="font-size:0.84rem;color:#334155;line-height:1.55;margin:0;">
+          <strong style="color:#15803d;">Idea força:</strong> no es tracta de “fer servir IA”, sinó de
+          <strong>com</strong> es fa servir.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9: PACTE DIGITAL FAMILIAR -->
+<div class="slide slide-9" data-slide="9">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:440px;height:440px;top:-80px;right:-70px;background:#e9d5ff;opacity:0.38;"></div>
+    <div class="blob" style="width:300px;height:300px;bottom:-50px;left:-40px;background:#ddd6fe;opacity:0.28;"></div>
+  </div>
+  <div class="content">
+    <p class="reveal" style="font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#7c3aed;margin-bottom:0.5rem;">Bloc 5 · Eines per a Famílies</p>
+    <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#0f172a;margin-bottom:1.4rem;">El Pacte Digital Familiar 📜</h2>
+    <div style="display:grid;grid-template-columns:3fr 2fr;gap:1.2rem;align-items:start;">
+      <div>
+        <div class="reveal" style="background:white;border-radius:14px;padding:1.2rem;box-shadow:0 2px 16px rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.10);margin-bottom:0.9rem;">
+          <div style="font-weight:700;font-size:0.9rem;color:#6d28d9;margin-bottom:0.6rem;">📋 Què ha d'incloure el pacte?</div>
+          <div style="display:flex;flex-direction:column;gap:0.4rem;">
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#334155;"><span style="background:#7c3aed;color:white;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;flex-shrink:0;">1</span> Horaris d'ús (quan sí, quan no)</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#334155;"><span style="background:#7c3aed;color:white;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;flex-shrink:0;">2</span> Llocs permesos (mai al dormitori)</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#334155;"><span style="background:#7c3aed;color:white;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;flex-shrink:0;">3</span> Quines apps estan permeses</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#334155;"><span style="background:#7c3aed;color:white;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;flex-shrink:0;">4</span> Conseqüències si es trenca</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:#334155;"><span style="background:#7c3aed;color:white;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;flex-shrink:0;">5</span> Revisió mensual o trimestral</div>
+          </div>
+        </div>
+        <div class="reveal" style="background:linear-gradient(135deg,#fdf4ff,#f3e8ff);border-radius:12px;padding:0.9rem 1.2rem;border:1px solid rgba(124,58,237,0.12);">
+          <p style="font-size:0.82rem;color:#334155;margin:0;"><strong>🔑 Clau:</strong> Ha de ser <strong>negociat, no imposat</strong>. Els fills que participen en les normes les compleixen molt millor.</p>
+        </div>
+      </div>
+      <div class="reveal" style="background:white;border-radius:14px;padding:1.2rem;box-shadow:0 2px 16px rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.10);">
+        <div style="font-size:1.8rem;text-align:center;margin-bottom:0.6rem;">👨‍👩‍👧</div>
+        <div style="font-weight:700;font-size:0.88rem;color:#6d28d9;text-align:center;margin-bottom:0.8rem;">L'exemple adult</div>
+        <div style="font-size:0.8rem;color:#334155;line-height:1.6;font-style:italic;text-align:center;">"Els fills no fan el que els diem, fan el que ens veuen fer."</div>
+        <div style="margin-top:0.9rem;font-size:0.78rem;color:#334155;">
+          <div style="margin-bottom:0.3rem;">📱 Mireu el mòbil mentre sopeu?</div>
+          <div style="margin-bottom:0.3rem;">✉️ Contesteu missatges mentre esteu amb ells?</div>
+          <div>👶 Alguna vegada us han dit "deixa el mòbil"?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 10: EINES D'IA PER A FAMÍLIES -->
+<div class="slide slide-10" data-slide="10">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:430px;height:430px;top:-90px;right:-70px;background:#bfdbfe;opacity:0.32;"></div>
+    <div class="blob" style="width:320px;height:320px;bottom:-60px;left:-40px;background:#bbf7d0;opacity:0.28;"></div>
+  </div>
+
+  <div class="content">
+    <p class="reveal" style="font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#2563eb;margin-bottom:0.5rem;">Bloc 4 · Oportunitats Educatives</p>
+    <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#0f172a;margin-bottom:0.3rem;">Eines d’IA que poden ajudar des de casa</h2>
+    <p class="reveal" style="font-size:0.82rem;color:#475569;line-height:1.6;margin-bottom:1.1rem;">
+      Millor <strong>pocs assistents ben entesos</strong> que moltes apps que no sabem com usar. 
+      Aquestes quatre eines poden ser un bon punt de partida.
+    </p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-bottom:0.9rem;">
+      <!-- ChatGPT -->
+      <div class="reveal" style="background:white;border-radius:14px;padding:1rem 1.1rem;border:1px solid rgba(37,99,235,0.14);box-shadow:0 2px 12px rgba(37,99,235,0.08);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.45rem;">
+          <div>
+            <div style="font-weight:800;font-size:0.9rem;color:#1d4ed8;">ChatGPT (o LeChat, DeepSeek, Qwen...)</div>
+            <div style="font-size:0.74rem;color:#64748b;">Xatbots genèrics que generadors d’idees, textos i imatges</div>
+          </div>
+          <span style="font-size:1.2rem;">💬</span>
+        </div>
+        <p style="font-size:0.8rem;color:#334155;line-height:1.5;margin:0 0 0.45rem 0;">
+          Poden fer de tutor, explicar temes amb paraules senzilles i inventar exercicis, preguntes o dictats adaptats a l’edat.
+        </p>
+        <ul style="margin:0;padding-left:1.1rem;font-size:0.78rem;color:#334155;line-height:1.5;">
+          <li><div style="color:#92400e;font-style:italic;">- Demanar explicacions amb exemples quotidians.</li>
+          <li><div style="color:#92400e;font-style:italic;">- Crear preguntes de repàs i jocs de preguntes/respostes.</li>
+        </ul>
+        <p style="margin:0.5rem 0 0;font-size:0.78rem;color:#1d4ed8;">
+          Punt clau: demanar-li que <strong>pregunti i faci pensar</strong>, no que faci els deures.
+        </p>
+      </div>
+
+      <!-- NotebookLM -->
+      <div class="reveal" style="background:white;border-radius:14px;padding:1rem 1.1rem;border:1px solid rgba(34,197,94,0.16);box-shadow:0 2px 12px rgba(34,197,94,0.08);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.45rem;">
+          <div>
+            <div style="font-weight:800;font-size:0.9rem;color:#15803d;">NotebookLM</div>
+            <div style="font-size:0.74rem;color:#64748b;">Resumidor d’apunts i dossiers</div>
+          </div>
+          <span style="font-size:1.2rem;">📚</span>
+        </div>
+        <p style="font-size:0.8rem;color:#334155;line-height:1.5;margin:0 0 0.45rem 0;">
+          Permet pujar documents de l’escola (PDF, apunts, fitxes) i obtenir resums, esquemes i targetes de memòria.
+        </p>
+        <ul style="margin:0;padding-left:1.1rem;font-size:0.78rem;color:#334155;line-height:1.5;">
+          <li><div style="color:#92400e;font-style:italic;">- Fer resums curts abans d’un examen.</li>
+          <li><div style="color:#92400e;font-style:italic;">- Generar preguntes a partir dels materials reals del curs.</li>
+        </ul>
+        <p style="margin:0.5rem 0 0;font-size:0.78rem;color:#15803d;">
+          Punt clau: ajuda a treballar i estudiar basant-se en el <strong>temari que fan a classe</strong>.
+        </p>
+      </div>
+
+      <!-- Perplexity -->
+      <div class="reveal" style="background:white;border-radius:14px;padding:1rem 1.1rem;border:1px solid rgba(59,130,246,0.16);box-shadow:0 2px 12px rgba(59,130,246,0.08);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.45rem;">
+          <div>
+            <div style="font-weight:800;font-size:0.9rem;color:#1d4ed8;">Perplexity</div>
+            <div style="font-size:0.74rem;color:#64748b;">Cercador conversacional amb cites de la font</div>
+          </div>
+          <span style="font-size:1.2rem;">🔎</span>
+        </div>
+        <p style="font-size:0.8rem;color:#334155;line-height:1.5;margin:0 0 0.45rem 0;">
+          Ideal per buscar informació per a treballs i veure sempre d’on surten les dades (enllaços a les fonts).
+        </p>
+        <ul style="margin:0;padding-left:1.1rem;font-size:0.78rem;color:#334155;line-height:1.5;">
+          <li><div style="color:#92400e;font-style:italic;">- Comparar diferents fonts sobre un mateix tema.</li>
+          <li><div style="color:#92400e;font-style:italic;">- Verificar si una notícia o vídeo explica fets reals.</li>
+        </ul>
+        <p style="margin:0.5rem 0 0;font-size:0.78rem;color:#1d4ed8;">
+          Punt clau: bon recurs per aprendre a <strong>no creure’s tot el que surt a internet</strong>.
+        </p>
+      </div>
+
+      <!-- Gemini o Qwen (aquí trio Gemini per a famílies) -->
+      <div class="reveal" style="background:white;border-radius:14px;padding:1rem 1.1rem;border:1px solid rgba(96,165,250,0.16);box-shadow:0 2px 12px rgba(96,165,250,0.08);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.45rem;">
+          <div>
+            <div style="font-weight:800;font-size:0.9rem;color:#1d4ed8;">Gemini</div>
+            <div style="font-size:0.74rem;color:#64748b;">Integrat amb Google (Docs, Drive, YouTube)</div>
+          </div>
+          <span style="font-size:1.2rem;">🧠</span>
+        </div>
+        <p style="font-size:0.8rem;color:#334155;line-height:1.5;margin:0 0 0.45rem 0;">
+          Funciona molt bé amb el que ja tenen a Google: vídeos de YouTube educatius, documents de Drive, correus, etc.
+        </p>
+        <ul style="margin:0;padding-left:1.1rem;font-size:0.78rem;color:#334155;line-height:1.5;">
+          <li><div style="color:#92400e;font-style:italic;">- Fer qüestionaris a partir d’un vídeo de YouTube.</li>
+          <li><div style="color:#92400e;font-style:italic;">- Resumir carpetes de Drive amb apunts o treballs.</li>
+        </ul>
+        <p style="margin:0.5rem 0 0;font-size:0.78rem;color:#1d4ed8;">
+          Punt clau: molt útil si la família o l'alumne/a ja fa servir <strong>Google Workspace</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Enllaç a la imatge sobre bons prompts -->
+    <div class="reveal" style="margin-top:0.6rem;background:linear-gradient(135deg,#eff6ff,#e0f2fe);border-radius:12px;padding:0.8rem 1.1rem;border:1px solid rgba(37,99,235,0.14);">
+      <p style="font-size:0.8rem;color:#1e40af;line-height:1.5;margin:0;">
+        Infografia: <a href=" https://drive.google.com/file/d/1W9VwYsR39gY-GL0zujNwSCDFHgwtvLCW/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:#1d4ed8;text-decoration:underline;">
+          Elements d'un bon PROMPT
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- SLIDE 11: MISSATGE FINAL -->
+<div class="slide slide-11" data-slide="11">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:500px;height:500px;top:-110px;right:-90px;background:#bfdbfe;opacity:0.40;"></div>
+    <div class="blob" style="width:380px;height:380px;bottom:-80px;left:-70px;background:#bbf7d0;opacity:0.35;"></div>
+    <div class="blob" style="width:250px;height:250px;top:30%;left:8%;background:#e9d5ff;opacity:0.30;"></div>
+  </div>
+  <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1;"></canvas>
+  <div class="content">
+    <p class="reveal" style="font-size:0.8rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#64748b;margin-bottom:0.8rem;text-align:center;">Resum final</p>
+    <h2 class="reveal" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#0f172a;margin-bottom:1.5rem;text-align:center;">Els 5 missatges clau</h2>
+    <div style="display:flex;flex-direction:column;gap:0.65rem;">
+      <div class="reveal" style="background:white;border-radius:12px;padding:0.85rem 1.2rem;box-shadow:0 2px 12px rgba(29,78,216,0.06);border-left:4px solid #1d4ed8;display:flex;align-items:center;gap:0.8rem;">
+        <span style="font-size:1.2rem;">🌐</span>
+        <span style="font-size:0.88rem;color:#334155;"><strong>Coneixement:</strong> la tecnologia forma part de la vida dels vostres fills. Conèixer-la us permet acompanyar-los millor.</span>
+      </div>
+      <div class="reveal" style="background:white;border-radius:12px;padding:0.85rem 1.2rem;box-shadow:0 2px 12px rgba(249,115,22,0.06);border-left:4px solid #f97316;display:flex;align-items:center;gap:0.8rem;">
+        <span style="font-size:1.2rem;">⚠️</span>
+        <span style="font-size:0.88rem;color:#334155;"><strong>Prevenció:</strong> els riscos existeixen, però es poden prevenir amb informació i diàleg obert.</span>
+      </div>
+      <div class="reveal" style="background:white;border-radius:12px;padding:0.85rem 1.2rem;box-shadow:0 2px 12px rgba(220,38,38,0.06);border-left:4px solid #ef4444;display:flex;align-items:center;gap:0.8rem;">
+        <span style="font-size:1.2rem;">🤖</span>
+        <span style="font-size:0.88rem;color:#334155;"><strong>IA amb criteri:</strong> cal aprendre a usar-la com a suport, no com a substitut del pensament.</span>
+      </div>
+      <div class="reveal" style="background:white;border-radius:12px;padding:0.85rem 1.2rem;box-shadow:0 2px 12px rgba(22,163,74,0.06);border-left:4px solid #16a34a;display:flex;align-items:center;gap:0.8rem;">
+        <span style="font-size:1.2rem;">🎓</span>
+        <span style="font-size:0.88rem;color:#334155;"><strong>Oportunitats:</strong> ben usada, la tecnologia millora l'aprenentatge i la creativitat dels fills.</span>
+      </div>
+      <div class="reveal" style="background:white;border-radius:12px;padding:0.85rem 1.2rem;box-shadow:0 2px 12px rgba(124,58,237,0.06);border-left:4px solid #7c3aed;display:flex;align-items:center;gap:0.8rem;">
+        <span style="font-size:1.2rem;">🏠</span>
+        <span style="font-size:0.88rem;color:#334155;"><strong>Vosaltres:</strong> la millor eina que teniu sou vosaltres mateixos: l'exemple, la conversa i la confiança.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 12: GRÀCIES / RECURSOS -->
+<div class="slide slide-12" data-slide="12">
+  <div class="gradient-mesh">
+    <div class="blob" style="width:520px;height:520px;top:-110px;right:-100px;background:#bfdbfe;opacity:0.45;"></div>
+    <div class="blob" style="width:380px;height:380px;bottom:-80px;left:-70px;background:#e9d5ff;opacity:0.38;"></div>
+    <div class="blob" style="width:240px;height:240px;top:40%;left:12%;background:#bbf7d0;opacity:0.30;"></div>
+  </div>
+  <canvas class="particle-canvas" style="position:absolute;inset:0;z-index:1;"></canvas>
+  <div class="content text-center">
+    <div style="font-size:clamp(3rem,7vw,5.5rem);margin-bottom:1rem;animation:float 3s ease-in-out infinite;" class="reveal">🙏</div>
+    <h2 class="reveal" style="font-size:clamp(2rem,4.5vw,3.5rem);font-weight:800;background:linear-gradient(135deg,#1d4ed8,#7c3aed,#16a34a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:0.5rem;">Gràcies!</h2>
+    <p class="reveal" style="font-size:clamp(0.9rem,1.5vw,1.1rem);color:#334155;font-style:italic;margin-bottom:1.5rem;">"No es tracta de protegir els nens de la tecnologia,<br>sinó de preparar-los per a ella."</p>
+    <div class="reveal" style="background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border:1px solid rgba(29,78,216,0.12);border-radius:16px;padding:1.2rem 2rem;display:inline-block;text-align:left;box-shadow:0 4px 20px rgba(29,78,216,0.08);">
+      <p style="font-weight:700;font-size:0.85rem;color:#1e40af;margin-bottom:0.7rem;text-align:center;">📚 Recursos per endur-se a casa</p>
+      <div style="display:flex;flex-direction:column;gap:0.4rem;">
+        <div style="font-size:0.82rem;color:#334155;">🔗 <strong>plandigitalfamiliar.aeped.es</strong> — Pla Digital Familiar interactiu</div>
+        <div style="font-size:0.82rem;color:#334155;">🔗 <strong>verificat.cat/educacio-i-pantalles</strong> — Dades verificades sobre pantalles</div>
+        <div style="font-size:0.82rem;color:#334155;">🔗 <strong>projectes.xtec.cat/ia</strong> — Normativa IA per a menors a Catalunya</div>
+        <div style="font-size:0.82rem;color:#334155;">🔗 <strong>criar.cat</strong> — Control parental en català</div>
+      </div>
+    </div>
+    <p class="reveal" style="margin-top:1rem;font-size:0.78rem;color:#94a3b8;letter-spacing:0.08em;text-transform:uppercase;">Preguntes? Torn de col·loqui obert</p>
+  </div>
+</div>
+
+</div>
+
+<div class="nav-controls">
+  <button class="nav-btn" onclick="changeSlide(-1)">&#8249;</button>
+  <div class="slide-dots" id="dots"></div>
+  <button class="nav-btn" onclick="changeSlide(1)">&#8250;</button>
+  <span class="slide-counter" id="counter">1 / 12</span>
+</div>
+
+<script>
+let current = 1;
+const total = document.querySelectorAll('.slide').length;
+const dotsContainer = document.getElementById('dots');
+const counter = document.getElementById('counter');
+for (let i = 1; i <= total; i++) { const dot = document.createElement('div'); dot.className = 'dot' + (i === 1 ? ' active' : ''); dot.onclick = () => goToSlide(i); dotsContainer.appendChild(dot); }
+function goToSlide(n) {
+  const prev = document.querySelector('.slide.active');
+  const next = document.querySelector(`.slide[data-slide="${n}"]`);
+  if (prev) prev.classList.remove('active');
+  if (next) { next.classList.add('active'); animateSlide(next); }
+  current = n; updateNav();
+}
+function changeSlide(dir) { let n = current + dir; if (n < 1) n = total; if (n > total) n = 1; goToSlide(n); }
+function updateNav() { document.querySelectorAll('.dot').forEach((d, i) => { d.classList.toggle('active', i + 1 === current); }); counter.textContent = current + ' / ' + total; }
+document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); } if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); } });
+let touchStartX = 0;
+document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', (e) => { const diff = touchStartX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1); });
+function animateSlide(slide) {
+  slide.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transition = 'none'; el.style.opacity = '0'; el.style.transform = 'translateY(18px)';
+    el.offsetHeight;
+    const delay = i * 0.07;
+    el.style.transition = `opacity 0.35s ease ${delay}s, transform 0.35s ease ${delay}s`;
+    el.style.opacity = '1'; el.style.transform = 'translateY(0)';
+  });
+  animateSlideEffects(slide);
+}
+function animateSlideEffects(slide) {
+  slide.querySelectorAll('[data-count]:not(.counted)').forEach(el => {
+    el.classList.add('counted');
+    const target = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix || '', prefix = el.dataset.prefix || '';
+    let cur = 0; const step = target / 40;
+    const timer = setInterval(() => { cur += step; if (cur >= target) { cur = target; clearInterval(timer); } el.textContent = prefix + Math.round(cur).toLocaleString() + suffix; }, 30);
+  });
+  slide.querySelectorAll('.bar-fill:not(.fill-init)').forEach((bar, i) => {
+    bar.classList.add('fill-init');
+    bar.style.width = '0%'; bar.style.transition = `width 0.6s ease ${i * 0.1}s`; bar.offsetHeight; bar.style.width = bar.dataset.width + '%';
+  });
+}
+document.addEventListener('mousemove', (e) => {
+  const spotlight = document.querySelector('.mouse-spotlight');
+  if (spotlight) spotlight.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(29,78,216,0.05), transparent 40%)`;
+});
+window.initParticles = function(canvas, options) {
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight;
+  const interactive = options.interactive !== false;
+  const count = options.count || (interactive ? 40 : 15);
+  let mx = -1000, my = -1000;
+  const particles = Array.from({ length: count }, () => ({
+    x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+    size: Math.random() * 2 + 0.6, alpha: Math.random() * 0.2 + 0.05
+  }));
+  if (interactive) { canvas.addEventListener('mousemove', (e) => { const r = canvas.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; }); canvas.addEventListener('mouseleave', () => { mx = -1000; my = -1000; }); }
+  (function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      if (interactive) { const dx = p.x - mx, dy = p.y - my, dist = Math.sqrt(dx*dx+dy*dy); if (dist < 120) { const force = (120 - dist) / 120 * 2; p.vx += (dx/dist)*force*0.1; p.vy += (dy/dist)*force*0.1; } }
+      p.vx *= 0.98; p.vy *= 0.98; p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(29,78,216,${p.alpha})`; ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  })();
+};
+document.querySelectorAll('.particle-canvas').forEach(c => window.initParticles(c, { interactive: true, count: 40 }));
+document.querySelectorAll('.particle-canvas-ambient').forEach(c => window.initParticles(c, { interactive: false, count: 15 }));
+try { animateSlide(document.querySelector('.slide.active')); } catch(e) {}
+</script>
+</body>
+</html>
