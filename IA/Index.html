@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ca" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formació en IA per a Docents de Primària</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .tab-active {
+      border-bottom-color: #4f46e5;
+      color: #4f46e5;
+      background-color: #ffffff;
+      font-weight: 600;
+    }
+    .tab-inactive {
+      border-bottom-color: transparent;
+      color: #64748b;
+    }
+    .tab-inactive:hover {
+      color: #334155;
+      border-bottom-color: #cbd5e1;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col font-sans">
+
+  <!-- CAPÇALERA / HERO -->
+  <header class="bg-gradient-to-r from-brand-900 via-brand-800 to-indigo-900 text-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 py-8 md:py-12">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 mb-3">
+            <i class="fa-solid fa-graduation-cap"></i> Formació de Claustre · Educació Primària
+          </span>
+          <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+            Intel·ligència Artificial a l'Aula
+          </h1>
+          <p class="mt-2 text-indigo-100 max-w-2xl text-base md:text-lg">
+            Guia pràctica, ètica i competencial per a docents d'Educació Primària. Marc legal, optimització de tasques i pensament crític.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs font-medium text-indigo-200 bg-white/10 p-3.5 rounded-xl backdrop-blur-sm border border-white/10 self-start md:self-auto">
+          <div class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-emerald-400"></i> AI Act & LOPDGDD</div>
+          <span class="opacity-40">•</span>
+          <div class="flex items-center gap-1.5"><i class="fa-solid fa-user-check text-amber-400"></i> Human in the Loop</div>
+          <span class="opacity-40">•</span>
+          <div class="flex items-center gap-1.5"><i class="fa-solid fa-brain text-sky-400"></i> CDD-IA</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PESTANYES DE NAVEGACIÓ -->
+    <div class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-30">
+      <div class="max-w-6xl mx-auto px-4 flex overflow-x-auto no-scrollbar" id="tabContainer">
+        <button onclick="switchTab('part1')" id="btn-part1" class="tab-active py-4 px-6 border-b-2 text-sm md:text-base flex items-center gap-2 whitespace-nowrap transition-all duration-200">
+          <i class="fa-solid fa-compass"></i>
+          <span>Part 1: Fonaments i Marc Ètic</span>
+        </button>
+        <button onclick="switchTab('part2')" id="btn-part2" class="tab-inactive py-4 px-6 border-b-2 text-sm md:text-base flex items-center gap-2 whitespace-nowrap transition-all duration-200">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span>Part 2: Recursos i DUA / NESE</span>
+        </button>
+        <button onclick="switchTab('part3')" id="btn-part3" class="tab-inactive py-4 px-6 border-b-2 text-sm md:text-base flex items-center gap-2 whitespace-nowrap transition-all duration-200">
+          <i class="fa-solid fa-clipboard-check"></i>
+          <span>Part 3: Avaluació i Decàleg</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTINGUT PRINCIPAL -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8">
+
+    <!-- ==========================================
+         PART 1: FONAMENTS, RISCOS I MARC ÈTIC
+         ========================================== -->
+    <div id="content-part1" class="space-y-10">
+
+      <!-- PRESENTACIÓ DEL BLOC 1 -->
+      <section class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 text-brand-600 font-bold text-sm tracking-wide uppercase">
+          <span class="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center border border-brand-100">1.1</span>
+          Introducció al Bloc 1
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-2">
+          Desmitificant la IA: Què és, com pensa i com ens afecta?
+        </h2>
+        <p class="mt-3 text-slate-600 leading-relaxed">
+          La Intel·ligència Artificial no és una ment conscient ni un cercador tradicional d'informació[cite: 1, 8]. Comprendre el seu funcionament probabilístic és el primer pas essencial per aprofitar-ne les virtuts a l'escola sense caure en falses expectatives ni vulnerar la privacitat del nostre alumnat[cite: 1, 2, 4].
+        </p>
+
+        <!-- OBJECTIUS DEL BLOC -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+          <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex items-start gap-3">
+            <div class="text-indigo-600 mt-1"><i class="fa-solid fa-microchip"></i></div>
+            <div>
+              <h3 class="text-xs font-bold text-slate-700 uppercase">Comprensió</h3>
+              <p class="text-xs text-slate-600 mt-0.5">Distingir entre cercadors tradicionals i models generatius probabilístics[cite: 1, 4].</p>
+            </div>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex items-start gap-3">
+            <div class="text-rose-600 mt-1"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div>
+              <h3 class="text-xs font-bold text-slate-700 uppercase">Detecció de Riscos</h3>
+              <p class="text-xs text-slate-600 mt-0.5">Identificar al·lucinacions, biaixos culturals i el sedentarisme cognitiu[cite: 1, 7].</p>
+            </div>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex items-start gap-3">
+            <div class="text-emerald-600 mt-1"><i class="fa-solid fa-gavel"></i></div>
+            <div>
+              <h3 class="text-xs font-bold text-slate-700 uppercase">Marc Normatiu</h3>
+              <p class="text-xs text-slate-600 mt-0.5">Aplicar la Llei d'IA (AI Act) i les pautes de protecció de dades a Primària.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1. COM FUNCIONA REALMENT LA IA GENERATIVA? -->
+      <section class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 text-brand-600 font-bold text-sm tracking-wide uppercase">
+          <span class="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center border border-brand-100">1.2</span>
+          Fonaments Tècnics
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900 mt-2">
+          Com funciona un Model de Llenguatge Extens (LLM / MLE)?
+        </h2>
+        <p class="mt-2 text-slate-600 leading-relaxed">
+          Un Model de Llenguatge Extens (com ara Gemini, ChatGPT o Claude) no "sap" res ni té comprensió del món real[cite: 1, 4]. La seva arquitectura es basa en l'aprenentatge profund i en càlculs estadístics sobre milers de milions de paràmetres procedents d'Internet[cite: 1, 4].
+        </p>
+
+        <!-- COMPARATIVA: CERCADOR VS IA GENERATIVA -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="border border-slate-200 rounded-xl p-5 bg-gradient-to-b from-slate-50 to-white">
+            <div class="flex items-center gap-2 text-slate-800 font-bold text-base mb-2">
+              <i class="fa-solid fa-magnifying-glass text-indigo-500"></i> Cercador clàssic (Google, DuckDuckGo)
+            </div>
+            <ul class="text-sm text-slate-600 space-y-2">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-arrow-right text-indigo-400 mt-1 text-xs"></i>
+                <span>Cerca fitxers, pàgines web i dades <strong>que ja existeixen</strong> en un índex.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-arrow-right text-indigo-400 mt-1 text-xs"></i>
+                <span>Retorna enllaços i documents originals sense modificar-ne el sentit[cite: 4].</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-arrow-right text-indigo-400 mt-1 text-xs"></i>
+                <span>La interpretació i síntesi de la informació recau 100% en l'usuari.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="border border-indigo-100 rounded-xl p-5 bg-gradient-to-b from-indigo-50/50 to-white">
+            <div class="flex items-center gap-2 text-brand-900 font-bold text-base mb-2">
+              <i class="fa-solid fa-brain text-brand-600"></i> Model d'IA Generativa (LLM / MLLM)
+            </div>
+            <ul class="text-sm text-slate-600 space-y-2">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-arrow-right text-brand-500 mt-1 text-xs"></i>
+                <span><strong>Genera text o contingut nou</strong> sintetitzant patrons lingüístics[cite: 1, 4].</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-arrow-right text-brand-500 mt-1 text-xs"></i>
+                <span>Prediu la seqüència de paraules (*tokens*) més plausible segons la petició[cite: 1, 4].</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-arrow-right text-brand-500 mt-1 text-xs"></i>
+                <span>No comprova automàticament la veritat: prioritza la <strong>coherència i versemblança</strong>.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- METÀFORA DOCENT -->
+        <div class="mt-6 p-4 rounded-xl bg-amber-50 border border-amber-200 flex items-start gap-3">
+          <i class="fa-solid fa-lightbulb text-amber-600 text-xl mt-0.5"></i>
+          <div>
+            <h4 class="text-sm font-bold text-amber-900">La metàfora del teclat predictiu gegant</h4>
+            <p class="text-xs md:text-sm text-amber-800 mt-1 leading-relaxed">
+              Penseu en el text predictiu del telèfon mòbil: quan escriviu «Bon», el teclat us suggereix «dia». Un model com Gemini o ChatGPT fa exactament això, però calculant probabilitats a partir de milers de milions de lectures. No reflexiona: <strong>prediu patrons</strong>[cite: 1, 4].
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. RISCOS I LÍMITS CRÍTICS A L'ETAPA DE PRIMÀRIA -->
+      <section class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 text-rose-600 font-bold text-sm tracking-wide uppercase">
+          <span class="w-8 h-8 rounded-lg bg-rose-50 flex items-center justify-center border border-rose-100">1.3</span>
+          Riscos i Límits
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900 mt-2">
+          Quins riscos hem de gestionar a l'Educació Primària?
+        </h2>
+        <p class="mt-2 text-slate-600 leading-relaxed">
+          Conèixer les limitacions de la IA no busca crear desconfiança, sinó aportar criteri i seguretat docent per actuar com a filtres crítics (*Human in the Loop*)[cite: 1, 2].
+        </p>
+
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Risc 1: Al·lucinacions -->
+          <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-xs hover:border-brand-200 transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="p-2.5 rounded-lg bg-rose-100 text-rose-700 text-base"><i class="fa-solid fa-ghost"></i></span>
+              <h3 class="font-bold text-slate-900 text-base">Al·lucinacions (Dades inventades)</h3>
+            </div>
+            <p class="mt-2 text-xs md:text-sm text-slate-600 leading-relaxed">
+              La IA està programada per respondre de manera convincent fins i tot quan no té dades fiables[cite: 1, 4]. Pot inventar fets històrics, dates, fórmules o biografies amb un to de màxima seguretat i gramàtica perfecta.
+            </p>
+            <div class="mt-3 text-xs bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-slate-700">
+              <strong>Mesura docent:</strong> Contrastar sempre fets concrets amb llibres de text o fonts oficials[cite: 1, 2].
+            </div>
+          </div>
+
+          <!-- Risc 2: Biaixos Algorítmics -->
+          <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-xs hover:border-brand-200 transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="p-2.5 rounded-lg bg-amber-100 text-amber-700 text-base"><i class="fa-solid fa-scale-unbalanced"></i></span>
+              <h3 class="font-bold text-slate-900 text-base">Biaixos culturals i de gènere</h3>
+            </div>
+            <p class="mt-2 text-xs md:text-sm text-slate-600 leading-relaxed">
+              Els models s'entrenen principalment amb textos en llengua anglesa i de context occidental[cite: 7]. Poden reproduir estereotips (ex: associar certes professions a un gènere determinat o invisibilitzar la realitat cultural catalana)[cite: 1, 7].
+            </p>
+            <div class="mt-3 text-xs bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-slate-700">
+              <strong>Mesura docent:</strong> Reclamar paritat, perspectiva de gènere i context local explícit als prompts[cite: 2, 3].
+            </div>
+          </div>
+
+          <!-- Risc 3: Sedentarisme Cognitiu -->
+          <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-xs hover:border-brand-200 transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="p-2.5 rounded-lg bg-sky-100 text-sky-700 text-base"><i class="fa-solid fa-couch"></i></span>
+              <h3 class="font-bold text-slate-900 text-base">Sedentarisme cognitiu i il·lusió de saber</h3>
+            </div>
+            <p class="mt-2 text-xs md:text-sm text-slate-600 leading-relaxed">
+              Si la IA redacta o resol sempre les preguntes, l'alumnat perd l'oportunitat de sintetitzar, reflexionar i esforçar-se cognitivament (*«si no s'exercita, s'atrofia»*)[cite: 2, 7]. Es crea la falsa sensació d'entendre un tema només per haver-ne llegit un resum automàtic[cite: 7].
+            </p>
+            <div class="mt-3 text-xs bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-slate-700">
+              <strong>Mesura docent:</strong> Avaluar el procés, el raonament oral i la creació manual[cite: 2, 6, 7].
+            </div>
+          </div>
+
+          <!-- Risc 4: Petjada ecològica -->
+          <div class="p-5 rounded-xl border border-slate-200 bg-white shadow-xs hover:border-brand-200 transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="p-2.5 rounded-lg bg-emerald-100 text-emerald-700 text-base"><i class="fa-solid fa-leaf"></i></span>
+              <h3 class="font-bold text-slate-900 text-base">Impacte ambiental i sostenibilitat</h3>
+            </div>
+            <p class="mt-2 text-xs md:text-sm text-slate-600 leading-relaxed">
+              L'entrenament i la inferència de models generatius consumeixen una quantitat ingent d'electricitat i aigua per refrigerar centres de dades[cite: 1, 2].
+            </p>
+            <div class="mt-3 text-xs bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-slate-700">
+              <strong>Mesura docent:</strong> Utilitzar la IA només quan aporti un valor educatiu afegit real[cite: 2, 7].
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 3. MARC NORMATIU, LEGAL I PRIVACITAT -->
+      <section class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 text-brand-600 font-bold text-sm tracking-wide uppercase">
+          <span class="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center border border-brand-100">1.4</span>
+          Normativa i Protecció de Dades
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900 mt-2">
+          Marc Legal a l'Educació Primària (Catalunya / UE)
+        </h2>
+        <p class="mt-2 text-slate-600 leading-relaxed">
+          El Departament d'Educació i la Unió Europea han establert límits estrictes per protegir la infància i garantir la sobirania de les dades als centres escolars[cite: 1, 2, 3].
+        </p>
+
+        <!-- NIVELLS DE L'AI ACT EUROPEU -->
+        <div class="mt-6 bg-slate-900 text-white p-6 rounded-xl">
+          <h3 class="font-bold text-base flex items-center gap-2 text-indigo-300">
+            <i class="fa-solid fa-landmark"></i> Reglament Europeu d'IA (AI Act) aplicat a l'escola:
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-xs">
+            <div class="bg-rose-950/60 border border-rose-800/80 p-3.5 rounded-lg">
+              <span class="text-rose-300 font-bold uppercase block mb-1">🚫 Risc Inacceptable (Prohibit)</span>
+              Sistemes de reconeixement d'emocions de l'alumnat a l'aula o categorització biomètrica.
+            </div>
+            <div class="bg-amber-950/60 border border-amber-800/80 p-3.5 rounded-lg">
+              <span class="text-amber-300 font-bold uppercase block mb-1">⚠️ Alt Risc (Regulat)</span>
+              Sistemes d'admissió d'alumnes o avaluació automàtica de notes sense supervisió humana directa.
+            </div>
+            <div class="bg-emerald-950/60 border border-emerald-800/80 p-3.5 rounded-lg">
+              <span class="text-emerald-300 font-bold uppercase block mb-1">✅ Risc Mínim / Ús Docent</span>
+              Assistents per a la creació de materials pedagògics, adaptacions i suport administratiu del professorat[cite: 1, 4].
+            </div>
+          </div>
+        </div>
+
+        <!-- RESTRICCIÓ D'EDAT I PRIVACITAT -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <div class="text-indigo-600 font-bold text-sm mb-1"><i class="fa-solid fa-id-card"></i> Edat Mínima Legal</div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Segons la <strong>LOPDGDD</strong> i les condicions d'ús de les plataformes (ChatGPT, Gemini, etc.), l'alumnat <strong>menor de 14 anys no pot registrar-se ni tenir comptes directes</strong>[cite: 1, 2, 7]. A Primària, la IA és una eina d'ús exclusiu del docent[cite: 1, 7].
+            </p>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <div class="text-indigo-600 font-bold text-sm mb-1"><i class="fa-solid fa-user-shield"></i> No entrenar amb dades nostres</div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Cal configurar les eines (o utilitzar els entorns corporatius docents) desactivant l'opció de cedir les nostres consultes per a l'entrenament de futurs models públics[cite: 1, 2].
+            </p>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <div class="text-indigo-600 font-bold text-sm mb-1"><i class="fa-solid fa-hand-holding-heart"></i> Agència Humana</div>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              El criteri docent és insubstituïble[cite: 2, 5, 6]. Qualsevol material o situació d'aprenentatge generada ha de ser revisada, validada i adaptada pel mestre/a abans de portar-la a l'aula[cite: 1, 2].
+            </p>
+          </div>
+        </div>
+
+        <!-- EL SEMÀFOR DE PRIVACITAT DOCENT -->
+        <div class="mt-8 border border-slate-200 rounded-xl overflow-hidden">
+          <div class="bg-slate-100 px-5 py-3 border-b border-slate-200 font-bold text-sm text-slate-800 flex items-center gap-2">
+            <i class="fa-solid fa-traffic-light text-slate-600"></i> Semàfor de Privacitat Docent: Què podem introduir a la IA?
+          </div>
+          <div class="p-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+
+            <div class="p-4 rounded-lg bg-rose-50 border border-rose-200">
+              <div class="flex items-center gap-2 text-rose-800 font-bold text-xs uppercase tracking-wider mb-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span> Vermell (Mai / Prohibit)
+              </div>
+              <ul class="text-xs text-rose-950 space-y-1.5 list-disc list-inside">
+                <li>Noms o cognoms d'alumnes[cite: 1, 7].</li>
+                <li>Informes EAP, NESE o diagnòstics mèdics[cite: 1, 2].</li>
+                <li>Fotografies o veus d'infants[cite: 1, 3].</li>
+                <li>Dades bancàries o privades de famílies.</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-lg bg-amber-50 border border-amber-200">
+              <div class="flex items-center gap-2 text-amber-800 font-bold text-xs uppercase tracking-wider mb-2">
+                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span> Groc (Amb precaució)
+              </div>
+              <ul class="text-xs text-amber-950 space-y-1.5 list-disc list-inside">
+                <li>Treballs o redaccions d'alumnes (cal anonimitzar-los prèviament al 100%)[cite: 2, 7].</li>
+                <li>Projectes de centre no publicats[cite: 2].</li>
+                <li>Situacions d'aula descrites de manera genèrica (*«un infant de 8 anys que li costa sumar»*)[cite: 7].</li>
+              </ul>
+            </div>
+
+            <div class="p-4 rounded-lg bg-emerald-50 border border-emerald-200">
+              <div class="flex items-center gap-2 text-emerald-800 font-bold text-xs uppercase tracking-wider mb-2">
+                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span> Verd (Totalment segur)
+              </div>
+              <ul class="text-xs text-emerald-950 space-y-1.5 list-disc list-inside">
+                <li>Criteris d'avaluació del currículum oficial[cite: 2].</li>
+                <li>Textos clàssics o de domini públic[cite: 1].</li>
+                <li>Conceptes matemàtics, científics o gramaticals[cite: 4].</li>
+                <li>Instruccions per a dinàmiques de joc o tutoria[cite: 4].</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. TALLER PRÀCTIC I DINÀMIQUES DE CLUSTRE -->
+      <section class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 text-brand-600 font-bold text-sm tracking-wide uppercase">
+          <span class="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center border border-brand-100">1.5</span>
+          Activitats Pràctiques
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900 mt-2">
+          Dinàmiques per al Claustre: Mans a la massa
+        </h2>
+        <p class="mt-2 text-slate-600 leading-relaxed">
+          Posem a prova els conceptes treballats amb dues activitats ràpides per realitzar individualment o en parelles durant la sessió[cite: 1].
+        </p>
+
+        <!-- DINÀMICA 1: CAÇADORS D'AL·LUCINACIONS -->
+        <div class="mt-6 border border-slate-200 rounded-xl p-5 bg-slate-50">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold px-2.5 py-1 rounded bg-indigo-100 text-indigo-700">Activitat 1 · 15 min</span>
+            <span class="text-xs text-slate-500"><i class="fa-solid fa-users"></i> En parelles</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mt-2">🔍 El Caçador d'Al·lucinacions</h3>
+          <p class="text-xs md:text-sm text-slate-600 mt-1">
+            Copieu el prompt següent a Gemini o ChatGPT. La IA intentarà generar una explicació versemblant. La vostra missió és trobar quina dada o detall històric/geogràfic és completament fals o imprecís[cite: 1].
+          </p>
+
+          <div class="mt-3 relative">
+            <pre class="bg-slate-900 text-slate-100 p-3.5 rounded-lg text-xs md:text-sm font-mono overflow-x-auto whitespace-pre-wrap" id="prompt1">Explica'm per a alumnes de 4t de Primària com vivien els ibers al poblat de les Guixeres a Lleida l'any 1492 i quins tres invents tecnològics fets de plàstic utilitzaven per cuinar.</pre>
+            <button onclick="copyToClipboard('prompt1', 'btn-copy-1')" id="btn-copy-1" class="absolute top-2 right-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs px-2.5 py-1 rounded shadow transition-all flex items-center gap-1">
+              <i class="fa-regular fa-copy"></i> Copiar
+            </button>
+          </div>
+          <p class="text-xs text-slate-500 mt-2 italic">
+            *Observeu com la IA intentarà quadrar la resposta o corregir l'anacronisme, o si cau en la trampa amb total seguretat discursiva[cite: 1].
+          </p>
+        </div>
+
+        <!-- DINÀMICA 2: TEST RÀPID DE PRIVACITAT -->
+        <div class="mt-6 border border-slate-200 rounded-xl p-5 bg-slate-50">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold px-2.5 py-1 rounded bg-indigo-100 text-indigo-700">Activitat 2 · 10 min</span>
+            <span class="text-xs text-slate-500"><i class="fa-solid fa-circle-question"></i> Dilema de claustre</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mt-2">⚖️ Dilema de Privacitat: Ho podem demanar a la IA?</h3>
+          <p class="text-xs md:text-sm text-slate-600 mt-1">
+            Valoreu en grup si cadascuna d'aquestes tres situacions compleix la normativa o si cal modificar la petició[cite: 1, 2]:
+          </p>
+
+          <div class="mt-3 space-y-2 text-xs md:text-sm text-slate-700">
+            <div class="p-3 bg-white rounded-lg border border-slate-200">
+              <strong>Cas A:</strong> <em>«Redacta un correu per a la mare d'en Marc Vila explicant-li que s'ha barallat al pati i que no ha volgut fer la fitxa de català.»</em>
+              <div class="mt-1 text-rose-600 text-xs font-semibold">❌ Incorrecte (conté nom real i circumstància privada).</div>
+            </div>
+            <div class="p-3 bg-white rounded-lg border border-slate-200">
+              <strong>Cas B:</strong> <em>«Actua com a tutor de 3r de primària i redacta una plantilla neutra de correu per a famílies sobre incidències de convivència al pati per omplir els buits a mà.»</em>
+              <div class="mt-1 text-emerald-600 text-xs font-semibold">✅ Correcte (plantilla sense dades personals).</div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- ==========================================
+         PART 2: PLACEHOLDER PER A PROPERS BLOCS
+         ========================================== -->
+    <div id="content-part2" class="hidden space-y-8">
+      <div class="bg-white rounded-2xl p-8 border border-slate-200 text-center py-16 shadow-sm">
+        <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-4 border border-indigo-100">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900">Part 2: Creació de Recursos, Multimodalitat i DUA / NESE</h2>
+        <p class="text-slate-600 max-w-xl mx-auto mt-2 text-sm">
+          Aquest apartat acollirà els continguts de prompts educatius avançats, situacions d'aprenentatge, adaptacions per a necessitats educatives especials, NotebookLM i generació d'imatges/àudios didàctics[cite: 2, 4].
+        </p>
+        <span class="inline-block mt-4 px-3 py-1 bg-amber-50 text-amber-700 border border-amber-200 rounded-full text-xs font-semibold">
+          <i class="fa-solid fa-clock"></i> Proper contingut a afegir
+        </span>
+      </div>
+    </div>
+
+    <!-- ==========================================
+         PART 3: PLACEHOLDER PER A PROPERS BLOCS
+         ========================================== -->
+    <div id="content-part3" class="hidden space-y-8">
+      <div class="bg-white rounded-2xl p-8 border border-slate-200 text-center py-16 shadow-sm">
+        <div class="w-16 h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto text-2xl mb-4 border border-indigo-100">
+          <i class="fa-solid fa-clipboard-check"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-slate-900">Part 3: Avaluació Formadora, Pensament Crític i Decàleg de Centre</h2>
+        <p class="text-slate-600 max-w-xl mx-auto mt-2 text-sm">
+          Aquí s'integraran les propostes d'avaluació del procés vs producte, l'Escala ESIA (AIAS), generació de rúbriques i la redacció de l'acord de claustre sobre l'ús de la IA a l'escola[cite: 3, 6].
+        </p>
+        <span class="inline-block mt-4 px-3 py-1 bg-amber-50 text-amber-700 border border-amber-200 rounded-full text-xs font-semibold">
+          <i class="fa-solid fa-clock"></i> Proper contingut a afegir
+        </span>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- PEU DE PÀGINA -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-xs">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="font-semibold text-slate-200">Formació en Intel·ligència Artificial a Primària</p>
+        <p class="mt-0.5 text-slate-400">Materials basats en les directrius del Departament d'Educació, INTEF i el Marc Europeu d'IA[cite: 1, 2].</p>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <span>Llicència de lliure ús educatiu</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT PER AL CANVI DE PESTANYES I COPIAT -->
+  <script>
+    function switchTab(tabId) {
+      // Ocultar tots els continguts
+      document.getElementById('content-part1').classList.add('hidden');
+      document.getElementById('content-part2').classList.add('hidden');
+      document.getElementById('content-part3').classList.add('hidden');
+
+      // Reset estil botons
+      const buttons = ['btn-part1', 'btn-part2', 'btn-part3'];
+      buttons.forEach(id => {
+        const btn = document.getElementById(id);
+        btn.className = 'tab-inactive py-4 px-6 border-b-2 text-sm md:text-base flex items-center gap-2 whitespace-nowrap transition-all duration-200';
+      });
+
+      // Mostrar contingut seleccionat i activar botó
+      document.getElementById('content-' + tabId).classList.remove('hidden');
+      const activeBtn = document.getElementById('btn-' + tabId);
+      activeBtn.className = 'tab-active py-4 px-6 border-b-2 text-sm md:text-base flex items-center gap-2 whitespace-nowrap transition-all duration-200';
+    }
+
+    function copyToClipboard(elementId, btnId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById(btnId);
+        const originalHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copiat!';
+        btn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
+        btn.classList.add('bg-emerald-600', 'hover:bg-emerald-700');
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+          btn.classList.remove('bg-emerald-600', 'hover:bg-emerald-700');
+          btn.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
