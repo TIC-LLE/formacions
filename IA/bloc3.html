@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloc 3: Avaluació Competencial i IA a l'Aula | IA a Primària</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header & Nav -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo-link">
+        <span class="logo-badge">XTEC · IA</span>
+        <span>IA a l'Educació Primària</span>
+      </a>
+      <button class="menu-toggle" aria-label="Obrir menú">☰</button>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Inici</a></li>
+          <li><a href="bloc1.html" class="nav-link">Bloc 1: Fonaments i Ètica</a></li>
+          <li><a href="bloc2.html" class="nav-link">Bloc 2: Materials i DUA</a></li>
+          <li><a href="bloc3.html" class="nav-link active">Bloc 3: Avaluació i Aula</a></li>
+          <li><a href="prompts.html" class="nav-link">Promptoteca</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag">
+        <span>📊 Bloc 3 · Formació Docent</span>
+      </div>
+      <h1 class="hero-title">Avaluació Competencial, Situacions d'Aprenentatge i IA a l'Aula</h1>
+      <p class="hero-subtitle">
+        Com dissenyar rúbriques i dianes d'autoavaluació formadora, generar feedback personalitzat per a informes i apropar la IA a l'alumnat de primària amb eines lúdiques, segures i sense registre.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content with Sticky Sidebar -->
+  <div class="container page-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="page-sidebar">
+      <div class="sidebar-title">Continguts del Bloc 3</div>
+      <ul class="sidebar-nav">
+        <li><a href="#intro" class="active">1. Introducció i Objectius</a></li>
+        <li><a href="#avaluar-era-ia">2. Avaluar en l'Era de la IA</a></li>
+        <li><a href="#escala-esia">3. L'Escala de Suport IA (ESIA)</a></li>
+        <li><a href="#rubriques-dianes">4. Rúbriques i Dianes Formatives</a></li>
+        <li><a href="#feedback-informes">5. Comentaris d'Informes Escolars</a></li>
+        <li><a href="#ia-alumnat-primaria">6. Eines Segures per a l'Alumnat</a></li>
+        <li><a href="#pensament-critic">7. Pensament Crític Infantil</a></li>
+        <li><a href="#banc-prompts-bloc3">8. Banc de Prompts d'Avaluació</a></li>
+        <li><a href="#repte-final">9. Projecte Final i Cloenda</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- 1. Introducció -->
+      <section id="intro" class="content-section">
+        <span class="section-badge">Punt de partida</span>
+        <h2 class="section-title"><span class="icon">🎯</span> 1. Introducció i Objectius</h2>
+        <p>
+          Tal com defensa la pedagoga <strong>Neus Sanmartí</strong>, avaluar no és simplement posar notes ni classificar l'alumnat: <strong>avaluar és un procés formatiu i formador orientat a l'autoregulació de l'aprenentatge</strong>.
+        </p>
+        <p>
+          En un món on qualsevol model generatiu pot redactar un treball o respondre preguntes teòriques en pocs segons, l'avaluació tradicional basada exclusivament en productes finals escrits entra en crisi. Això no és una amenaça, sinó una oportunitat d'or per desplaçar el focus cap a allò realment rellevant: <strong>el procés de raonament, l'oralitat, la cooperació i la reflexió metacognitiva</strong>.
+        </p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">💡 Què treballarem en aquest bloc?</div>
+          <ul style="margin-bottom: 0; padding-left: 1.2rem;">
+            <li>Entendre el canvi de paradigma en l'avaluació i conèixer l'<strong>Escala de Suport de la IA (ESIA)</strong>.</li>
+            <li>Generar <strong>Rúbriques Competencials</strong> i <strong>Dianes d'Autoavaluació</strong> alineades amb el Decret 175/2022 de Catalunya.</li>
+            <li>Elaborar comentaris qualitatius, constructius i empàtics per als informes escolars de final de trimestre.</li>
+            <li>Descobrir eines obertes i gratuïtes de Google (<strong>AutoDraw, Teachable Machine, Quick Draw</strong>) per experimentar la IA a l'aula de Primària de forma 100% segura i sense necessitat de crear comptes.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 2. Avaluar en l'Era de la IA -->
+      <section id="avaluar-era-ia" class="content-section">
+        <span class="section-badge">Canvi de Paradigma</span>
+        <h2 class="section-title"><span class="icon">🔄</span> 2. Avaluar en l'Era de la IA: Del Producte al Procés</h2>
+        <p>
+          La documentació d'Odissea i de la UNESCO ens recorda que les eines de detecció de text generat per IA són poc fiables i generen nombrosos falsos positius. Per tant, la solució no és "jugar a policies i lladres", sinó <strong>dissenyar activitats pedagògicament superiors i resistents a la còpia passiva</strong>:
+        </p>
+
+        <div class="comparison-grid">
+          <div class="comparison-box bad">
+            <h4>❌ Activitats Vulnerables a la IAG</h4>
+            <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+              • Qüestionaris de memòria o preguntes teòriques estàndard.<br>
+              • Redacció d'un treball monogràfic a casa sense seguiment.<br>
+              • Resums de llibres o fitxes d'extracció literal.
+            </p>
+          </div>
+
+          <div class="comparison-box good">
+            <h4>✅ Activitats Resistents i Significatives</h4>
+            <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">
+              • <strong>Potenciar l'oralitat:</strong> Exposicions, debats en rotllana i defensa de decisions en temps real.<br>
+              • <strong>Carpeta d'aprenentatge / Portafolis:</strong> Avaluar esborranys, millores i el camí recorregut.<br>
+              • <strong>Reptes contextualitzats:</strong> Problemes vinculats a l'entorn immediat de l'escola o del barri.<br>
+              • <strong>Preguntes crítiques:</strong> Demanar als infants que trobin errors o contradiccions en textos donats.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Escala ESIA -->
+      <section id="escala-esia" class="content-section">
+        <span class="section-badge">Marc Metodològic</span>
+        <h2 class="section-title"><span class="icon">📏</span> 3. L'Escala de Suport de la IA (ESIA)</h2>
+        <p>
+          L'<strong>Escala ESIA (Artificial Intelligence Assessment Scale - AIAS)</strong>, desenvolupada per Perkins, Furze, Roe i MacVaugh (2024), és el marc internacional de referència per clarificar i graduar el nivell d'ús de la IA permès en cada tasca:
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 0.75rem; margin: 1.5rem 0;">
+          <div style="background: white; border: 1px solid var(--border); border-left: 5px solid #0284c7; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm);">
+            <strong>Nivell 1 · Sense IA:</strong> La tasca es fa exclusivament amb els coneixements i habilitats humanes (treball a l'aula, oralitat, càlcul mental, dibuix lliure).
+          </div>
+          <div style="background: white; border: 1px solid var(--border); border-left: 5px solid #059669; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm);">
+            <strong>Nivell 2 · Planificació amb IA:</strong> S'utilitza la IA només per a la pluja d'idees inicial o esquema de treball. El desenvolupament és 100% de l'alumne.
+          </div>
+          <div style="background: white; border: 1px solid var(--border); border-left: 5px solid #d97706; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm);">
+            <strong>Nivell 3 · Col·laboració amb IA:</strong> La IA actua com a revisora (revisió d'esborranys, millora d'expressions) sota la crítica i decisió de l'estudiant.
+          </div>
+          <div style="background: white; border: 1px solid var(--border); border-left: 5px solid #dc2626; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm);">
+            <strong>Nivell 4 · IA Completa:</strong> S'avalua la capacitat d'orientar, guiar i avaluar críticament les respostes de la IA per resoldre un repte complex.
+          </div>
+          <div style="background: white; border: 1px solid var(--border); border-left: 5px solid #9333ea; padding: 0.85rem 1.2rem; border-radius: var(--radius-sm);">
+            <strong>Nivell 5 · Exploració i Co-creació:</strong> Ús avançat per generar noves solucions o projectes interdisciplinaris.
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">💡 A l'Educació Primària</div>
+          <p style="margin-bottom: 0;">
+            A les nostres etapes, els nivells habituals seran el <strong>Nivell 1 (Sense IA)</strong> per a les produccions personals dels infants i el <strong>Nivell 2/3 (Planificació o suport guiat pel mestre)</strong> quan treballem de manera col·lectiva a la pissarra digital.
+          </p>
+        </div>
+      </section>
+
+      <!-- 4. Rúbriques i Dianes -->
+      <section id="rubriques-dianes" class="content-section">
+        <span class="section-badge">Instruments d'Avaluació</span>
+        <h2 class="section-title"><span class="icon">📋</span> 4. Disseny de Rúbriques i Dianes d'Autoavaluació</h2>
+        <p>
+          El nou currículum de Catalunya (Decret 175/2022) exigeix una avaluació basada en <strong>criteris competencials</strong> i graus d'assoliment (*En procés d'assoliment, Assoliment satisfactori, Assoliment notable, Assoliment excel·lent*).
+        </p>
+        <p>
+          Amb <strong>Gemini</strong> podem transformar una situació d'aprenentatge en una graella d'avaluació clara amb descriptors concrets i observables:
+        </p>
+
+        <div class="callout callout-success">
+          <div class="callout-title">🎯 Les Dianes d'Avaluació per a Primària</div>
+          <p style="margin-bottom: 0;">
+            A Cicle Inicial i Mitjà, les rúbriques complexes amb molt text poden resultar poc accessibles per als infants. Demana a Gemini que adapti els criteris en una <strong>diana d'autoavaluació en 4 nivells visuals</strong> (amb icones o carones) i preguntes en 1a persona: <em>"He escoltat els companys del meu equip?", "He revisat que el text tingui majúscules?", "He tingut cura del material?"</em>.
+          </p>
+        </div>
+      </section>
+
+      <!-- 5. Feedback per a Informes -->
+      <section id="feedback-informes" class="content-section">
+        <span class="section-badge">Informes Escolars</span>
+        <h2 class="section-title"><span class="icon">✍️</span> 5. Redacció de Comentaris d'Informes Escolars</h2>
+        <p>
+          Redactar comentaris trimestrals personalitzats per a 25 alumnes és una de les tasques més intenses del tutor/a. La IA pot actuar com a <strong>redactor d'estil</strong> a partir de les nostres observacions objectives docents.
+        </p>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">🔒 Recordatori RGPD Estricte</div>
+          <p style="margin-bottom: 0;">
+            <strong>MAI</strong> introduïu el nom de l'infant, cognoms ni dades mèdiques o familiars a Gemini. Utilitzeu etiquetes neutres com <em>"Infant A de 3r"</em> o <em>"Alumne de Cicle Superior"</em> i especifiqueu els ítems pedagògics observables.
+          </p>
+        </div>
+      </section>
+
+      <!-- 6. IA a l'Aula amb Alumnes -->
+      <section id="ia-alumnat-primaria" class="content-section">
+        <span class="section-badge">Pràctica amb Infants</span>
+        <h2 class="section-title"><span class="icon">🤖</span> 6. Eines 100% Segures i Lúdiques per a Primària (Sense Registre)</h2>
+        <p>
+          Com que la normativa no permet que els menors de 13/14 anys creïn comptes en plataformes comercials com ChatGPT o Claude, com podem acostar la IA a l'aula de manera pedagògica, segura i vivencial? <strong>Amb eines obertes de Google i projectes educatius:</strong>
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
+          
+          <!-- AutoDraw -->
+          <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem; box-shadow: var(--shadow-sm);">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <span style="font-size: 1.4rem;">✏️</span>
+              <strong style="font-size: 1.05rem; color: #1a73e8;">AutoDraw (Google)</strong>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              L'infant fa un esbós ràpid i l'algoritme d'aprenentatge automàtic endevina què vol dibuixar i li ofereix icones professionals d'artistes.
+            </p>
+            <p style="font-size: 0.8rem; color: #059669; font-weight: 600; margin-bottom: 0.5rem;">
+              ✨ Concepte: Reconeixement de patrons i formes.
+            </p>
+            <a href="https://www.autodraw.com" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Obrir AutoDraw ↗</a>
+          </div>
+
+          <!-- Quick Draw -->
+          <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem; box-shadow: var(--shadow-sm);">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <span style="font-size: 1.4rem;">⏱️</span>
+              <strong style="font-size: 1.05rem; color: #0d9488;">Quick, Draw! (Google)</strong>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              Un joc on la xarxa neuronal intenta endevinar què estàs dibuixant en menys de 20 segons. Mostra com milions de dibuixos entrenen la màquina.
+            </p>
+            <p style="font-size: 0.8rem; color: #059669; font-weight: 600; margin-bottom: 0.5rem;">
+              ✨ Concepte: Conjunts de dades (Datasets) i entrenament.
+            </p>
+            <a href="https://quickdraw.withgoogle.com" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Obrir Quick Draw ↗</a>
+          </div>
+
+          <!-- Teachable Machine -->
+          <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem; box-shadow: var(--shadow-sm);">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <span style="font-size: 1.4rem;">📷</span>
+              <strong style="font-size: 1.05rem; color: #9333ea;">Teachable Machine (Google)</strong>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+              Permet als alumnes de Cicle Mitjà i Superior entrenar el seu propi model de Machine Learning amb la webcam o micròfon (ex: classificar residus o reconeixer postures) sense codi.
+            </p>
+            <p style="font-size: 0.8rem; color: #059669; font-weight: 600; margin-bottom: 0.5rem;">
+              ✨ Concepte: Classificació, entrenament i biaixos.
+            </p>
+            <a href="https://teachablemachine.withgoogle.com" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;">Obrir Teachable Machine ↗</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 7. Pensament Crític Infantil -->
+      <section id="pensament-critic" class="content-section">
+        <span class="section-badge">Ètica a l'Aula</span>
+        <h2 class="section-title"><span class="icon">🧠</span> 7. Alfabetització i Pensament Crític Infantil: "La màquina pensa?"</h2>
+        <p>
+          Per treballar la mirada crítica a Primària no calen explicacions matemàtiques, sinó <strong>debats dinamitzats en rotllana de tutoria o de ciències</strong>:
+        </p>
+
+        <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem; margin: 1.5rem 0;">
+          <h4 style="margin-bottom: 0.75rem;">🗣️ Preguntes guia per a la reflexió amb els nens i nenes:</h4>
+          <ul style="margin-bottom: 0; padding-left: 1.2rem; font-size: 0.95rem;">
+            <li><em>"Un ordinador pot estar trist o enfadat de veritat com nosaltres?"</em> $\rightarrow$ Treball de l'antropomorfisme.</li>
+            <li><em>"D'on treu la màquina les respostes? Les sap totes o algú li ha ensenyat?"</em> $\rightarrow$ Concepte de dades d'entrenament.</li>
+            <li><em>"Si una foto o un vídeo sembla real, pot ser inventat?"</em> $\rightarrow$ Prevenció de desinformació i <em>deepfakes</em>.</li>
+            <li><em>"Quan fem un dibuix o escrivim un conte, per què és valuós que sigui nostre?"</em> $\rightarrow$ Valor de l'esforç propi i la creativitat humana.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 8. Banc de Prompts Avaluació -->
+      <section id="banc-prompts-bloc3" class="content-section">
+        <span class="section-badge">Banc Pràctic</span>
+        <h2 class="section-title"><span class="icon">📋</span> 8. Banc de Prompts d'Avaluació Competencial</h2>
+
+        <!-- Prompt 1: Rúbrica Competencial -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>📊</span> Generador de Rúbrica Competencial (Decret 175/2022)
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Avaluació Curricular</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a mestre/a expert en el currículum competencial d'Educació Primària a Catalunya (Decret 175/2022).
+
+Context: Situació d'aprenentatge de [Medi Natural / Cicle Mitjà - 4t de Primària] sobre [La biodiversitat del nostre riu i propostes per reduir la contaminació]. El producte final és un tríptic informatiu i una petita exposició oral per parelles.
+Tasca: Dissenya una rúbrica d'avaluació formativa en format taula.
+
+Requisits de la graella:
+- 4 criteris d'avaluació observables (ex: rigor del contingut científic, claredat i organització del tríptic, expressió oral i treball en equip).
+- 4 nivells d'assoliment per a cada criteri: [En procés d'assoliment | Assoliment satisfactori | Assoliment notable | Assoliment excel·lent].
+- Redactat en llenguatge positiu, clar i pedagògic.</div>
+          <div class="prompt-explanation">
+            <strong>Consell:</strong> Pots exportar directament la graella a Google Docs per imprimir-la o adjuntar-la a la programació.
+          </div>
+        </div>
+
+        <!-- Prompt 2: Diana d'Autoavaluació -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>🎯</span> Diana d'Autoavaluació Infantil (Cicle Inicial i Mitjà)
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Autoavaluació</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a mestre/a de [2n de Primària / Cicle Inicial].
+
+Tasca: Transforma els següents criteris d'avaluació d'un projecte de contes en una Diana d'Autoavaluació senzilla i visual per als nens i nenes:
+1. Redacta 5 preguntes d'autoavaluació en primera persona amb vocabulari molt planer (ex: "He pensat el títol abans de començar?", "He escoltat les idees del meu company?").
+2. Proposa una escala visual de 4 nivells fàcil de pintar (ex: 1 estrella a 4 estrelles, o 4 zones de colors).
+3. Afegeix una frase final de reflexió lliure: "El que més m'ha agradat aprendre és...".</div>
+          <div class="prompt-explanation">
+            <strong>Consell:</strong> Permet que els infants aprenguin a autoregular-se des de 1r i 2n de Primària.
+          </div>
+        </div>
+
+        <!-- Prompt 3: Comentari d'Informe Constructiu -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>📝</span> Redacció de Comentari per a Informe Escolar (Feedback Positiu)
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Informes a Famílies</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a mestre/a tutor/a de [Cicle Mitjà - 4t de Primària].
+
+Tasca: Redacta un comentari qualitatiu per a l'informe d'avaluació trimestral d'un infant basat en les següents observacions docents:
+Observacions:
+- Punts forts: Gran motivació en projectes de medi i expressió artística, participa molt a les converses i té bona comprensió oral.
+- Aspectes de millora: Sovint té pressa per acabar les tasques escrites i oblida revisar l'ortografia i la presentació de la llibreta.
+- Relació amb el grup: Molt sociable i carinyós/osa, però de vegades li costa esperar el torn de paraula a les rotllanes.
+
+Criteris de redacció:
+- Estructura 'Sandwich' (Elogi sincer $\rightarrow$ repte de millora constructiu $\rightarrow$ missatge encoratjador de futur).
+- To empàtic, càlid, respectuós i motivador per a la família i l'infant.
+- Màxim 100-120 paraules. Sense noms personals. En català correcte.</div>
+          <div class="prompt-explanation">
+            <strong>Consell:</strong> Converteix apunts ràpids en un redactat impecable i professional per als informes del centre.
+          </div>
+        </div>
+
+      </section>
+
+      <!-- 9. Repte Final i Cloenda -->
+      <section id="repte-final" class="content-section">
+        <span class="section-badge">Cloenda del Curs</span>
+        <h2 class="section-title"><span class="icon">🚀</span> 9. Projecte Final i Comunitat Docent</h2>
+        <p>
+          Per finalitzar la formació, cada docent o equip de cicle dissenya una proposta d'aplicació real:
+        </p>
+
+        <div class="activity-card">
+          <span class="activity-badge">Projecte de Tancament · A triar</span>
+          <h3 class="activity-title">La teva proposta d'acció per al claustre</h3>
+          <p>Tria una de les dues opcions segons la teva prioritat:</p>
+          <ul>
+            <li><strong>Opció A (Avaluació i Gestió):</strong> Dissenya la rúbrica competencial i la diana d'autoavaluació per a la propera situació d'aprenentatge que començareu al cicle.</li>
+            <li><strong>Opció B (Activitat a l'Aula amb Alumnes):</strong> Prepara una sessió de 45 minuts utilitzant <strong>AutoDraw</strong> o <strong>Teachable Machine</strong> per treballar com funciona la IA amb els infants a l'aula d'informàtica o tauletes.</li>
+          </ul>
+        </div>
+
+        <div class="callout callout-info" style="margin-top: 2rem;">
+          <div class="callout-title">🌐 Com mantenir-se al dia a Catalunya</div>
+          <p style="font-size: 0.9rem; margin-bottom: 0;">
+            Pots consultar les darreres novetats, guies oficials i materials del Departament d'Educació i Formació Professional al portal oficial: <a href="https://projectes.xtec.cat/ia/" target="_blank" rel="noopener"><strong>projectes.xtec.cat/ia</strong></a>.
+          </p>
+        </div>
+
+      </section>
+
+      <!-- Navegació entre blocs -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 3rem;">
+        <a href="bloc2.html" class="btn btn-outline">← Anar al Bloc 2: Materials i DUA</a>
+        <a href="prompts.html" class="btn btn-primary">Anar a la Promptoteca Completa →</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Inici</a>
+        <a href="bloc1.html">Bloc 1</a>
+        <a href="bloc2.html">Bloc 2</a>
+        <a href="bloc3.html">Bloc 3</a>
+        <a href="prompts.html">Promptoteca</a>
+      </div>
+      <p>Materials de formació docent · Competència Digital Docent en IA · Educació Primària</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promptoteca per a Primària | Banc de Prompts</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+    .filter-btn {
+      background: white;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header & Nav -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo-link">
+        <span class="logo-badge">XTEC · IA</span>
+        <span>IA a l'Educació Primària</span>
+      </a>
+      <button class="menu-toggle" aria-label="Obrir menú">☰</button>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Inici</a></li>
+          <li><a href="bloc1.html" class="nav-link">Bloc 1: Fonaments i Ètica</a></li>
+          <li><a href="bloc2.html" class="nav-link">Bloc 2: Materials i DUA</a></li>
+          <li><a href="bloc3.html" class="nav-link">Bloc 3: Avaluació i Aula</a></li>
+          <li><a href="prompts.html" class="nav-link active">Promptoteca</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag">
+        <span>📋 Recursos Llestos per a Utilitzar</span>
+      </div>
+      <h1 class="hero-title">Promptoteca per a l'Educació Primària</h1>
+      <p class="hero-subtitle">
+        Col·lecció completa de plantilles de <em>prompts</em> dissenyades i testades per al dia a dia docent a les escoles catalanes. Fes clic a "Copiar Prompt", enganxa'l a Gemini i adapta els camps entre claudàtors `[...]`.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container" style="padding: 3rem 1.5rem;">
+    
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">Tots els Prompts</button>
+      <button class="filter-btn" data-filter="comunicacio">Comunicació i Famílies</button>
+      <button class="filter-btn" data-filter="tutoria">Tutoria i Convivència</button>
+      <button class="filter-btn" data-filter="gestio">Gestió i Reunions</button>
+      <button class="filter-btn" data-filter="dua">Inclusió i DUA</button>
+      <button class="filter-btn" data-filter="avaluacio">Avaluació i Rúbriques</button>
+      <button class="filter-btn" data-filter="multimedia">Imatges i Multimèdia</button>
+      <button class="filter-btn" data-filter="aula">Projectes i Dinàmiques</button>
+    </div>
+
+    <!-- Prompts Container -->
+    <div id="prompts-list" style="display: grid; gap: 1.5rem;">
+
+      <!-- Prompt 1: Comunicació Puntualitat -->
+      <div class="prompt-card" data-category="comunicacio">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>📢</span> Comunicat sobre incidències repetides de puntualitat o material
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Comunicació i Famílies</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a mestre/a tutor/a d'Educació Primària [indicar Cicle: Inicial/Mitjà/Superior].
+
+Tasca: Redacta una breu circular per a les famílies del grup recordant la importància de la puntualitat a l'entrada del matí i de portar el material necessari (estoig, bata, ampolla d'aigua...).
+To i format:
+- To càlid, empàtic, positiu i cooperatiu (evitar to buròcrata o culpabilitzador).
+- Explica breument el benefici pedagògic per als infants (començar el dia tranquils, no interrompre la rotllana inicial).
+- Màxim 150 paraules. En català correcte.</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Ideal per enviar per missatgeria oficial de centre (ClassDojo, Dinantia, correu o Telegram).
+        </div>
+      </div>
+
+      <!-- Prompt 2: Comunicat Situació Delicada -->
+      <div class="prompt-card" data-category="comunicacio">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>📧</span> Comunicat a famílies per ús indegut de joguines o dispositius
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Comunicació i Famílies</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a mestre/a tutor/a de [Cicle Mitjà - 3r de Primària] d'una escola pública catalana.
+
+Context: Hem detectat que diversos alumnes estan portant joguines / rellotges intel·ligents a l'aula que generen distraccions i petits conflictes durant les classes i el pati.
+Tasca: Redacta una carta o comunicat adreçat a totes les famílies del grup.
+Format i to:
+- To proper, col·laboratiu, empàtic i positiu (evita el to purament punitiu o acusador).
+- Destaca la importància de crear un clima d'aula tranquil i centrat en el joc compartit.
+- Recorda la normativa de centre d'una manera clara i amable.
+- Màxim 200 paraules. En català correcte i natural.</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Facilita la comprensió de les famílies focalitzant l'atenció en el benestar dels infants.
+        </div>
+      </div>
+
+      <!-- Prompt 3: Tutoria / Calma -->
+      <div class="prompt-card" data-category="tutoria">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>🧘</span> Joc de relaxació i respiració post-pati ("Tornada a la calma")
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Tutoria i Convivència</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a especialista en ioga infantil i educació emocional a Primària.
+
+Context: Tornem del pati i els infants de [1r de Primària / Cicle Inicial] arriben molt excitats i amb dificultats per concentrar-se.
+Tasca: Dissenya una activitat guiada de 5-7 minuts de relaxació i respiració conscient basada en una història o metàfora visual (ex: l'arbre, el globus, les ones del mar).
+Inclou:
+1. Guió exacte de les paraules i instruccions que ha de dir el mestre/a.
+2. Moviments suaus corporals que han de fer a la seva cadira o estora.
+3. Frase de tancament per connectar amb la següent activitat.</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Pots demanar a Gemini que adapti la metàfora segons el centre d'interès del trimestre.
+        </div>
+      </div>
+
+      <!-- Prompt 4: Redacció d'Actes -->
+      <div class="prompt-card" data-category="gestio">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>📝</span> Conversió d'apunts ràpids en una Acta Oficial de Reunió
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Gestió i Reunions</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a secretari/a docent d'una reunió de cicle d'Educació Primària.
+
+Tasca: Transforma les següents notes ràpides i informals que he pres durant la reunió en una acta formal, estructurada i clara.
+
+Format requerit:
+1. Objectiu de la reunió
+2. Punts tractats (amb un breu resum de la discussió)
+3. Acords presos
+4. Taula de tasques pendents amb columnes: [Tasca | Responsable | Termini]
+
+Notes de la reunió per processar:
+[Enganxa aquí les teves notes desordenades]</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Estalvia temps de redacció organitzant el resum en una taula clara de seguiment d'acords.
+        </div>
+      </div>
+
+      <!-- Prompt 5: Lectura Multinivell DUA -->
+      <div class="prompt-card" data-category="dua">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>📖</span> Generador de Lectura Multinivell en 3 Graons (DUA)
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Inclusió i DUA</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a mestre/a especialista en pedagogia inclusiva i DUA a Primària.
+
+Tema del text: [Exemple: Com viuen les abelles i per què fan mel].
+Tasca: Genera 3 versions del mateix text explicatiu en català per atendre la diversitat del grup:
+
+- Nivell 1 (Suport / Lectura Fàcil): Frases curtes, estructura directa, lletra clara, màxim 80 paraules i suport de preguntes amb resposta 'Sí/No' o de triar entre dues opcions.
+- Nivell 2 (Estàndard per al curs [indicar cicle, ex: 3r de Primària]): Text narratiu de 150-200 paraules amb 3 preguntes de comprensió literal i inferencial.
+- Nivell 3 (Repte / Ampliació): Text de 250 paraules amb vocabulari més ric i una pregunta de recerca o reflexió crítica oberta.
+
+Tots tres nivells han de compartir la mateixa idea clau perquè tot el grup pugui participar en la conversa posterior.</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Permet treballar el mateix contingut amb tota l'aula eliminant les barreres lectores.
+        </div>
+      </div>
+
+      <!-- Prompt 6: Glossari Nouvinguts -->
+      <div class="prompt-card" data-category="dua">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>🌐</span> Glossari d'Acollida Bilingüe amb Suport Visual
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Inclusió i DUA</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a mestre/a d'Aula d'Acollida d'Educació Primària.
+
+Context: Tenim alumnat nouvingut [indicar llengua materna, ex: àrab / ucraïnès / xinès / castellà] a [Cicle Mitjà].
+Tasca: Crea una taula de vocabulari bàsic per al projecte de [Exemple: El cos humà i les emocions].
+
+Format de la taula:
+Columnes: [Paraula en Català | Paraula en [llengua origen] | Transcripció fonètica senzilla | Breu frase d'exemple en català | Descripció del dibuix/pictograma per acompanyar-la]
+Selecciona els 10 termes més importants i quotidians.</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Útil per imprimir targetes de vocabulari o plastificar-les com a racó d'acollida.
+        </div>
+      </div>
+
+      <!-- Prompt 7: Rúbrica Competencial (NOU) -->
+      <div class="prompt-card" data-category="avaluacio">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>📊</span> Generador de Rúbrica Competencial (Decret 175/2022)
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Avaluació i Rúbriques</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a mestre/a expert en el currículum competencial d'Educació Primària a Catalunya (Decret 175/2022).
+
+Context: Situació d'aprenentatge de [Medi Natural / Cicle Mitjà - 4t de Primària] sobre [La biodiversitat del nostre riu i propostes per reduir la contaminació]. El producte final és un tríptic informatiu i una petita exposició oral per parelles.
+Tasca: Dissenya una rúbrica d'avaluació formativa en format taula.
+
+Requisits de la graella:
+- 4 criteris d'avaluació observables (ex: rigor del contingut científic, claredat i organització del tríptic, expressió oral i treball en equip).
+- 4 nivells d'assoliment per a cada criteri: [En procés d'assoliment | Assoliment satisfactori | Assoliment notable | Assoliment excel·lent].
+- Redactat en llenguatge positiu, clar i pedagògic.</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Pots exportar directament la graella a Google Docs per imprimir-la o adjuntar-la a la programació.
+        </div>
+      </div>
+
+      <!-- Prompt 8: Diana Autoavaluació Infantil (NOU) -->
+      <div class="prompt-card" data-category="avaluacio">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>🎯</span> Diana d'Autoavaluació Infantil (Cicle Inicial i Mitjà)
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Avaluació i Rúbriques</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a mestre/a de [2n de Primària / Cicle Inicial].
+
+Tasca: Transforma els següents criteris d'avaluació d'un projecte de contes en una Diana d'Autoavaluació senzilla i visual per als nens i nenes:
+1. Redacta 5 preguntes d'autoavaluació en primera persona amb vocabulari molt planer (ex: "He pensat el títol abans de començar?", "He escoltat les idees del meu company?").
+2. Proposa una escala visual de 4 nivells fàcil de pintar (ex: 1 estrella a 4 estrelles, o 4 zones de colors).
+3. Afegeix una frase final de reflexió lliure: "El que més m'ha agradat aprendre és...".</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Permet que els infants aprenguin a autoregular-se des de 1r i 2n de Primària.
+        </div>
+      </div>
+
+      <!-- Prompt 9: Comentari Informe Escolar (NOU) -->
+      <div class="prompt-card" data-category="avaluacio">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>📝</span> Redacció de Comentari per a Informe Escolar (Feedback Positiu)
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Avaluació i Rúbriques</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a mestre/a tutor/a de [Cicle Mitjà - 4t de Primària].
+
+Tasca: Redacta un comentari qualitatiu per a l'informe d'avaluació trimestral d'un infant basat en les següents observacions docents:
+Observacions:
+- Punts forts: Gran motivació en projectes de medi i expressió artística, participa molt a les converses i té bona comprensió oral.
+- Aspectes de millora: Sovint té pressa per acabar les tasques escrites i oblida revisar l'ortografia i la presentació de la llibreta.
+- Relació amb el grup: Molt sociable i carinyós/osa, però de vegades li costa esperar el torn de paraula a les rotllanes.
+
+Criteris de redacció:
+- Estructura 'Sandwich' (Elogi sincer $\rightarrow$ repte de millora constructiu $\rightarrow$ missatge encoratjador de futur).
+- To empàtic, càlid, respectuós i motivador per a la família i l'infant.
+- Màxim 100-120 paraules. Sense noms personals. En català correcte.</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Converteix apunts ràpids en un redactat impecable i professional per als informes del centre.
+        </div>
+      </div>
+
+      <!-- Prompt 10: Imatges Coherents per a Contes -->
+      <div class="prompt-card" data-category="multimedia">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>🎨</span> Prompt per generar Il·lustracions Infantils Coherents
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Imatges i Multimèdia</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">A cute children storybook illustration of [descriu l'escena: un petit drac blau aprenent a volar al bosc amb un ocellet groc], soft watercolor and ink outlines, bright and warm pastel color palette, whimsical and cozy atmosphere, clean white background, high resolution, storybook style, no text.</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Pots enganxar aquest prompt a Gemini, Copilot Designer, Canva o Adobe Firefly per obtenir il·lustracions suaus i atractives per a Primària.
+        </div>
+      </div>
+
+      <!-- Prompt 11: Cançó Educativa en Català -->
+      <div class="prompt-card" data-category="multimedia">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>🎵</span> Composició de Cançó Infantil Curricular per a Suno/Udio
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Imatges i Multimèdia</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a pedagog/a i músic infantil.
+
+Tasca: Escriu la lletra d'una cançó curta i molt alegre en català per memoritzar [Exemple: El cicle de l'aigua: evaporació, condensació, precipitació i retorn al mar].
+Requisits:
+- 2 estrofes senzilles amb rima rodona.
+- 1 tornada enganxosa que es repeteixi dues vegades.
+- To animat i vocabulari adaptat a infants de [6-8 anys].
+- Afegeix les etiquetes d'estil recomanat per a Suno.ai: [Children acoustic pop, cheerful, clapping, lively acoustic guitar, clear female vocals in Catalan].</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Copia la lletra resultant directament a Suno.com per escoltar la cançó cantada en menys d'un minut.
+        </div>
+      </div>
+
+      <!-- Prompt 12: Gamificació / Escape Room -->
+      <div class="prompt-card" data-category="aula">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>🎭</span> Creació d'un Enigma / Escape Room d'Aula
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Projectes i Dinàmiques</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a mestre/a expert en gamificació a Primària.
+
+Context: Volem fer una sessió de repàs lúdica de [matemàtiques / càlcul mental i problemes] per a [3r de Primària].
+Tasca: Dissenya un mini Escape Room d'aula de 45 minuts ambientat en [el misteri dels dinosaures / el museu abandonat].
+Requisits:
+- Història d'inici motivadora per llegir en veu alta.
+- 3 proves o reptes que els equips hagin de resoldre per trobar una combinació de 3 dígits.
+- Solucionari per al mestre/a.
+- Materials necessaris (només paper, llapis i la pissarra).</div>
+        <div class="prompt-explanation">
+          <strong>Consell:</strong> Molt motivador per a tancament de projectes o trimestres.
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Inici</a>
+        <a href="bloc1.html">Bloc 1</a>
+        <a href="bloc2.html">Bloc 2</a>
+        <a href="bloc3.html">Bloc 3</a>
+        <a href="prompts.html">Promptoteca</a>
+      </div>
+      <p>Materials de formació docent · Competència Digital Docent en IA · Educació Primària</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Filtre de categories a la Promptoteca
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const promptCards = document.querySelectorAll('#prompts-list .prompt-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        
+        promptCards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

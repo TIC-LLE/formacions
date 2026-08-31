@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloc 1: Fonaments, Ètica i Gemini com a Copilot | IA a Primària</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header & Nav -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo-link">
+        <span class="logo-badge">XTEC · IA</span>
+        <span>IA a l'Educació Primària</span>
+      </a>
+      <button class="menu-toggle" aria-label="Obrir menú">☰</button>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Inici</a></li>
+          <li><a href="bloc1.html" class="nav-link active">Bloc 1: Fonaments i Ètica</a></li>
+          <li><a href="bloc2.html" class="nav-link">Bloc 2: Materials i DUA</a></li>
+          <li><a href="bloc3.html" class="nav-link">Bloc 3: Avaluació i Aula</a></li>
+          <li><a href="prompts.html" class="nav-link">Promptoteca</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag">
+        <span>📖 Bloc 1 · Formació Docent</span>
+      </div>
+      <h1 class="hero-title">Desmitificant la IA, Marc Ètic/Legal i Prompting amb Gemini</h1>
+      <p class="hero-subtitle">
+        Comprendre el funcionament real dels models de llenguatge, garantir la privadesa dels menors (RGPD) i dominar les tècniques d'instrucció per convertir Google Gemini en el teu aliat diari.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content with Sticky Sidebar -->
+  <div class="container page-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="page-sidebar">
+      <div class="sidebar-title">Continguts del Bloc 1</div>
+      <ul class="sidebar-nav">
+        <li><a href="#intro" class="active">1. Introducció i Objectius</a></li>
+        <li><a href="#com-funciona">2. Com funciona la IA Generativa</a></li>
+        <li><a href="#limitacions">3. Al·lucinacions i Biaixos</a></li>
+        <li><a href="#etica-rgpd">4. Marc Ètic i RGPD a Catalunya</a></li>
+        <li><a href="#gemini-xtec">5. Google Gemini amb compte XTEC</a></li>
+        <li><a href="#art-prompting">6. L'Art del Prompting Docent</a></li>
+        <li><a href="#casos-practics">7. Casos Pràctics de Gestió</a></li>
+        <li><a href="#reptes">8. Reptes i Pràctica d'Aula</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Article Content -->
+    <main class="main-content">
+
+      <!-- 1. Introducció -->
+      <section id="intro" class="content-section">
+        <span class="section-badge">Punt de partida</span>
+        <h2 class="section-title"><span class="icon">🎯</span> 1. Introducció i Objectius</h2>
+        <p>
+          La irrupció de la <strong>Intel·ligència Artificial Generativa (IAG)</strong> representa una de les transformacions tecnològiques més rellevants dels darrers anys. Tanmateix, a l'educació primària cal abordar-la amb una doble mirada: <strong>rigorosa i ètica</strong> d'una banda, i <strong>profundament pràctica</strong> de l'altra.
+        </p>
+        <p>
+          L'objectiu d'aquest bloc no és convertir-nos en enginyers informàtics, sinó adquirir el criteri pedagògic i tècnic necessari per aprofitar eines com <strong>Google Gemini</strong> per reduir la càrrega burocràtica, optimitzar la comunicació del centre i planificar millor el nostre dia a dia.
+        </p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">💡 Què aconseguirem en aquest bloc?</div>
+          <ul style="margin-bottom: 0; padding-left: 1.2rem;">
+            <li>Diferenciar clarament què pot fer i què no pot fer un model de llenguatge.</li>
+            <li>Conèixer el marc legal del Departament d'Educació i aplicar tècniques d'<strong>anonimització estricta</strong> per complir el RGPD.</li>
+            <li>Configurar i utilitzar <strong>Google Gemini</strong> amb el compte educatiu XTEC.</li>
+            <li>Dominar l'estructura <strong>PCRF</strong> per redactar instruccions (*prompts*) que produeixin resultats d'alta qualitat a la primera.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 2. Com funciona -->
+      <section id="com-funciona" class="content-section">
+        <span class="section-badge">Fonaments</span>
+        <h2 class="section-title"><span class="icon">🧠</span> 2. Com funciona la IA Generativa (i què NO és)</h2>
+        <p>
+          Sovint es parla de la IA com si fos una "ment conscient" que pensa, raona o comprèn la realitat com un ésser humà. <strong>Això és un mite.</strong>
+        </p>
+        <p>
+          Eines com <strong>Google Gemini</strong> són <strong>Models Grans de Llenguatge (LLM - Large Language Models)</strong>. El seu funcionament es basa en xarxes neuronals profundes entrenades amb quantitats ingents de text (llibres, articles, webs, codi...).
+        </p>
+
+        <div class="callout callout-success">
+          <div class="callout-title">🔍 La metàfora de l'autocompletar prodigiós</div>
+          <p style="margin-bottom: 0;">
+            Imagina el teclat predictiu del teu mòbil, però amb la capacitat de processar milers de milions de paràmetres i patrons gramaticals alhora. La IA no "sap" el contingut del que diu: <strong>calcula estadísticament quina és la seqüència de paraules (*tokens*) més probable i coherent</strong> que ha de respondre al text que tu li has escrit (*prompt*).
+          </p>
+        </div>
+
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">De la IA Tradicional a la IA Generativa</h3>
+        <ul>
+          <li><strong>IA Tradicional / Discriminativa:</strong> Classifica, detecta patrons o pren decisions (ex: el filtre de correu brossa de Gmail, el reconeixement de cares a Google Fotos).</li>
+          <li><strong>IA Generativa:</strong> Crea contingut nou i original a partir d'instruccions (textos, resums, idees, imatges, codi, esquemes...).</li>
+        </ul>
+      </section>
+
+      <!-- 3. Limitacions -->
+      <section id="limitacions" class="content-section">
+        <span class="section-badge">Sentit Crític</span>
+        <h2 class="section-title"><span class="icon">⚠️</span> 3. Al·lucinacions, Biaixos i Límits</h2>
+        <p>
+          Com que el model respon basant-se en probabilitats matemàtiques i coherència formal, i no en un coneixement conscient de la veritat, apareixen dos fenòmens que tot mestre ha de conèixer:
+        </p>
+
+        <div class="comparison-grid">
+          <div class="comparison-box bad">
+            <h4>🚨 Les Al·lucinacions</h4>
+            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+              Quan la IA no troba informació precisa, <strong>pot inventar fets, dates, cites bibliogràfiques, normatives o lleis</strong> amb un to completament convincent, segur i elegant.
+            </p>
+            <p style="font-size: 0.85rem; color: #991b1b; margin-bottom: 0;">
+              <em>Exemple:</em> Inventar un decret educatiu inexistent o atribuir una cita a un pedagog català que mai la va dir.
+            </p>
+          </div>
+
+          <div class="comparison-box bad">
+            <h4>⚖️ Els Biaixos Culturals i de Gènere</h4>
+            <p style="font-size: 0.9rem; margin-bottom: 0.5rem;">
+              La IA reflecteix els biaixos presents a Internet. Si demanem "dibuixa un metge i una infermera" o "un científic famós", tendeix a reproduir estereotips tradicionals si no la guiem específicament.
+            </p>
+            <p style="font-size: 0.85rem; color: #991b1b; margin-bottom: 0;">
+              <em>Clau:</em> Cal especificar diversitat i perspectiva de gènere en les nostres peticions.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout callout-warning">
+          <div class="callout-title">👁️ El principi "Human-in-the-loop" (Supervisió Humana Docent)</div>
+          <p style="margin-bottom: 0;">
+            La IA és un <strong>esborranyador excel·lent</strong>, mai l'autor definitiu. El criteri pedagògic, la revisió de dades i la decisió final sempre són responsabilitat exclusiva del mestre o mestra.
+          </p>
+        </div>
+      </section>
+
+      <!-- 4. Ètica i RGPD -->
+      <section id="etica-rgpd" class="content-section">
+        <span class="section-badge">Normativa i Protecció</span>
+        <h2 class="section-title"><span class="icon">🔒</span> 4. Marc Ètic, Legal i RGPD a Catalunya</h2>
+        <p>
+          A l'Educació Primària treballem amb menors d'edat (especialment vulnerables segons la legislació europea). El <strong>Reglament General de Protecció de Dades (RGPD)</strong> i les instruccions del Departament d'Educació de la Generalitat de Catalunya estableixen límits molt clars:
+        </p>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⛔ La Llista Vermella: El que MAI s'ha d'introduir a Gemini</div>
+          <ul style="margin-bottom: 0; padding-left: 1.2rem;">
+            <li><strong>Noms i cognoms reals</strong> d'alumnes o de les seves famílies.</li>
+            <li><strong>Dades personals sensibles:</strong> Informes mèdics, diagnòstics psicopedagògics individuals (NESE), situacions de vulnerabilitat social o dades familiars privades.</li>
+            <li><strong>Fotografies o vídeos de menors</strong> identificables.</li>
+            <li><strong>Contrasenyes, DNIs o dades administratives privades</strong> del centre.</li>
+          </ul>
+        </div>
+
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Com aplicar la Tècnica de l'Anonimització Eficaç</h3>
+        <p>
+          Podem utilitzar la IA per preparar adaptacions, informes o comunicats sense vulnerar cap dada personal utilitzant <strong>perfils abstractes</strong> o <strong>pseudònims</strong>:
+        </p>
+
+        <div class="comparison-grid">
+          <div class="comparison-box bad">
+            <h4>❌ Malament (Infracció RGPD)</h4>
+            <p style="font-size: 0.85rem; font-family: var(--font-mono); color: #991b1b;">
+              "El meu alumne Marc García de 3r A de l'Escola Els Pins té TDAH diagnosticat per l'EAP i sovint es baralla al pati amb el seu company Joan. Fes-me un informe..."
+            </p>
+          </div>
+          <div class="comparison-box good">
+            <h4>✅ Molt Bé (Totalment Anonimitzat)</h4>
+            <p style="font-size: 0.85rem; font-family: var(--font-mono); color: #166534;">
+              "Actua com a mestre especialista en atenció a la diversitat a Primària. Tinc un cas d'un infant de Cicle Mitjà amb dificultats de concentració i gestió de la frustració en el joc lliure. Proposa'm estratègies d'acompanyament..."
+            </p>
+          </div>
+        </div>
+
+        <!-- Mini Quiz Interactiu -->
+        <div class="quiz-box">
+          <h4 style="margin-bottom: 0.5rem;">Comprovació Ràpida de Seguretat:</h4>
+          <p style="font-size: 0.95rem; margin-bottom: 0.75rem;">
+            Vols demanar a Gemini que redacti un comentari per a l'informe escolar sobre una alumna que ha millorat molt en expressió escrita però que encara comet faltes d'ortografia bàsiques. Quina d'aquestes opcions és la correcta?
+          </p>
+          <div class="quiz-option" data-correct="false" data-feedback="Has inclòs el nom de l'alumna (Laia) i la seva classe, la qual cosa pot identificar-la.">
+            Opció A: "Fes un comentari positiu per a la Laia Martínez de 4t B, explicant que ha millorat la redacció però ha de vigilar l'ortografia."
+          </div>
+          <div class="quiz-option" data-correct="true" data-feedback="Correcte! Utilitzes un rol docent i un perfil pedagògic anònim (infant de 4t de primària) sense cap dada personal.">
+            Opció B: "Com a mestre/a de 4t de primària, redacta un comentari d'informe per a un infant que ha progressat molt en coherència i creativitat en els seus textos, encoratjant-lo a revisar l'ortografia natural."
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+      </section>
+
+      <!-- 5. Gemini XTEC -->
+      <section id="gemini-xtec" class="content-section">
+        <span class="section-badge">Eines</span>
+        <h2 class="section-title"><span class="icon">🌐</span> 5. Google Gemini amb el teu compte XTEC</h2>
+        <p>
+          Com a docents del Departament d'Educació de Catalunya, disposem del compte <strong>@xtec.cat</strong>, integrat a l'ecosistema <strong>Google Workspace for Education</strong>.
+        </p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">🔑 Com accedir a Google Gemini pas a pas</div>
+          <ol style="margin-bottom: 0; padding-left: 1.2rem;">
+            <li>Obre el navegador i ves a <a href="https://gemini.google.com" target="_blank" rel="noopener"><strong>gemini.google.com</strong></a>.</li>
+            <li>Inicia la sessió amb el teu compte oficial <strong>@xtec.cat</strong>.</li>
+            <li>Comprova a la cantonada superior dreta que el perfil actiu és el corporatiu de l'XTEC.</li>
+          </ol>
+        </div>
+
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Avantatges de l'ecosistema Google-Gemini per a mestres</h3>
+        <ul>
+          <li><strong>Exportació directa:</strong> Amb un sol clic a la icona de compartir, pots exportar qualsevol resposta de Gemini directament a un nou document de <strong>Google Docs</strong> o com a esborrany a <strong>Gmail</strong>.</li>
+          <li><strong>Historial organitzat:</strong> Pots canviar el nom de les converses, fixar les més importants a la barra lateral o reprendre-les dies després.</li>
+          <li><strong>Multimodalitat:</strong> Pots adjuntar imatges, esquemes o fotos de dibuixos/fitxes per demanar-li anàlisis o adaptacions visuals.</li>
+        </ul>
+      </section>
+
+      <!-- 6. L'Art del Prompting -->
+      <section id="art-prompting" class="content-section">
+        <span class="section-badge">Metodologia Clau</span>
+        <h2 class="section-title"><span class="icon">✨</span> 6. L'Art del Prompting Docent: El Mètode PCRF</h2>
+        <p>
+          Un <em>prompt</em> és la instrucció o pregunta que escrivim a la IA. La qualitat de la resposta que obtindràs depèn directament de la claredat i precisió de la teva instrucció: <strong>"A millor context, millor resultat"</strong>.
+        </p>
+        <p>
+          Per al dia a dia docent a Primària, utilitzarem la fórmula <strong>PCRF + Restriccions</strong>:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+          <div style="background: white; border: 1px solid var(--border); border-top: 4px solid #3b82f6; border-radius: var(--radius-md); padding: 1.2rem;">
+            <strong style="color: #1d4ed8; font-size: 1.1rem;">P · Personatge / Rol</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem; margin-bottom: 0;">
+              Qui és la IA? <em>Ex: Mestre/a tutor/a de Cicle Inicial, especialista en Educació Emocional, coordinador/a pedagògic/a...</em>
+            </p>
+          </div>
+
+          <div style="background: white; border: 1px solid var(--border); border-top: 4px solid #10b981; border-radius: var(--radius-md); padding: 1.2rem;">
+            <strong style="color: #047857; font-size: 1.1rem;">C · Context</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem; margin-bottom: 0;">
+              Quina és la situació? <em>Ex: Escola pública catalana, grup heterogeni de 24 alumnes de 2n de primària, inici de trimestre...</em>
+            </p>
+          </div>
+
+          <div style="background: white; border: 1px solid var(--border); border-top: 4px solid #f59e0b; border-radius: var(--radius-md); padding: 1.2rem;">
+            <strong style="color: #b45309; font-size: 1.1rem;">R · Repte / Tasca</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem; margin-bottom: 0;">
+              Què ha de fer exactament? <em>Ex: Redacta una carta, proposa 3 dinàmiques de 15 minuts, fes una graella...</em>
+            </p>
+          </div>
+
+          <div style="background: white; border: 1px solid var(--border); border-top: 4px solid #8b5cf6; border-radius: var(--radius-md); padding: 1.2rem;">
+            <strong style="color: #6d28d9; font-size: 1.1rem;">F · Format i Límits</strong>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem; margin-bottom: 0;">
+              Com ho vols estructurat? <em>Ex: To proper i empàtic, màxim 200 paraules, en format taula, llista de punts...</em>
+            </p>
+          </div>
+        </div>
+
+        <div class="callout callout-success">
+          <div class="callout-title">💬 Tècnica del Refinament Iteratiu: El Diàleg Continu</div>
+          <p style="margin-bottom: 0;">
+            No et conformis mai amb la primera resposta de Gemini! Si no és exactament el que vols, parla amb ella com ho faries amb un company:
+            <em>"Fes-ho més breu", "Canvia el to per fer-lo més accessible a famílies no catalanoparlants", "Afegeix una conclusió positiva", "Posa'm aquesta informació en una taula comparativa"</em>.
+          </p>
+        </div>
+      </section>
+
+      <!-- 7. Casos Pràctics de Gestió Docent -->
+      <section id="casos-practics" class="content-section">
+        <span class="section-badge">Banc Pràctic</span>
+        <h2 class="section-title"><span class="icon">💼</span> 7. Casos Pràctics de Gestió Docent amb Gemini</h2>
+        <p>
+          Aquí teniu 4 plantilles de *prompts* provades i optimitzades per a situacions reals de Primària. Pots fer clic al botó <strong>"Copiar Prompt"</strong>, enganxar-lo a Gemini i adaptar les parts entre claudàtors `[...]` a la teva realitat:
+        </p>
+
+        <!-- Prompt 1: Comunicat Famílies -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>📧</span> Redacció d'un comunicat a famílies per a una situació delicada
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Tutoria / Comunicació</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a mestre/a tutor/a de [Cicle Mitjà - 3r de Primària] d'una escola pública catalana.
+
+Context: Hem detectat que diversos alumnes estan portant joguines / rellotges intel·ligents a l'aula que generen distraccions i petits conflictes durant les classes i el pati.
+Tasca: Redacta una carta o comunicat adreçat a totes les famílies del grup.
+Format i to:
+- To proper, col·laboratiu, empàtic i positiu (evita el to purament punitiu o acusador).
+- Destaca la importància de crear un clima d'aula tranquil i centrat en el joc compartit.
+- Recorda la normativa de centre d'una manera clara i amable.
+- Màxim 200-250 paraules. En català correcte i natural.</div>
+          <div class="prompt-explanation">
+            <strong>Per què funciona?</strong> Especifica el cicle, el to constructiu i evita que sembli una amonestació freda, facilitant la col·laboració de les famílies.
+          </div>
+        </div>
+
+        <!-- Prompt 2: Redactor d'Actes -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>📝</span> Conversió d'apunts ràpids en una Acta Oficial de Reunió de Cicle
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Gestió / Coordinació</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a secretari/a docent d'una reunió de cicle d'Educació Primària.
+
+Tasca: Transforma les següents notes ràpides i informals que he pres durant la reunió en una acta formal, estructurada i clara.
+
+Format requerit:
+1. Objectiu de la reunió
+2. Punts tractats (amb un breu resum de la discussió)
+3. Acords presos
+4. Taula de tasques pendents amb columnes: [Tasca | Responsable | Termini]
+
+Notes de la reunió per processar:
+[Enganxa aquí les teves notes desordenades. Exemple: Hem parlat de la diada de Sant Jordi. La Maria s'encarrega dels punts de llibre. El Joan demanarà el pressupost dels llibres abans de divendres. Cal revisar el pati per la fira de contes...]</div>
+          <div class="prompt-explanation">
+            <strong>Per què funciona?</strong> Estalvia fins a 30 minuts de redacció organitzant el caos d'apunts en una estructura clara amb taula de seguiment d'acords.
+          </div>
+        </div>
+
+        <!-- Prompt 3: Dinàmiques de Cohesió -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>🤝</span> Ideació de dinàmiques de cohesió de grup i resolució de conflictes
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Tutoria i Valors</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a mestre/a especialista en convivència i educació emocional a Primària.
+
+Context: En un grup de [2n de Primària / Cicle Inicial] estem observant petits grups tancats al pati i dificultats per compartir el material als racons de treball.
+Tasca: Proposa 3 dinàmiques de tutoria breus (d'uns 20-30 minuts cadascuna) per treballar la cooperació, l'escolta activa i el sentiment de pertinença al grup.
+
+Per a cada dinàmica, indica:
+- Nom atractiu de l'activitat
+- Objectiu emocional/relacional
+- Material necessari (senzill, d'aula ordinària)
+- Desenvolupament pas a pas
+- Preguntes de reflexió per fer en rotllana final</div>
+          <div class="prompt-explanation">
+            <strong>Per què funciona?</strong> No només demana "activitats", sinó que exigeix el pas a pas, els materials i les preguntes de tancament per a la rotllana de tutoria.
+          </div>
+        </div>
+
+        <!-- Prompt 4: Sortida Pedagògica -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>🚌</span> Planificació i correu de coordinació d'una Sortida Pedagògica
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Organització d'Aula</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a mestre/a organitzador/a d'una sortida pedagògica de [Cicle Superior - 5è i 6è].
+
+Tasca: Redacta dos textos:
+1. Un correu electrònic formal però àgil per al servei pedagògic del museu / equipament que visitarem [indicar lloc], demanant informació sobre l'adaptació del taller per a alumnat amb necessitats de suport educatiu, espais per dinar a cobert si plou i horaris d'arribada en autocar.
+2. Un xec de comprovació (checklist) per als mestres acompanyants amb tot el que cal preparar abans, durant i després de la sortida (botiquí, autoritzacions, telèfons, pic-nics, etc.).</div>
+          <div class="prompt-explanation">
+            <strong>Per què funciona?</strong> Cobreix tant la gestió externa (proveïdor/museu) com la gestió interna del claustre per evitar descuidos logístics.
+          </div>
+        </div>
+
+      </section>
+
+      <!-- 8. Reptes i Pràctica d'Aula -->
+      <section id="reptes" class="content-section">
+        <span class="section-badge">Treball en Equip</span>
+        <h2 class="section-title"><span class="icon">🛠️</span> 8. Reptes Pràctics per al Claustre</h2>
+        <p>
+          Posem en pràctica el que hem après! Tria un dels següents reptes per treballar en parelles o petit grup durant la formació:
+        </p>
+
+        <div class="activity-card">
+          <span class="activity-badge">Repte 1 · Mans a l'obra</span>
+          <h3 class="activity-title">El teu Copilot de Comunicació i Gestió</h3>
+          <p>
+            Penseu en una comunicació real que hagueu de fer properament a la vostra escola (ex: informació de colònies, recordatori sobre esmorzars saludables, inici d'un projecte interdisciplinar o acord de tutoria).
+          </p>
+          <ol class="activity-steps">
+            <li><strong>Entreu a Gemini:</strong> Aneu a <a href="https://gemini.google.com" target="_blank" rel="noopener">gemini.google.com</a> amb el vostre compte XTEC.</li>
+            <li><strong>Apliqueu el mètode PCRF:</strong> Escriviu un prompt definint el Rol, el Context concret de la vostra escola, la Tasca i el Format.</li>
+            <li><strong>Apliqueu la Tècnica d'Iteració:</strong> Feu almenys 2 peticions de millora (ex: <em>"Fes-ho més breu", "Afegeix una frase per engrescar les famílies a participar"</em>).</li>
+            <li><strong>Exporteu el resultat:</strong> Feu clic al botó d'exportar a <strong>Google Docs</strong> per guardar-ho a la vostra unitat de Drive.</li>
+          </ol>
+        </div>
+
+        <div class="activity-card" style="border-color: #38bdf8; background: linear-gradient(to bottom right, #ffffff, #f0f9ff);">
+          <span class="activity-badge" style="background: #0284c7;">Repte 2 · Dinàmica d'Aula</span>
+          <h3 class="activity-title" style="color: #0369a1;">Dissenya una activitat de tutoria express</h3>
+          <p>
+            Genereu amb Gemini una dinàmica de 20 minuts per treballar la gestió de les emocions (ràbia, por, alegria) adaptada específicament al vostre cicle (Inicial, Mitjà o Superior). Demaneu-li que inclogui les preguntes clau de reflexió per fer als infants.
+          </p>
+        </div>
+
+        <div class="callout callout-info" style="margin-top: 2rem;">
+          <div class="callout-title">📋 Tiquet de sortida (Reflexió individual)</div>
+          <p style="margin-bottom: 0;">
+            Abans d'acabar el bloc, pensa: <em>Quina és la primera tasca administrativa o de planificació que delegaràs a Gemini aquesta setmana per estalviar temps?</em>
+          </p>
+        </div>
+
+      </section>
+
+      <!-- Navegació entre blocs -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 3rem;">
+        <a href="index.html" class="btn btn-outline">← Tornar a l'Inici</a>
+        <a href="bloc2.html" class="btn btn-primary">Anar al Bloc 2: Materials i DUA →</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Inici</a>
+        <a href="bloc1.html">Bloc 1</a>
+        <a href="bloc2.html">Bloc 2</a>
+        <a href="bloc3.html">Bloc 3</a>
+        <a href="prompts.html">Promptoteca</a>
+      </div>
+      <p>Materials de formació docent · Competència Digital Docent en IA · Educació Primària</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
