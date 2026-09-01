@@ -37,17 +37,48 @@
   <header class="site-header">
     <div class="container nav-wrapper">
       <a href="index.html" class="logo-link">
-        <span class="logo-badge">XTEC · IA</span>
-        <span>IA a l'Educació Primària</span>
+        <div class="logo-brand-group">
+          <span class="logo-dept">Departament d'Educació</span>
+          <span class="logo-area-badge">Àrea TEDR de Lleida</span>
+        </div>
+        <div class="logo-divider"></div>
+        <span class="logo-title">IA a l'Educació Primària</span>
       </a>
       <button class="menu-toggle" aria-label="Obrir menú">☰</button>
       <nav>
         <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Inici</a></li>
-          <li><a href="bloc1.html" class="nav-link">Bloc 1: Fonaments i Ètica</a></li>
-          <li><a href="bloc2.html" class="nav-link">Bloc 2: Materials i DUA</a></li>
-          <li><a href="bloc3.html" class="nav-link">Bloc 3: Avaluació i Aula</a></li>
-          <li><a href="prompts.html" class="nav-link active">Promptoteca</a></li>
+          <li><a href="index.html" class="nav-link nav-link-single">Inici</a></li>
+          <li>
+            <a href="bloc1.html" class="nav-link">
+              <span class="nav-num">Bloc 1</span>
+              <span class="nav-title">Fonaments i Ètica</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloc2.html" class="nav-link">
+              <span class="nav-num">Bloc 2</span>
+              <span class="nav-title">Materials i DUA</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloc3.html" class="nav-link">
+              <span class="nav-num">Bloc 3</span>
+              <span class="nav-title">Avaluació i Aula</span>
+            </a>
+          </li>
+          <li>
+            <a href="multimedia.html" class="nav-link">
+              <span class="nav-num">Multimèdia</span>
+              <span class="nav-title">Imatge, So i Vídeo</span>
+            </a>
+          </li>
+          <li>
+            <a href="laboratori.html" class="nav-link">
+              <span class="nav-num">Laboratori IA</span>
+              <span class="nav-title">Vibe Coding</span>
+            </a>
+          </li>
+          <li><a href="prompts.html" class="nav-link active nav-link-single">Promptoteca</a></li>
         </ul>
       </nav>
     </div>
@@ -78,6 +109,7 @@
       <button class="filter-btn" data-filter="dua">Inclusió i DUA</button>
       <button class="filter-btn" data-filter="avaluacio">Avaluació i Rúbriques</button>
       <button class="filter-btn" data-filter="multimedia">Imatges i Multimèdia</button>
+      <button class="filter-btn" data-filter="automatitzacio">⚡ Apps Script i Vibe Coding</button>
       <button class="filter-btn" data-filter="aula">Projectes i Dinàmiques</button>
     </div>
 
@@ -447,6 +479,74 @@ Requisits:
         </div>
       </div>
 
+      <!-- Prompt 13: Creador de Google Form amb Apps Script (NOU) -->
+      <div class="prompt-card" data-category="automatitzacio">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>⚡</span> Generador automàtic de Google Form en 3 segons (Google Apps Script)
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Apps Script i Vibe Coding</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a programador expert en Google Apps Script per a entorns educatius de Google Workspace.
+
+Tasca: Escriu un script complet de Google Apps Script (.gs) llest per copiar i executar que creï automàticament un nou Google Form a la meva unitat de Google Drive.
+
+Dades del formulari:
+- Títol: [Exemple: Autoavaluació de Medi Natural: Els Animals Vertebrats - 4t de Primària]
+- Descripció: [Exemple: Respon a les preguntes per comprovar el que has après.]
+- Configura'l automàticament com a qüestionari d'autoavaluació (setIsQuiz(true)).
+- Afegeix un camp inicial per escriure el "Nom i Cognoms de l'alumne/a".
+- Afegeix 5 preguntes d'opció múltiple sobre el tema: [indica el tema o enganxa un text].
+- A cada pregunta, indica les 4 opcions, quina és la correcta i assigna 2 punts per pregunta.
+- Inclou retroacció formativa (feedback) per a les respostes correctes i incorrectes.
+
+Fes que el codi sigui net, fàcil d'entendre i sense dependències externes.</div>
+        <div class="prompt-explanation">
+          <strong>Com s'usa?</strong> Copia el codi generat per Gemini a <strong>script.google.com</strong> i prem <em>Executar</em>. El formulari apareixerà a l'instant a Google Drive!
+        </div>
+      </div>
+
+      <!-- Prompt 14: Ruleta Interactiva HTML (NOU) -->
+      <div class="prompt-card" data-category="automatitzacio">
+        <div class="prompt-header">
+          <div class="prompt-title">
+            <span>🎡</span> Creació de "La Ruleta d'Aula Interactiva" en un sol fitxer HTML
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag">Apps Script i Vibe Coding</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a desenvolupador web expert en aplicacions educatives per a nens de Primària.
+
+Tasca: Crea una aplicació web completa continguda en UN SOL FITXER HTML (incloent HTML5, CSS3 atractiu i JavaScript) per a una "Ruleta de la Sort / Sorteig d'Aula".
+
+Funcionalitats imprescindibles:
+1. Una ruleta circular de colors vius dibuixada amb Canvas que giri amb una animació fluida en prémer un gran botó "GIRAR!".
+2. Una caixa de text a la part dreta on el mestre pugui enganxar o escriure la llista de noms dels alumnes o paraules del tema.
+3. Quan s'aturi la ruleta, ha de sonar un efecte sonor festiu generat amb l'API d'àudio del navegador (Web Audio API) i aparèixer una finestra emergent amb confeti animat mostrant el nom guanyador.
+4. Opció d'eliminar el nom seleccionat de la llista perquè no torni a sortir.
+5. Disseny infantil modern, responsive i adaptat a la pantalla tàctil de la pissarra digital. En català.</div>
+        <div class="prompt-explanation">
+          <strong>Com s'usa?</strong> Desa el codi generat com a `ruleta.html` i fes-hi doble clic per jugar-hi al navegador sense instal·lar res.
+        </div>
+      </div>
+
     </div>
 
   </main>
@@ -459,9 +559,11 @@ Requisits:
         <a href="bloc1.html">Bloc 1</a>
         <a href="bloc2.html">Bloc 2</a>
         <a href="bloc3.html">Bloc 3</a>
+        <a href="multimedia.html">Multimèdia</a>
+        <a href="laboratori.html">Laboratori IA</a>
         <a href="prompts.html">Promptoteca</a>
       </div>
-      <p>Materials de formació docent · Competència Digital Docent en IA · Educació Primària</p>
+      <p>Materials de formació docent · Àrea TEDR de Lleida · Departament d'Educació · Generalitat de Catalunya</p>
     </div>
   </footer>
 

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratori Avançat: Automatitzacions i Vibe Coding | IA a Primària</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header & Nav -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo-link">
+        <div class="logo-brand-group">
+          <span class="logo-dept">Departament d'Educació</span>
+          <span class="logo-area-badge">Àrea TEDR de Lleida</span>
+        </div>
+        <div class="logo-divider"></div>
+        <span class="logo-title">IA a l'Educació Primària</span>
+      </a>
+      <button class="menu-toggle" aria-label="Obrir menú">☰</button>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link nav-link-single">Inici</a></li>
+          <li>
+            <a href="bloc1.html" class="nav-link">
+              <span class="nav-num">Bloc 1</span>
+              <span class="nav-title">Fonaments i Ètica</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloc2.html" class="nav-link">
+              <span class="nav-num">Bloc 2</span>
+              <span class="nav-title">Materials i DUA</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloc3.html" class="nav-link">
+              <span class="nav-num">Bloc 3</span>
+              <span class="nav-title">Avaluació i Aula</span>
+            </a>
+          </li>
+          <li>
+            <a href="multimedia.html" class="nav-link">
+              <span class="nav-num">Multimèdia</span>
+              <span class="nav-title">Imatge, So i Vídeo</span>
+            </a>
+          </li>
+          <li>
+            <a href="laboratori.html" class="nav-link active">
+              <span class="nav-num">Laboratori IA</span>
+              <span class="nav-title">Vibe Coding</span>
+            </a>
+          </li>
+          <li><a href="prompts.html" class="nav-link nav-link-single">Promptoteca</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag">
+        <span>⚡ Laboratori pràctic - vibe coding</span>
+      </div>
+      <h1 class="hero-title">Automatització amb Google Apps Script i Vibe Coding</h1>
+      <p class="hero-subtitle">
+        Crea formularis de Google en 3 segons, genera desenes de diplomes en PDF a Drive amb un sol clic i dissenya jocs interactius per a la teva aula sense saber programar.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Layout with Sticky Sidebar -->
+  <div class="container page-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="page-sidebar">
+      <div class="sidebar-title">Receptes del Laboratori</div>
+      <ul class="sidebar-nav">
+        <li><a href="#intro" class="active">1. Què és el Vibe Coding?</a></li>
+        <li><a href="#recepta-forms">2. Google Forms en 3 segons</a></li>
+        <li><a href="#recepta-diplomes">3. Diplomes PDF massius a Drive</a></li>
+        <li><a href="#recepta-carpetes">4. Creació massiva de carpetes</a></li>
+        <li><a href="#recepta-correus">5. Enviament de correus personalitzats</a></li>
+        <li><a href="#recepta-jocs-html">6. Jocs interactius en HTML</a></li>
+        <li><a href="#recepta-webapp">7. Web App amb Apps Script</a></li>
+        <li><a href="#recepta-notebooklm">8. NotebookLM (Pòdcast Escolar)</a></li>
+        <li><a href="#repte-lab">9. Repte del Laboratori</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- 1. Què és el Vibe Coding? -->
+      <section id="intro" class="content-section">
+        <span class="section-badge">El Concepte</span>
+        <h2 class="section-title"><span class="icon">🪄</span> 1. Què és el "Vibe Coding" i Google Apps Script?</h2>
+        <p>
+          Fins fa poc, automatitzar tasques repetitives o crear aplicacions interactives requeria mesos d'estudi de programació. Avui dia, gràcies als models avançats d'IA com <strong>Google Gemini</strong>, ha nascut el concepte de <strong>"Vibe Coding"</strong>:
+        </p>
+        
+        <div class="callout callout-success">
+          <div class="callout-title">💡 La definició de Vibe Coding</div>
+          <p style="margin-bottom: 0;">
+            El <strong>Vibe Coding</strong> consisteix a descriure en llenguatge natural i planer què vols que faci una eina o aplicació, i deixar que la IA escrigui tot el codi tècnic per a tu. Tu només has de fer el paper de <strong>director pedagògic</strong>: demanar, copiar, provar i demanar ajustos.
+          </p>
+        </div>
+
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">L'Entorn: Google Apps Script (GAS)</h3>
+        <p>
+          <strong>Google Apps Script</strong> és una eina gratuïta integrada a tots els comptes de Google (inclòs el compte <strong>@xtec.cat</strong>) que permet connectar i automatitzar totes les eines de Google Workspace (Forms, Sheets, Docs, Slides, Drive i Gmail).
+        </p>
+        <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem; margin: 1rem 0;">
+          <strong>Com s'obre Google Apps Script en 3 clics:</strong>
+          <ol style="margin-top: 0.5rem; margin-bottom: 0; padding-left: 1.2rem;">
+            <li>Obre un full de càlcul de Google (Google Sheet) o ves a <a href="https://script.google.com" target="_blank" rel="noopener"><strong>script.google.com</strong></a>.</li>
+            <li>Al menú superior, fes clic a <strong>Extensions ➔ Apps Script</strong>.</li>
+            <li>Esborra el codi que hi hagi, enganxa el codi generat per Gemini i fes clic a la icona de desar 💾 i després a <strong>Executar ▶️</strong>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 2. Recepta 1: Google Forms automàtic -->
+      <section id="recepta-forms" class="content-section">
+        <span class="section-badge">Recepta 1 · Efecte WOW</span>
+        <h2 class="section-title"><span class="icon">📝</span> 2. Generador automàtic de Google Forms en 3 segons</h2>
+        <p>
+          <strong>El problema habitual:</strong> Crear un formulari de Google amb 10 o 15 preguntes d'autoavaluació per a un projecte de classe costa entre 30 i 45 minuts de copiar i enganxar títols, opcions de resposta i puntuacions una per una.
+        </p>
+        <p>
+          <strong>La solució amb IA:</strong> Demanem a Gemini que generi un script de Google Apps Script a partir del text del nostre tema. L'executem i el formulari es crea sol a la nostra unitat de Google Drive en menys de 3 segons!
+        </p>
+
+        <!-- Prompt Card -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>📋</span> Prompt per demanar a Gemini el codi del Formulari
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Google Apps Script</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a programador expert en Google Apps Script per a entorns educatius de Google Workspace.
+
+Tasca: Escriu un script complet de Google Apps Script (.gs) llest per copiar i executar que creï automàticament un nou Google Form a la meva unitat de Google Drive.
+
+Dades del formulari:
+- Títol: [Exemple: Autoavaluació de Medi Natural: Els Animals Vertebrats - 4t de Primària]
+- Descripció: [Exemple: Respon a les preguntes per comprovar el que has après sobre els mamífers, ocells, rèptils, amfibis i peixos.]
+- Configura'l automàticament com a qüestionari d'autoavaluació (setIsQuiz(true)).
+- Afegeix un camp inicial per escriure el "Nom i Cognoms de l'alumne/a".
+- Afegeix 5 preguntes d'opció múltiple sobre el tema: [indica el tema o enganxa un text].
+- A cada pregunta, indica les 4 opcions, quina és la correcta i assigna 2 punts per pregunta.
+- Inclou retroacció formativa (feedback) per a les respostes correctes i incorrectes.
+
+Fes que el codi sigui net, fàcil d'entendre i sense dependències externes.</div>
+          <div class="prompt-explanation">
+            <strong>Com s'usa?</strong> Copia el codi que et doni Gemini, obre <strong>script.google.com</strong> ➔ <em>Nou projecte</em>, enganxa'l i prem <em>Executar</em>. El formulari apareixerà a l'instant al teu Drive!
+          </div>
+        </div>
+
+        <!-- Collapsible Code Drawer -->
+        <details class="code-drawer">
+          <summary>🔍 Veure codi d'exemple preparat (funció crearFormulariAuto)</summary>
+          <div class="code-drawer-content">
+            <pre><code>function crearFormulariAuto() {
+  // 1. Creem el formulari amb el seu títol i descripció
+  var form = FormApp.create('Autoavaluació: Els Animals Vertebrats - 4t Primària');
+  form.setDescription('Qüestionari interactiu d\'autoavaluació. Llegeix atentament cada pregunta.');
+  form.setIsQuiz(true); // Activa el mode qüestionari amb puntuació automàtica
+  
+  // 2. Pregunta de nom
+  form.addTextItem().setTitle('Nom i Cognom de l\'alumne/a').setRequired(true);
+  
+  // 3. Pregunta 1
+  var p1 = form.addMultipleChoiceItem();
+  p1.setTitle('Quin d\'aquests animals és un amfibi?')
+    .setPoints(2)
+    .setChoices([
+      p1.createChoice('El dofí', false),
+      p1.createChoice('La granota', true),
+      p1.createChoice('La sargantana', false),
+      p1.createChoice('L\'àguila', false)
+    ])
+    .setFeedbackForCorrect(FormApp.createFeedback().setText('Molt bé! La granota neix a l\'aigua i fa la metamorfosi.').build())
+    .setFeedbackForIncorrect(FormApp.createFeedback().setText('Recorda: els amfibis viuen entre l\'aigua i la terra i tenen la pell nua.').build());
+
+  // 4. Pregunta 2
+  var p2 = form.addMultipleChoiceItem();
+  p2.setTitle('Com respiren els peixos sota l\'aigua?')
+    .setPoints(2)
+    .setChoices([
+      p2.createChoice('Amb pulmons', false),
+      p2.createChoice('A través de les brànquies', true),
+      p2.createChoice('Per la cua', false),
+      p2.createChoice('Per la boca exclusivament', false)
+    ])
+    .setFeedbackForCorrect(FormApp.createFeedback().setText('Exacte! Les brànquies filtren l\'oxigen dissolt a l\'aigua.').build());
+
+  Logger.log('Formulari creat amb èxit: ' + form.getEditUrl());
+}</code></pre>
+          </div>
+        </details>
+      </section>
+
+      <!-- 3. Recepta 2: Diplomes PDF massius -->
+      <section id="recepta-diplomes" class="content-section">
+        <span class="section-badge">Recepta 2 · Automatització Drive</span>
+        <h2 class="section-title"><span class="icon">🎓</span> 3. Generador massiu de Diplomes o Certificats en PDF a Drive</h2>
+        <p>
+          <strong>El problema:</strong> A final de curs o de projecte, crear 25 diplomes personalitzats modificant a mà el nom de cada alumne en un document i exportant un per un a PDF pot portar més d'una hora.
+        </p>
+        <p>
+          <strong>La màgia IA:</strong> Tenim un full de càlcul de Google (amb la llista d'alumnes) i una plantilla a Google Docs amb l'etiqueta `{{NOM}}`. Un script llegeix el full, duplica la plantilla per a cada alumne i desa els 25 PDFs a una carpeta de Drive automàticament.
+        </p>
+
+        <!-- Prompt Card -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>📋</span> Prompt per crear el generador de Diplomes PDF
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Google Sheets + Docs + Drive</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a especialista en Google Apps Script per a mestres d'escola.
+
+Tasca: Dissenya un script per a Google Sheets que llegeixi els noms d'un full anomenat "Alumnes" (columna A: Nom de l'alumne) i, a partir d'un document model de Google Docs que actua com a diploma, faci el següent:
+1. Per a cada fila amb nom, faci una còpia temporal del document plantilla.
+2. Substitueixi l'etiqueta "{{NOM}}" pel nom real de l'infant.
+3. Converteixi aquesta còpia en un arxiu PDF titulat "Diploma_[Nom].pdf".
+4. Desi tots els PDFs dins d'una carpeta específica de Google Drive indicada pel seu ID.
+5. Esborri el document temporal per deixar el Drive net.
+
+Afegeix un menú personalitzat al Google Sheet anomenat "🎓 Crear Diplomes" amb un botó per executar la funció amb un sol clic.</div>
+          <div class="prompt-explanation">
+            <strong>Efecte claustre:</strong> En prémer el botó, veus com apareixen els 25 arxius PDF llestos per imprimir o enviar a les famílies!
+          </div>
+        </div>
+
+        <!-- Collapsible Code Drawer -->
+        <details class="code-drawer">
+          <summary>🔍 Veure codi d'exemple (generarDiplomesPDF)</summary>
+          <div class="code-drawer-content">
+            <pre><code>function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('🎓 Gestió Docent')
+    .addItem('Generar Diplomes en PDF', 'generarDiplomesPDF')
+    .addToUi();
+}
+
+function generarDiplomesPDF() {
+  var templateId = 'ID_DEL_TEU_GOOGLE_DOC_AQUI'; // Substitueix per l'ID de la teva plantilla
+  var folderId = 'ID_DE_LA_TEVA_CARPETA_DRIVE_AQUI'; // Substitueix per l'ID de la carpeta destí
+  
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Alumnes');
+  var dades = sheet.getDataRange().getValues();
+  var carpetaDesti = DriveApp.getFolderById(folderId);
+  var fitxerPlantilla = DriveApp.getFileById(templateId);
+
+  // Comencem des de la fila 1 (ignorem la capçalera a la fila 0)
+  for (var i = 1; i < dades.length; i++) {
+    var nomAlumne = dades[i][0];
+    if (nomAlumne == '') continue;
+
+    // Creem còpia temporal
+    var copiaTemp = fitxerPlantilla.makeCopy('Temp_' + nomAlumne, carpetaDesti);
+    var docTemp = DocumentApp.openById(copiaTemp.getId());
+    var body = docTemp.getBody();
+    
+    // Substituïm el marcador {{NOM}}
+    body.replaceText('{{NOM}}', nomAlumne);
+    docTemp.saveAndClose();
+    
+    // Convertim a PDF i dessem
+    var pdfBlob = copiaTemp.getAs('application/pdf');
+    pdfBlob.setName('Diploma_' + nomAlumne + '.pdf');
+    carpetaDesti.createFile(pdfBlob);
+    
+    // Esborrem la còpia temporal de Docs
+    copiaTemp.setTrashed(true);
+  }
+  SpreadsheetApp.getUi().alert('✨ Tots els diplomes s\'han generat correctament a Drive!');
+}</code></pre>
+          </div>
+        </details>
+      </section>
+
+      <!-- 4. Recepta 3: Creació massiva de carpetes -->
+      <section id="recepta-carpetes" class="content-section">
+        <span class="section-badge">Recepta 3 · Organització d'Aula</span>
+        <h2 class="section-title"><span class="icon">📁</span> 4. Creador massiu de Carpetes d'Alumnes a Drive</h2>
+        <p>
+          <strong>El problema:</strong> A inici de curs, crear la carpeta de portafolis digital per a cada alumne/a dins de la unitat compartida de cicle de Drive és feixuc.
+        </p>
+        <p>
+          <strong>La solució:</strong> Posem els 25 noms al full de càlcul, executem l'script i crea les 25 carpetes individuals a l'instant, cadascuna amb subcarpetes (ex: <em>"Projectes", "Autoavaluació", "Produccions"</em>).
+        </p>
+
+        <!-- Prompt Card -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>📋</span> Prompt per crear l'estructura de carpetes a Drive
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Google Sheets + DriveApp</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a programador expert en Google Apps Script per a centres educatius.
+
+Tasca: Crea un script vinculat a un Google Sheet que faci el següent:
+1. Llegeixi una llista de noms d'alumnes a la columna A d'un full.
+2. Dins d'una carpeta principal de Drive (especificada per ID), creï una carpeta per a cada alumne anomenada "[Cognom, Nom] - Portafolis 2026".
+3. Dins de la carpeta de cada alumne, creï automàticament 3 subcarpetes: "1. Reptes i Projectes", "2. Autoavaluació" i "3. Treball Cooperatiu".
+4. Escrigui a la columna B del full de càlcul l'enllaç directe (URL) a la carpeta creada de cada alumne perquè el mestre hi pugui accedir amb 1 clic.</div>
+          <div class="prompt-explanation">
+            <strong>Consell:</strong> Permet tenir tota l'organització digital del cicle llesta en menys de 10 segons a l'inici de curs.
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Recepta 4: Enviament de correus personalitzats -->
+      <section id="recepta-correus" class="content-section">
+        <span class="section-badge">Recepta 4 · Comunicació Eficient</span>
+        <h2 class="section-title"><span class="icon">✉️</span> 5. Enviament de Comunicats i Informes Personalitzats</h2>
+        <p>
+          <strong>El problema:</strong> Enviar un missatge personalitzat a cada família amb la data i hora de la seva entrevista de tutoria individual sense exposar les dades de les altres famílies (complint estrictament el RGPD).
+        </p>
+        <p>
+          <strong>La solució:</strong> Un script que envia un correu des del compte XTEC personalitzant el text amb el nom de l'infant, el dia i l'hora assignada.
+        </p>
+
+        <!-- Prompt Card -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>📋</span> Prompt per al correu personalitzat de tutoria
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">GmailApp + Google Sheets</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a especialista en automatització de correus docents amb Google Apps Script.
+
+Tasca: Crea un script per a Google Sheets que contingui les següents columnes:
+- Columna A: Correu electrònic de la família
+- Columna B: Nom de l'infant
+- Columna C: Data de la reunió de tutoria
+- Columna D: Hora de la reunió
+- Columna E: Estat de l'enviament (l'script hi escriurà "Enviat el [data/hora]")
+
+L'script ha d'enviar un correu en català des de Gmail amb un to càlid i professional confirmant la reunió individual, utilitzant les dades de cada fila. Si la columna E ja posa "Enviat", l'script no ha de tornar a enviar el correu per evitar duplicitats.</div>
+          <div class="prompt-explanation">
+            <strong>Seguretat:</strong> Cada família rep exclusivament el seu missatge privat, respectant al 100% la privadesa del grup classe.
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Recepta 5: Jocs Interactius en HTML (Vibe Coding) -->
+      <section id="recepta-jocs-html" class="content-section">
+        <span class="section-badge">Recepta 5 · Vibe Coding</span>
+        <h2 class="section-title"><span class="icon">🎮</span> 6. Creació de Jocs Educatius en un sol fitxer HTML</h2>
+        <p>
+          Podem demanar a Gemini que creï un joc educatiu interactiu complet (amb disseny colorit, botons, sons i animacions) <strong>dins d'un únic fitxer `.html`</strong>.
+        </p>
+        <p>
+          Per utilitzar-lo a classe, només cal desar el text com a `joc.html` i fer-hi doble clic: s'obrirà al navegador de la pissarra digital o de les tauletes sense necessitat de tenir connexió a servidors ni instal·lar cap programa!
+        </p>
+
+        <!-- Prompt Card: Ruleta de Paraules -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>🎡</span> Prompt mestre per crear "La Ruleta d'Aula Interactiva"
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">HTML5 + Canvas + Àudio</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a desenvolupador web expert en aplicacions educatives per a nens de Primària.
+
+Tasca: Crea una aplicació web completa continguda en UN SOL FITXER HTML (incloent HTML5, CSS3 atractiu i JavaScript) per a una "Ruleta de la Sort / Sorteig d'Aula".
+
+Funcionalitats imprescindibles:
+1. Una ruleta circular de colors vius dibuixada amb Canvas que giri amb una animació fluida en prémer un gran botó "GIRAR!".
+2. Una caixa de text a la part dreta on el mestre pugui enganxar o escriure la llista de noms dels alumnes o paraules del tema (separades per comes o salts de línia).
+3. Quan s'aturi la ruleta, ha de sonar un efecte sonor festiu generat amb l'API d'àudio del navegador (Web Audio API) i aparèixer una finestra emergent amb confeti animat mostrant el nom guanyador.
+4. Opció d'eliminar el nom seleccionat de la llista perquè no torni a sortir.
+5. Disseny infantil modern, responsive i adaptat a la pantalla tàctil de la pissarra digital. En català.</div>
+          <div class="prompt-explanation">
+            <strong>Com fer-lo servir:</strong> Copia el codi que et doni Gemini, crea un fitxer de text anomenat `ruleta.html`, enganxa-hi el contingut i obre'l amb Chrome. Llest per jugar a classe!
+          </div>
+        </div>
+
+        <!-- Prompt Card: Passaparaula -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>🔤</span> Prompt per crear el "Passaparaula / Rosco de Medi i Llengua"
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Joc de Repàs Curricular</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a dissenyador de jocs educatius interactius en HTML5.
+
+Tasca: Genera un fitxer únic HTML ("rosco_passaparaula.html") per jugar al Passaparaula a la pissarra digital de Primària.
+Tema: [Exemple: Coneixement del Medi Natural i Social - 5è de Primària].
+
+Requisits:
+- Rosco circular amb les lletres de l'abecedari (A-Z) que canvien a color verd (encert), vermell (error) o groc (passaparaula).
+- Caixa de definició gran i llegible des del fons de la classe.
+- Comptador de temps regressiu de 150 segons i marcador d'encerts/errors.
+- Botons clars: [Comprovar | Passaparaula | Reiniciar].
+- Inclou 15 definicions ja redactades sobre el tema [indica el tema], amb opció de modificar les preguntes fàcilment.</div>
+          <div class="prompt-explanation">
+            <strong>Consell de difusió:</strong> Pots penjar aquests fitxers `.html` al teu repositori de **GitHub Pages** per compartir-los amb altres escoles o incrustar-los dins del **Google Sites** de la teva classe mitjançant l'opció *Incrustar codi*!
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Recepta 6: Web App amb Apps Script -->
+      <section id="recepta-webapp" class="content-section">
+        <span class="section-badge">Recepta 6 · Web App de Centre</span>
+        <h2 class="section-title"><span class="icon">📱</span> 7. Creació i Desplegament d'una Web App amb Apps Script</h2>
+        <p>
+          Google Apps Script permet crear no només scripts interns, sinó <strong>autèntiques pàgines web privades o públiques</strong> connectades a un Google Sheet en temps real.
+        </p>
+
+        <!-- Prompt Card: Tauler de Reserva -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>📋</span> Prompt per crear una Web App de Reserva de Materials de Centre
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="prompt-tag">Web App + Google Sheets</span>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+          </div>
+          <div class="prompt-body">Actua com a enginyer de programari educatiu expert en Google Apps Script Web Apps.
+
+Tasca: Crea el codi per a una aplicació web interna per reservar el "Carretó de Tauletes" o l'"Aula de Robòtica" entre els mestres de l'escola.
+Estructura de l'script:
+1. `Codi.gs`: Funció `doGet()` que serveixi l'HTML i funcions per llegir les reserves d'un Google Sheet i afegir-ne de noves.
+2. `Index.html`: Interfície visual senzilla amb formulari (Nom del mestre/a, Material a reservar, Franja horària, Curs/Grup) i una graella visual que mostri les reserves del dia en verd/ocupat.
+3. To net, estil Tailwind CSS o CSS modern, sense dependències complexes.</div>
+          <div class="prompt-explanation">
+            <strong>Com es desplega?</strong> A Google Apps Script, fes clic a <strong>Desplega ➔ Nou desplegament ➔ Tipus: Aplicació web</strong>. Tria qui hi pot accedir (ex: <em>"Només usuaris del meu domini @xtec.cat"</em>) i obtindràs un enllaç web llest per utilitzar!
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Recepta 7: NotebookLM -->
+      <section id="recepta-notebooklm" class="content-section">
+        <span class="section-badge">Recepta 7 · Eina d'Impacte</span>
+        <h2 class="section-title"><span class="icon">🎙️</span> 8. NotebookLM com a "Ràdio Escolar" i Estudi Guiat</h2>
+        <p>
+          <strong>NotebookLM</strong> (l'assistent d'investigació de Google basat en Gemini) disposa d'una funció màgica: la <strong>Guia d'Àudio (Deep Dive)</strong>.
+        </p>
+
+        <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.5rem; margin: 1.5rem 0;">
+          <h4 style="color: #1a73e8; margin-bottom: 0.75rem;">Com crear un Pòdcast Educatiu en 2 minuts amb NotebookLM:</h4>
+          <ol style="padding-left: 1.2rem; margin-bottom: 0;">
+            <li style="margin-bottom: 0.5rem;">Entra a <a href="https://notebooklm.google.com" target="_blank" rel="noopener"><strong>notebooklm.google.com</strong></a> amb el teu compte XTEC.</li>
+            <li style="margin-bottom: 0.5rem;">Crea un nou quadern i puja les teves fonts: el text d'un tema de medi, la programació d'una sortida o el Projecte Educatiu de Centre (PEC).</li>
+            <li style="margin-bottom: 0.5rem;">A la pestanya <em>Guia del quadern</em>, fes clic a <strong>"Generar conversa d'àudio"</strong> (Audio Overview).</li>
+            <li>En 1 minut, dos locutors d'IA mantindran una conversa radiofònica animada i divertida analitzant i explicant els punts clau del document.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 9. Repte del Laboratori -->
+      <section id="repte-lab" class="content-section">
+        <span class="section-badge">Repte Pràctic</span>
+        <h2 class="section-title"><span class="icon">🚀</span> 9. Repte del Laboratori per al Claustre</h2>
+        <p>
+          Per experimentar l'efecte "WOW", cada parella de docents triarà una d'aquestes dues experiències:
+        </p>
+
+        <div class="activity-card">
+          <span class="activity-badge">Repte d'Automatització Exprés</span>
+          <h3 class="activity-title">La teva primera creació màgica</h3>
+          <ul>
+            <li><strong>Opció 1:</strong> Demana a Gemini un script de Google Apps Script per crear un formulari d'autoavaluació del teu cicle. Executa'l a `script.google.com` i comprova com apareix a Drive.</li>
+            <li><strong>Opció 2:</strong> Demana a Gemini el codi d'un joc HTML (com la Ruleta de Sorteig d'alumnes), desa'l com a `joc.html` al teu escriptori i fes-hi doble clic per provar-lo!</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Navegació entre blocs -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 3rem;">
+        <a href="multimedia.html" class="btn btn-outline">← Anar a Recursos Multimèdia</a>
+        <a href="prompts.html" class="btn btn-primary">Anar a la Promptoteca Completa →</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Inici</a>
+        <a href="bloc1.html">Bloc 1</a>
+        <a href="bloc2.html">Bloc 2</a>
+        <a href="bloc3.html">Bloc 3</a>
+        <a href="multimedia.html">Multimèdia</a>
+        <a href="laboratori.html">Laboratori IA</a>
+        <a href="prompts.html">Promptoteca</a>
+      </div>
+      <p>Materials de formació docent · Àrea TEDR de Lleida · Departament d'Educació · Generalitat de Catalunya</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

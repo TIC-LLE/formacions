@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multimèdia amb IA: Imatge, So i Vídeo | IA a Primària</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .tool-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .tool-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+    .tool-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    .tool-icon-title {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .tool-icon {
+      font-size: 1.6rem;
+    }
+    .free-badge {
+      background: #dcfce7;
+      color: #15803d;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+    }
+    .free-badge.pro-edu {
+      background: #e0e7ff;
+      color: #4338ca;
+    }
+    .free-badge.local {
+      background: #fef3c7;
+      color: #b45309;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header & Nav -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo-link">
+        <div class="logo-brand-group">
+          <span class="logo-dept">Departament d'Educació</span>
+          <span class="logo-area-badge">Àrea TEDR de Lleida</span>
+        </div>
+        <div class="logo-divider"></div>
+        <span class="logo-title">IA a l'Educació Primària</span>
+      </a>
+      <button class="menu-toggle" aria-label="Obrir menú">☰</button>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link nav-link-single">Inici</a></li>
+          <li>
+            <a href="bloc1.html" class="nav-link">
+              <span class="nav-num">Bloc 1</span>
+              <span class="nav-title">Fonaments i Ètica</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloc2.html" class="nav-link">
+              <span class="nav-num">Bloc 2</span>
+              <span class="nav-title">Materials i DUA</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloc3.html" class="nav-link">
+              <span class="nav-num">Bloc 3</span>
+              <span class="nav-title">Avaluació i Aula</span>
+            </a>
+          </li>
+          <li>
+            <a href="multimedia.html" class="nav-link active">
+              <span class="nav-num">Multimèdia</span>
+              <span class="nav-title">Imatge, So i Vídeo</span>
+            </a>
+          </li>
+          <li>
+            <a href="laboratori.html" class="nav-link">
+              <span class="nav-num">Laboratori IA</span>
+              <span class="nav-title">Vibe Coding</span>
+            </a>
+          </li>
+          <li><a href="prompts.html" class="nav-link nav-link-single">Promptoteca</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag">
+        <span>🎬 Recursos Multimèdia · Imatge, So i Vídeo</span>
+      </div>
+      <h1 class="hero-title">Recursos Multimèdia amb IA per a Primària</h1>
+      <p class="hero-subtitle">
+        Selecció d'eines gratuïtes d'imatge, veu, composició musical en català i subtitulació en local (RGPD) per enriquir les situacions d'aprenentatge i atendre la diversitat a l'aula.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Layout with Sticky Sidebar -->
+  <div class="container page-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="page-sidebar">
+      <div class="sidebar-title">Estacions Multimèdia</div>
+      <ul class="sidebar-nav">
+        <li><a href="#intro" class="active">1. DUA i Multimodalitat</a></li>
+        <li><a href="#estacio-imatge">2. Imatge i Disseny Visual</a></li>
+        <li><a href="#estacio-veu">3. Veu i Audiocontes</a></li>
+        <li><a href="#estacio-musica">4. Cançons en Català (Suno)</a></li>
+        <li><a href="#estacio-subtitols">5. Subtítols i Vídeo (Buzz)</a></li>
+        <li><a href="#taula-resum">6. Taula Resum d'Eines</a></li>
+        <li><a href="#repte-multimedia">7. Repte Multimèdia</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- 1. Introducció -->
+      <section id="intro" class="content-section">
+        <span class="section-badge">Accessibilitat i DUA</span>
+        <h2 class="section-title"><span class="icon">✨</span> 1. Per què crear recursos multimèdia a Primària?</h2>
+        <p>
+          A l'Educació Primària, el canal visual i auditiu és decisiu: ajuda els infants a consolidar conceptes abstractes, connecta amb les emocions i permet a l'alumnat que encara no domina la lectoescriptura (Cicle Inicial, NESE o nouvinguts) accedir al coneixement amb plena autonomia.
+        </p>
+        <p>
+          En aquesta secció trobareu eines <strong>100% gratuïtes o amb modalitats educatives lliures</strong> per dissenyar materials visuals, sonors i audiovisuals sense necessitat de ser experts en edició digital.
+        </p>
+
+        <div class="callout callout-info">
+          <div class="callout-title">🔒 La regla d'or de la privadesa escolar en eines multimèdia</div>
+          <p style="margin-bottom: 0;">
+            En plataformes en línia de generació o clonació de veu/vídeo, <strong>MAI s'han de carregar fotografies ni enregistraments de veu d'alumnes</strong>. Utilitzarem sempre eines instal·lades en local (com Buzz Captions) o generadors sintètics des de zero.
+          </p>
+        </div>
+      </section>
+
+      <!-- 2. Imatge i Disseny Visual -->
+      <section id="estacio-imatge" class="content-section">
+        <span class="section-badge">Estació 1</span>
+        <h2 class="section-title"><span class="icon">🎨</span> 2. Imatge i Disseny Visual per a Contes i Racons</h2>
+        <p>
+          Eines per generar il·lustracions infantils a mida, targetes de vocabulari (flashcards), cartelleria d'aula i personatges per a projectes.
+        </p>
+
+        <div class="tool-grid">
+          
+          <!-- Canva for Education -->
+          <div class="tool-card">
+            <div>
+              <div class="tool-header">
+                <div class="tool-icon-title">
+                  <span class="tool-icon">🖌️</span>
+                  <div>
+                    <strong style="font-size: 1.1rem; color: #0f172a;">Canva for Education</strong>
+                  </div>
+                </div>
+                <span class="free-badge pro-edu">100% Gratuït Docents</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                Accés complet a totes les funcions Premium de Canva gratuïtament per a professors amb compte XTEC / d'escola.
+              </p>
+              <ul style="font-size: 0.82rem; padding-left: 1.1rem; margin-bottom: 1rem; color: #334155;">
+                <li><strong>Magic Media:</strong> Generació d'imatges i gràfics a partir de descripcions en català.</li>
+                <li><strong>Esborrador Màgic:</strong> Elimina objectes o fons d'un dibuix en 1 clic.</li>
+                <li><strong>Plantilles de Primària:</strong> Milers de fitxes, diplomes, contes i targetes editables.</li>
+              </ul>
+            </div>
+            <a href="https://www.canva.com/edu-signup/" target="_blank" rel="noopener" class="btn btn-outline" style="text-align: center; justify-content: center; font-size: 0.85rem;">Sol·licitar Canva Edu ↗</a>
+          </div>
+
+          <!-- Adobe Firefly -->
+          <div class="tool-card">
+            <div>
+              <div class="tool-header">
+                <div class="tool-icon-title">
+                  <span class="tool-icon">🔥</span>
+                  <div>
+                    <strong style="font-size: 1.1rem; color: #0f172a;">Adobe Firefly</strong>
+                  </div>
+                </div>
+                <span class="free-badge">25 crèdits/mes</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                El generador d'imatges més respectuós amb els drets d'autor (entrenat exclusivament amb Adobe Stock).
+              </p>
+              <ul style="font-size: 0.82rem; padding-left: 1.1rem; margin-bottom: 1rem; color: #334155;">
+                <li><strong>Farciment Generatiu:</strong> Afegeix personatges, animals o elements a una foto existent pintant amb un pinzell.</li>
+                <li><strong>Efectes de text:</strong> Lletres divertides fetes de xocolata, branques, neu o llapis.</li>
+              </ul>
+            </div>
+            <a href="https://firefly.adobe.com" target="_blank" rel="noopener" class="btn btn-outline" style="text-align: center; justify-content: center; font-size: 0.85rem;">Obrir Adobe Firefly ↗</a>
+          </div>
+
+          <!-- Google Gemini / Imagen 3 -->
+          <div class="tool-card">
+            <div>
+              <div class="tool-header">
+                <div class="tool-icon-title">
+                  <span class="tool-icon">✨</span>
+                  <div>
+                    <strong style="font-size: 1.1rem; color: #0f172a;">Gemini (Imagen 3)</strong>
+                  </div>
+                </div>
+                <span class="free-badge pro-edu">Gratuït XTEC</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                Generador d'imatges integrat directament al xat de Google Gemini.
+              </p>
+              <ul style="font-size: 0.82rem; padding-left: 1.1rem; margin-bottom: 1rem; color: #334155;">
+                <li><strong>Directe i ràpid:</strong> Demana la imatge directament mentre redactes la teva situació d'aprenentatge.</li>
+                <li><strong>Exportació:</strong> Descarrega les imatges directament en alta resolució.</li>
+              </ul>
+            </div>
+            <a href="https://gemini.google.com" target="_blank" rel="noopener" class="btn btn-outline" style="text-align: center; justify-content: center; font-size: 0.85rem;">Obrir Gemini ↗</a>
+          </div>
+
+        </div>
+
+        <!-- Prompt per a Imatges -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>🖼️</span> Prompt per a Il·lustració de Conte Infantil en Aquarel·la
+            </div>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+          <div class="prompt-body">A warm and gentle children's storybook illustration of [descripció de l'escena: un esquirol simpàtic amb ulleres llegint un llibre sota un gran roure a la tardor], soft pastel colors, watercolor and delicate ink contours, cozy lighting, clean white background, high resolution, storybook style, no text.</div>
+          <div class="prompt-explanation">
+            <strong>Consell:</strong> Pots enganxar aquest prompt a Canva, Adobe Firefly o Gemini canviant només la part entre claudàtors `[...]`.
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Veu i Audiocontes -->
+      <section id="estacio-veu" class="content-section">
+        <span class="section-badge">Estació 2</span>
+        <h2 class="section-title"><span class="icon">🎙️</span> 3. Veu, Locucions i Audiocontes (Accessibilitat DUA)</h2>
+        <p>
+          Convertir textos escrits en locucions naturals d'àudio permet crear <strong>audiocontes</strong>, oferir suport a l'alumnat amb dislèxia i dinamitzar els racons de lectura autònoma mitjançant codis QR.
+        </p>
+
+        <div class="tool-grid">
+          
+          <!-- ElevenLabs -->
+          <div class="tool-card">
+            <div>
+              <div class="tool-header">
+                <div class="tool-icon-title">
+                  <span class="tool-icon">🗣️</span>
+                  <div>
+                    <strong style="font-size: 1.1rem; color: #0f172a;">ElevenLabs</strong>
+                  </div>
+                </div>
+                <span class="free-badge">10.000 caràcters/mes</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                La tecnologia de síntesi de veu més expressiva del món, amb un català impecable i veus emotives.
+              </p>
+              <ul style="font-size: 0.82rem; padding-left: 1.1rem; margin-bottom: 1rem; color: #334155;">
+                <li><strong>Veus de personatges:</strong> Veus de narrador de contes, veus divertides de fades, monstres o animals.</li>
+                <li><strong>Efectes sonors (Sound Effects):</strong> Genera sorolls ambientals a partir de text (ex: <em>"pluja sobre les fulles", "passos a la neu"</em>).</li>
+              </ul>
+            </div>
+            <a href="https://elevenlabs.io" target="_blank" rel="noopener" class="btn btn-outline" style="text-align: center; justify-content: center; font-size: 0.85rem;">Obrir ElevenLabs ↗</a>
+          </div>
+
+          <!-- TTSMaker -->
+          <div class="tool-card">
+            <div>
+              <div class="tool-header">
+                <div class="tool-icon-title">
+                  <span class="tool-icon">📢</span>
+                  <div>
+                    <strong style="font-size: 1.1rem; color: #0f172a;">TTSMaker (Gratuït)</strong>
+                  </div>
+                </div>
+                <span class="free-badge">100% Gratuït / Sense límit</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                Generador de text a veu en línia completament lliure, sense registre obligatori i amb descàrrega directa en MP3.
+              </p>
+              <ul style="font-size: 0.82rem; padding-left: 1.1rem; margin-bottom: 1rem; color: #334155;">
+                <li><strong>Múltiples veus en català:</strong> Tria diferents accents i velocitats de reproducció.</li>
+                <li><strong>Ideal per a fitxes:</strong> Descarrega l'àudio d'una lectura curta i genera un QR per enganxar-lo al paper.</li>
+              </ul>
+            </div>
+            <a href="https://ttsmaker.com" target="_blank" rel="noopener" class="btn btn-outline" style="text-align: center; justify-content: center; font-size: 0.85rem;">Obrir TTSMaker ↗</a>
+          </div>
+
+        </div>
+
+        <div class="callout callout-success">
+          <div class="callout-title">💡 La idea del Racó d'Escolta amb QR</div>
+          <p style="margin-bottom: 0;">
+            Genera l'àudio d'un conte amb ElevenLabs o TTSMaker, puja'l a la teva carpeta de Google Drive (amb enllaç públic de lectura) i crea un codi QR amb Canva. Els infants d'Infantil o 1r de Primària podran escanejar el QR amb la tauleta i escoltar el conte mentre miren les il·lustracions en paper!
+          </p>
+        </div>
+      </section>
+
+      <!-- 4. Música i Cançons Curriculars -->
+      <section id="estacio-musica" class="content-section">
+        <span class="section-badge">Estació 3</span>
+        <h2 class="section-title"><span class="icon">🎶</span> 4. Composició de Cançons Curriculars en Català (Suno)</h2>
+        <p>
+          La música és un accelerador de la memòria a llarg termini. Amb eines com <strong>Suno AI</strong>, podem compondre cançons infantils personalitzades sobre qualsevol contingut del currículum (les taules de multiplicar, el cicle de l'aigua, el cos humà o les normes del pati).
+        </p>
+
+        <div class="tool-grid">
+          
+          <!-- Suno AI -->
+          <div class="tool-card" style="border-color: #f59e0b; background: linear-gradient(to bottom right, #ffffff, #fffbeb);">
+            <div>
+              <div class="tool-header">
+                <div class="tool-icon-title">
+                  <span class="tool-icon">🎵</span>
+                  <div>
+                    <strong style="font-size: 1.15rem; color: #b45309;">Suno AI (suno.com)</strong>
+                  </div>
+                </div>
+                <span class="free-badge">50 crèdits/dia (10 cançons)</span>
+              </div>
+              <p style="font-size: 0.88rem; color: #78350f; margin-bottom: 0.75rem;">
+                L'eina de generació musical més potent. Introdueixes la teva lletra en català i en 30 segons obtens dues versions cantades amb instruments i veus d'estudi.
+              </p>
+              <ul style="font-size: 0.82rem; padding-left: 1.1rem; margin-bottom: 1rem; color: #92400e;">
+                <li><strong>Suport català excel·lent:</strong> Pronunciació clara i ritme adaptat a la mètrica.</li>
+                <li><strong>Pla gratuït diari:</strong> Es renova cada 24 hores (mai et quedes sense crèdits).</li>
+              </ul>
+            </div>
+            <a href="https://suno.com" target="_blank" rel="noopener" class="btn btn-primary" style="text-align: center; justify-content: center; font-size: 0.85rem; background: #d97706; border-color: #d97706;">Obrir Suno AI ↗</a>
+          </div>
+
+        </div>
+
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">Com crear la teva cançó en 3 passos:</h3>
+        <ol style="padding-left: 1.2rem; margin-bottom: 1.5rem;">
+          <li style="margin-bottom: 0.5rem;"><strong>Generar la lletra:</strong> Demana a Gemini la lletra de la cançó amb rimes rodones i estructura clara `[Estrofa 1]`, `[Tornada]`, `[Estrofa 2]`.</li>
+          <li style="margin-bottom: 0.5rem;"><strong>Configurar a Suno:</strong> Entra a <a href="https://suno.com" target="_blank" rel="noopener">suno.com</a> ➔ fes clic a <em>Create</em> ➔ activa el mode <strong>Custom</strong>.</li>
+          <li><strong>Enganxar i triar estil:</strong> Enganxa la lletra a la caixa de text i al camp <em>Style of Music</em> escriu: <br>
+            <code style="background: #f1f5f9; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">Children acoustic pop, cheerful, clapping, lively acoustic guitar, upbeat tempo, clear female vocals in Catalan</code>
+          </li>
+        </ol>
+
+        <!-- Prompt Suno -->
+        <div class="prompt-card">
+          <div class="prompt-header">
+            <div class="prompt-title">
+              <span>📝</span> Prompt per demanar la lletra a Gemini
+            </div>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+          <div class="prompt-body">Actua com a compositor/a de cançons infantils pedagògiques.
+
+Tasca: Escriu la lletra d'una cançó curta i molt alegre en català per memoritzar [Exemple: Les 8 comarques de Ponent i Lleida / Les taules de multiplicar del 6 i del 7 / Els hàbits saludables d'higiene i son].
+
+Estructura:
+[Verse 1]
+(4 versos senzills amb rima consonant)
+
+[Chorus]
+(Tornada molt repetitiva, divertida i fàcil de cantar per a nens de Primària)
+
+[Verse 2]
+(4 versos amb exemples concrets)
+
+[Chorus]
+
+[Outro]
+(Frase de tancament amb energia)</div>
+          <div class="prompt-explanation">
+            <strong>Resultat:</strong> Copia el text generat directament dins de Suno per gaudir de la teva cançó d'aula!
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Transcripció, Subtitulació i Vídeo -->
+      <section id="estacio-subtitols" class="content-section">
+        <span class="section-badge">Estació 4</span>
+        <h2 class="section-title"><span class="icon">📝</span> 5. Transcripció, Subtitulació i Vídeo (Privadesa RGPD)</h2>
+        <p>
+          La subtitulació fa accessibles els vídeos per a tothom (alumnat amb dificultats auditives, aules amb soroll ambiental o aprenents de llengua). A més, transcriure entrevistes de projectes o reunions estalvia molt de temps.
+        </p>
+
+        <div class="tool-grid">
+          
+          <!-- Buzz Captions -->
+          <div class="tool-card" style="border-color: #10b981; background: linear-gradient(to bottom right, #ffffff, #f0fdf4);">
+            <div>
+              <div class="tool-header">
+                <div class="tool-icon-title">
+                  <span class="tool-icon">🐝</span>
+                  <div>
+                    <strong style="font-size: 1.15rem; color: #065f46;">Buzz Captions (Open Source)</strong>
+                  </div>
+                </div>
+                <span class="free-badge local">100% Local / RGPD Segur</span>
+              </div>
+              <p style="font-size: 0.88rem; color: #064e3b; margin-bottom: 0.75rem;">
+                Aplicació d'escriptori gratuïta basada en el motor Whisper d'OpenAI que funciona <strong>completament en local al teu ordinador</strong> (sense internet).
+              </p>
+              <ul style="font-size: 0.82rem; padding-left: 1.1rem; margin-bottom: 1rem; color: #047857;">
+                <li><strong>Màxima privadesa:</strong> Cap vídeo ni veu dels teus alumnes surt del teu ordinador.</li>
+                <li><strong>Generació de subtítols (.srt):</strong> Genera arxius de subtítols sincronitzats a la perfecció en català.</li>
+              </ul>
+            </div>
+            <a href="https://github.com/chidiwilliams/buzz" target="_blank" rel="noopener" class="btn btn-outline" style="text-align: center; justify-content: center; font-size: 0.85rem; border-color: #10b981; color: #065f46;">Descarregar Buzz (Windows/Mac) ↗</a>
+          </div>
+
+          <!-- TurboScribe -->
+          <div class="tool-card">
+            <div>
+              <div class="tool-header">
+                <div class="tool-icon-title">
+                  <span class="tool-icon">⚡</span>
+                  <div>
+                    <strong style="font-size: 1.1rem; color: #0f172a;">TurboScribe</strong>
+                  </div>
+                </div>
+                <span class="free-badge">3 arxius/dia (fins a 30 min)</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                Servei de transcripció al núvol ultraràpid per convertir arxius d'àudio o vídeo llargs en documents de text en català.
+              </p>
+              <ul style="font-size: 0.82rem; padding-left: 1.1rem; margin-bottom: 1rem; color: #334155;">
+                <li><strong>Reconeixement de parlants:</strong> Identifica qui parla en cada moment (Persona 1, Persona 2).</li>
+                <li><strong>Exportació:</strong> Descarrega en Word, PDF o text pla.</li>
+              </ul>
+            </div>
+            <a href="https://turboscribe.ai" target="_blank" rel="noopener" class="btn btn-outline" style="text-align: center; justify-content: center; font-size: 0.85rem;">Obrir TurboScribe ↗</a>
+          </div>
+
+          <!-- CapCut Web / Clipchamp -->
+          <div class="tool-card">
+            <div>
+              <div class="tool-header">
+                <div class="tool-icon-title">
+                  <span class="tool-icon">🎬</span>
+                  <div>
+                    <strong style="font-size: 1.1rem; color: #0f172a;">Clipchamp / CapCut Web</strong>
+                  </div>
+                </div>
+                <span class="free-badge">Gratuït</span>
+              </div>
+              <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                Editors de vídeo al navegador que incorporen subtitulació animada automàtica amb estil colorit.
+              </p>
+              <ul style="font-size: 0.82rem; padding-left: 1.1rem; margin-bottom: 1rem; color: #334155;">
+                <li><strong>Subtítols automàtics dinàmics:</strong> Les paraules s'il·luminen mentre es pronuncien.</li>
+                <li><strong>Neteja de so:</strong> Elimina el soroll de fons de les gravacions d'aula.</li>
+              </ul>
+            </div>
+            <a href="https://clipchamp.com" target="_blank" rel="noopener" class="btn btn-outline" style="text-align: center; justify-content: center; font-size: 0.85rem;">Obrir Clipchamp ↗</a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 6. Taula Resum -->
+      <section id="taula-resum" class="content-section">
+        <span class="section-badge">Guia Ràpida</span>
+        <h2 class="section-title"><span class="icon">📊</span> 6. Taula Resum d'Eines Multimèdia per al Docent</h2>
+
+        <div style="overflow-x: auto; margin: 1.5rem 0;">
+          <table style="width: 100%; border-collapse: collapse; background: white; border: 1px solid var(--border); font-size: 0.9rem;">
+            <thead>
+              <tr style="background: #f1f5f9; border-bottom: 2px solid var(--border); text-align: left;">
+                <th style="padding: 0.75rem 1rem;">Eina</th>
+                <th style="padding: 0.75rem 1rem;">Format / Tipus</th>
+                <th style="padding: 0.75rem 1rem;">Pla Gratuït</th>
+                <th style="padding: 0.75rem 1rem;">Millor Ús a Primària</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem 1rem;"><strong>Canva for Education</strong></td>
+                <td style="padding: 0.75rem 1rem;">Imatge i Maquetació</td>
+                <td style="padding: 0.75rem 1rem;"><span class="free-badge pro-edu">100% Pro Gratuït</span></td>
+                <td style="padding: 0.75rem 1rem;">Contes il·lustrats, cartells d'aula i flashcards.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem 1rem;"><strong>Suno AI</strong></td>
+                <td style="padding: 0.75rem 1rem;">Música i Cançons</td>
+                <td style="padding: 0.75rem 1rem;"><span class="free-badge">50 crèdits/dia</span></td>
+                <td style="padding: 0.75rem 1rem;">Cançons curriculars per memoritzar conceptes.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem 1rem;"><strong>ElevenLabs</strong></td>
+                <td style="padding: 0.75rem 1rem;">Veu i Locucions (TTS)</td>
+                <td style="padding: 0.75rem 1rem;"><span class="free-badge">10.000 caràcters/mes</span></td>
+                <td style="padding: 0.75rem 1rem;">Audiocontes i locucions per a racons d'escolta.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem 1rem;"><strong>TTSMaker</strong></td>
+                <td style="padding: 0.75rem 1rem;">Text a Veu ràpid</td>
+                <td style="padding: 0.75rem 1rem;"><span class="free-badge">Sense Límit</span></td>
+                <td style="padding: 0.75rem 1rem;">Locució de fitxes per a alumnat nouvingut/NESE.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: 0.75rem 1rem;"><strong>Buzz Captions</strong></td>
+                <td style="padding: 0.75rem 1rem;">Subtitulació Local</td>
+                <td style="padding: 0.75rem 1rem;"><span class="free-badge local">Open Source / Local</span></td>
+                <td style="padding: 0.75rem 1rem;">Subtitular vídeos d'alumnes amb 100% de privadesa.</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem 1rem;"><strong>Adobe Firefly</strong></td>
+                <td style="padding: 0.75rem 1rem;">Imatge i Edició</td>
+                <td style="padding: 0.75rem 1rem;"><span class="free-badge">25 crèdits/mes</span></td>
+                <td style="padding: 0.75rem 1rem;">Farciment generatiu ètic sense copyright.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 7. Repte Multimèdia -->
+      <section id="repte-multimedia" class="content-section">
+        <span class="section-badge">Repte d'Aula</span>
+        <h2 class="section-title"><span class="icon">🚀</span> 7. Repte Multimèdia per al Claustre</h2>
+
+        <div class="activity-card">
+          <span class="activity-badge">Taller Creatiu · 20 minuts</span>
+          <h3 class="activity-title">Crea la teva primera cançó o conte sonor d'aula</h3>
+          <p>Trieu una de les següents opcions per equips de cicle:</p>
+          <ol class="activity-steps">
+            <li><strong>Opció A (La Cançó Curricular amb Suno):</strong> Demaneu a Gemini una lletra en català sobre un tema del vostre cicle, entreu a <a href="https://suno.com" target="_blank" rel="noopener">suno.com</a> i genereu la vostra primera cançó infantil en 1 minut!</li>
+            <li><strong>Opció B (L'Audioconte amb ElevenLabs):</strong> Redacteu un microconte de 3 paràgrafs, passeu-lo per <a href="https://elevenlabs.io" target="_blank" rel="noopener">elevenlabs.io</a> amb una veu expressiva de conte i descarregueu l'àudio MP3.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Navegació entre blocs -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 3rem;">
+        <a href="bloc3.html" class="btn btn-outline">← Anar al Bloc 3: Avaluació i Aula</a>
+        <a href="laboratori.html" class="btn btn-primary">Anar al Laboratori IA →</a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Inici</a>
+        <a href="bloc1.html">Bloc 1</a>
+        <a href="bloc2.html">Bloc 2</a>
+        <a href="bloc3.html">Bloc 3</a>
+        <a href="multimedia.html">Multimèdia</a>
+        <a href="laboratori.html">Laboratori IA</a>
+        <a href="prompts.html">Promptoteca</a>
+      </div>
+      <p>Materials de formació docent · Àrea TEDR de Lleida · Departament d'Educació · Generalitat de Catalunya</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

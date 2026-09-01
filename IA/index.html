@@ -12,17 +12,48 @@
   <header class="site-header">
     <div class="container nav-wrapper">
       <a href="index.html" class="logo-link">
-        <span class="logo-badge">XTEC · IA</span>
-        <span>IA a l'Educació Primària</span>
+        <div class="logo-brand-group">
+          <span class="logo-dept">Departament d'Educació</span>
+          <span class="logo-area-badge">Àrea TEDR de Lleida</span>
+        </div>
+        <div class="logo-divider"></div>
+        <span class="logo-title">IA a l'Educació Primària</span>
       </a>
       <button class="menu-toggle" aria-label="Obrir menú">☰</button>
       <nav>
         <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link active">Inici</a></li>
-          <li><a href="bloc1.html" class="nav-link">Bloc 1: Fonaments i Ètica</a></li>
-          <li><a href="bloc2.html" class="nav-link">Bloc 2: Materials i DUA</a></li>
-          <li><a href="bloc3.html" class="nav-link">Bloc 3: Avaluació i Aula</a></li>
-          <li><a href="prompts.html" class="nav-link">Promptoteca</a></li>
+          <li><a href="index.html" class="nav-link active nav-link-single">Inici</a></li>
+          <li>
+            <a href="bloc1.html" class="nav-link">
+              <span class="nav-num">Bloc 1</span>
+              <span class="nav-title">Fonaments i Ètica</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloc2.html" class="nav-link">
+              <span class="nav-num">Bloc 2</span>
+              <span class="nav-title">Materials i DUA</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloc3.html" class="nav-link">
+              <span class="nav-num">Bloc 3</span>
+              <span class="nav-title">Avaluació i Aula</span>
+            </a>
+          </li>
+          <li>
+            <a href="multimedia.html" class="nav-link">
+              <span class="nav-num">Multimèdia</span>
+              <span class="nav-title">Imatge, So i Vídeo</span>
+            </a>
+          </li>
+          <li>
+            <a href="laboratori.html" class="nav-link">
+              <span class="nav-num">Laboratori IA</span>
+              <span class="nav-title">Vibe Coding</span>
+            </a>
+          </li>
+          <li><a href="prompts.html" class="nav-link nav-link-single">Promptoteca</a></li>
         </ul>
       </nav>
     </div>
@@ -36,20 +67,20 @@
       </div>
       <h1 class="hero-title">Intel·ligència Artificial a l'Educació Primària</h1>
       <p class="hero-subtitle">
-        Una guia pràctica, ètica i competencial per integrar la IA com a copilot docent, atendre la diversitat a l'aula (DUA) i potenciar l'aprenentatge del nostre alumnat.
+        Una guia pràctica, ètica i competencial per integrar la IA com a copilot docent, atendre la diversitat a l'aula (DUA), crear recursos multimèdia i automatitzar tasques amb Apps Script.
       </p>
       <div class="hero-stats">
         <div class="stat-item">
-          <span>🎯</span> <strong>3 Blocs formatius</strong>
+          <span>🎯</span> <strong>3 Blocs + Multimèdia + Laboratori</strong>
         </div>
         <div class="stat-item">
           <span>🔒</span> <strong>Marc Ètic i RGPD a Catalunya</strong>
         </div>
         <div class="stat-item">
-          <span>📋</span> <strong>Banc de Prompts per a Primària</strong>
+          <span>🎬</span> <strong>Imatge, So i Vídeo</strong>
         </div>
         <div class="stat-item">
-          <span>🧩</span> <strong>Inclusió i DUA</strong>
+          <span>⚡</span> <strong>Google Apps Script & Vibe Coding</strong>
         </div>
       </div>
     </div>
@@ -112,6 +143,36 @@
         </div>
       </a>
 
+      <!-- Multimèdia -->
+      <a href="multimedia.html" class="module-card" style="border-color: #f59e0b; background: linear-gradient(to bottom right, #ffffff, #fffbeb);">
+        <div>
+          <span class="module-card-badge" style="background: #d97706; color: white;">Recursos Multimèdia</span>
+          <h3 class="module-card-title" style="color: #92400e;">🎬 Imatge, So, Cançons i Vídeo amb IA</h3>
+          <p class="module-card-desc">
+            Canva for Education, Adobe Firefly, generació de cançons en català amb Suno AI, locucions de contes amb ElevenLabs i subtitulació local segura amb Buzz Captions.
+          </p>
+        </div>
+        <div class="module-card-footer" style="color: #d97706;">
+          <span>Explorar Multimèdia</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <!-- Laboratori IA -->
+      <a href="laboratori.html" class="module-card" style="border-color: #c084fc; background: linear-gradient(to bottom right, #ffffff, #faf5ff);">
+        <div>
+          <span class="module-card-badge" style="background: #9333ea; color: white;">Laboratori Pràctic</span>
+          <h3 class="module-card-title" style="color: #581c87;">⚡ Automatització amb Google Apps Script i Vibe Coding</h3>
+          <p class="module-card-desc">
+            Generador automàtic de Google Forms en 3 segons, creació massiva de diplomes en PDF a Drive, disseny de jocs interactius en HTML (Ruleta, Passaparaula) i pòdcasts amb NotebookLM.
+          </p>
+        </div>
+        <div class="module-card-footer" style="color: #9333ea;">
+          <span>Entrar al Laboratori IA</span>
+          <span>→</span>
+        </div>
+      </a>
+
     </div>
 
     <!-- Extra Resources Card -->
@@ -135,11 +196,13 @@
         <a href="bloc1.html">Bloc 1</a>
         <a href="bloc2.html">Bloc 2</a>
         <a href="bloc3.html">Bloc 3</a>
+        <a href="multimedia.html">Multimèdia</a>
+        <a href="laboratori.html">Laboratori IA</a>
         <a href="prompts.html">Promptoteca</a>
       </div>
-      <p>Materials de formació docent · Competència Digital Docent en IA · Educació Primària</p>
+      <p>Materials de formació docent · Àrea TEDR de Lleida · Departament d'Educació · Generalitat de Catalunya</p>
       <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #94a3b8;">
-        Basat en els marcs del Departament d'Educació de la Generalitat de Catalunya i les eines de Google Workspace / Gemini.
+        Basat en el Marc de Competència Digital Docent en IA (CDD-IA) i l'ecosistema de Google Workspace for Education.
       </p>
     </div>
   </footer>
