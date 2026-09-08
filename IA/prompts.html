@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Promptoteca per a Primària | Banc de Prompts</title>
+  <title>Promptoteca per a Docents (Primària i Secundària) | Banc de Prompts</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
     .filter-bar {
@@ -42,12 +42,21 @@
           <span class="logo-area-badge">Àrea TEDR de Lleida</span>
         </div>
         <div class="logo-divider"></div>
-        <span class="logo-title">IA a l'Educació Primària</span>
+        <div class="logo-title">
+          <span class="logo-title-main">IA a l'Educació</span>
+          <span class="logo-title-sub">Primària i Secundària</span>
+        </div>
       </a>
       <button class="menu-toggle" aria-label="Obrir menú">☰</button>
       <nav>
         <ul class="nav-menu">
           <li><a href="index.html" class="nav-link nav-link-single">Inici</a></li>
+          <li>
+            <a href="bloc0.html" class="nav-link">
+              <span class="nav-num">Bloc 0</span>
+              <span class="nav-title">Inici Ràpid</span>
+            </a>
+          </li>
           <li>
             <a href="bloc1.html" class="nav-link">
               <span class="nav-num">Bloc 1</span>
@@ -84,9 +93,9 @@
       <div class="hero-tag">
         <span>📋 Recursos Llestos per a Utilitzar</span>
       </div>
-      <h1 class="hero-title">Promptoteca per a l'Educació Primària</h1>
+      <h1 class="hero-title">Promptoteca per a Docents (Primària i Secundària)</h1>
       <p class="hero-subtitle">
-        Col·lecció completa de plantilles de <em>prompts</em> dissenyades i testades per al dia a dia docent a les escoles catalanes. Fes clic a "Copiar Prompt", enganxa'l a Gemini i adapta els camps entre claudàtors `[...]`.
+        Col·lecció completa de plantilles de <em>prompts</em> dissenyades i testades per al dia a dia docent a les escoles i instituts de Catalunya. Fes clic a "Copiar Prompt", enganxa'l a Gemini i adapta els camps entre claudàtors `[...]`.
       </p>
     </div>
   </section>
@@ -98,6 +107,7 @@
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="all">Tots els Prompts</button>
       <button class="filter-btn" data-filter="gems">💎 Superprompts per a GEMS</button>
+      <button class="filter-btn" data-filter="secundaria">🎓 Secundària i Batxillerat</button>
       <button class="filter-btn" data-filter="comunicacio">Comunicació i Famílies</button>
       <button class="filter-btn" data-filter="tutoria">Tutoria i Convivència</button>
       <button class="filter-btn" data-filter="gestio">Gestió i Reunions</button>
@@ -219,6 +229,107 @@ Estil i principis de redacció:
 - Recorda sempre de manera automàtica al docent que no introdueixi dades identificatives d'alumnes per complir el RGPD.</div>
         <div class="prompt-explanation">
           <strong>Com configurar la Gem:</strong> L'aliat diari per redactar comunicacions de centre i actes de reunions en menys d'un minut.
+        </div>
+      </div>
+
+      <!-- PROMPTS SECUNDÀRIA I BATXILLERAT -->
+
+      <!-- Secundària 1: Tutor Socràtic -->
+      <div class="prompt-card" data-category="secundaria" style="border-color: #0284c7; background: linear-gradient(to bottom right, #ffffff, #f0f9ff);">
+        <div class="prompt-header" style="background: #e0f2fe;">
+          <div class="prompt-title">
+            <span>🎓</span> Tutor Socràtic d'Estudi Autònom (Per a l'Alumnat d'ESO i Batxillerat)
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag" style="background: #bae6fd; color: #0369a1;">Secundària · Estudi</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com el meu tutor docent particular de [especifica la matèria, ex: Història Contemporània de 4t d'ESO / Biologia de 1r de Batxillerat].
+
+El tema que estic estudiant és: [ex: La Guerra Freda i la descolonització / La respiració cel·lular i el cicle de Krebs].
+
+El teu paper NO és donar-me resums fets ni respondre per mi. La teva missió és seguir estrictament el mètode socràtic:
+1. Fes-me una sola pregunta conceptual concreta per avaluar el meu punt de partida.
+2. Espera la meva resposta:
+   - Si és encertada: valida el meu raonament en una línia i planteja'm una segona pregunta d'un nivell de dificultat superior o un dilema crític.
+   - Si és incompleta o incorrecta: no em diguis la solució directa; dona'm una pista breu o fes-me una contrapregunta perquè detecti el meu propi error.
+3. Condicions: Parla'm en català, to rigorós però proper, sense paràgrafs llargs. Comença fent-me la primera pregunta!</div>
+        <div class="prompt-explanation">
+          <strong>Per a l'aula d'ESO/Batxillerat:</strong> Ensenya aquest prompt als teus alumnes perquè utilitzin la IA per preparar exàmens i controlar el seu propi aprenentatge sense copiar.
+        </div>
+      </div>
+
+      <!-- Secundària 2: Preguntes Competencials PAU -->
+      <div class="prompt-card" data-category="secundaria" style="border-color: #0284c7; background: linear-gradient(to bottom right, #ffffff, #f0f9ff);">
+        <div class="prompt-header" style="background: #e0f2fe;">
+          <div class="prompt-title">
+            <span>📝</span> Dissenyador de Preguntes Competencials i Anàlisi Crítica (Tipus PAU)
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag" style="background: #bae6fd; color: #0369a1;">Secundària · Avaluació</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a membre de la comissió redactora de les Proves d'Accés a la Universitat (PAU) de Catalunya o com a docent d'ESO expert en avaluació competencial.
+
+Matèria: [ex: Història de la Filosofia / Geografia / Física].
+Nivell: [ex: 2n de Batxillerat / 4t d'ESO].
+Tema o text de referència: [Enganxa un fragment d'un text primari, una gràfica de dades o un cas pràctic].
+
+Tasca: Dissenya 3 preguntes competencials basades en aquest document:
+- Pregunta 1 (Identificació i comprensió): Extreure la tesi principal i definir dos conceptes clau segons el text.
+- Pregunta 2 (Anàlisi i relació): Comparar la postura del document amb un altre corrent o model teòric estudiat a la matèria.
+- Pregunta 3 (Posicionament crític i argumentació personal): Demanar a l'alumne que valori la vigència actual del problema aportant arguments fonamentats (màxim 150 paraules).
+
+Afegeix una rúbrica o pauta de correcció detallada amb puntuació orientativa i criteris de penalització. En català.</div>
+        <div class="prompt-explanation">
+          <strong>Aplicació docent:</strong> Permet dissenyar proves d'avaluació basades en fonts primàries i pensament crític en menys de dos minuts.
+        </div>
+      </div>
+
+      <!-- Secundària 3: Treball de Recerca -->
+      <div class="prompt-card" data-category="secundaria" style="border-color: #0284c7; background: linear-gradient(to bottom right, #ffffff, #f0f9ff);">
+        <div class="prompt-header" style="background: #e0f2fe;">
+          <div class="prompt-title">
+            <span>🔬</span> Assistent Metodològic per al Treball de Recerca (TR de Batxillerat)
+          </div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <span class="prompt-tag" style="background: #bae6fd; color: #0369a1;">Secundària · TR</span>
+            <button class="btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copiar Prompt
+            </button>
+          </div>
+        </div>
+        <div class="prompt-body">Actua com a tutor/a de Treballs de Recerca (TR) de Batxillerat a Catalunya.
+
+Context del projecte:
+- Àmbit: [ex: Ciències Socials / Biomedicina / Tecnologia].
+- Tema d'interès de l'alumne: [ex: L'impacte de les energies renovables a les comarques de Ponent].
+
+Tasca:
+1. Ajuda a formular 3 hipòtesis de recerca viables, acotades i verificables empíricament.
+2. Proposa una estructura d'índex per al treball (Marc teòric + Part pràctica empírica).
+3. Disseny de la part pràctica: Suggereix 2 instruments concrets de recollida de dades (ex: model d'enquesta a la població o guió d'entrevista a 2 perfils experts concrets).
+4. Pautes de rigor: Quins criteris ha de seguir l'alumnat per citar les fonts segons la normativa APA 7a edició i utilitzar eines com Google NotebookLM de manera ètica sense incórrer en plagi. En català.</div>
+        <div class="prompt-explanation">
+          <strong>Per a tutors de TR:</strong> Guia excel·lent per acompanyar l'alumnat a la reunió inicial de definició del Treball de Recerca.
         </div>
       </div>
 
@@ -662,6 +773,7 @@ Funcionalitats imprescindibles:
     <div class="container">
       <div class="footer-links">
         <a href="index.html">Inici</a>
+        <a href="bloc0.html">Bloc 0</a>
         <a href="bloc1.html">Bloc 1</a>
         <a href="bloc2.html">Bloc 2</a>
         <a href="bloc3.html">Bloc 3</a>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bloc 2: Avaluació Competencial, SA i IA a l'Aula | IA a Primària</title>
+  <title>Bloc 2: Avaluació Competencial, SA i IA a l'Aula | IA a l'Educació</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,12 +17,21 @@
           <span class="logo-area-badge">Àrea TEDR de Lleida</span>
         </div>
         <div class="logo-divider"></div>
-        <span class="logo-title">IA a l'Educació Primària</span>
+        <div class="logo-title">
+          <span class="logo-title-main">IA a l'Educació</span>
+          <span class="logo-title-sub">Primària i Secundària</span>
+        </div>
       </a>
       <button class="menu-toggle" aria-label="Obrir menú">☰</button>
       <nav>
         <ul class="nav-menu">
           <li><a href="index.html" class="nav-link nav-link-single">Inici</a></li>
+          <li>
+            <a href="bloc0.html" class="nav-link">
+              <span class="nav-num">Bloc 0</span>
+              <span class="nav-title">Inici Ràpid</span>
+            </a>
+          </li>
           <li>
             <a href="bloc1.html" class="nav-link">
               <span class="nav-num">Bloc 1</span>
@@ -57,11 +66,11 @@
   <section class="hero">
     <div class="container">
       <div class="hero-tag">
-        <span>📊 Bloc 2 · Pedagogia, Avaluació i Alumnat</span>
+        <span>📊 Bloc 2 · Pedagogia, Avaluació i Alumnat (Primària i Secundària)</span>
       </div>
       <h1 class="hero-title">Avaluació Competencial, SA i IA a l'Aula</h1>
       <p class="hero-subtitle">
-        Com aplicar el Disseny Invers, crear rúbriques i dianes d'autoavaluació (Decret 175/2022), fomentar el pensament crític dels infants i utilitzar eines segures sense registre a l'aula de Primària.
+        Com aplicar el Disseny Invers, crear rúbriques (Primària i ESO Decret 175/2022, Batxillerat 171/2022), utilitzar la IA com a Tutor Socràtic, gestionar la integritat acadèmica i integrar eines segures a l'aula.
       </p>
     </div>
   </section>
@@ -76,10 +85,11 @@
         <li><a href="#intro" class="active">1. El Disseny Invers i l'Avaluació</a></li>
         <li><a href="#marcs-avaluacio">2. Avaluació Formativa i Formadora</a></li>
         <li><a href="#escala-esia">3. L'Escala ESIA d'Integració</a></li>
-        <li><a href="#pensament-critic-alumnes">4. Pensament Crític amb Alumnes</a></li>
-        <li><a href="#eines-segures-aula">5. Eines d'IA Segures a Primària</a></li>
-        <li><a href="#banc-prompts-avaluacio">6. Banc de Prompts d'Avaluació</a></li>
-        <li><a href="#repte-rubrica">7. Repte: Diana d'Autoavaluació</a></li>
+        <li><a href="#pensament-critic-alumnes">4. Pensament Crític a Primària</a></li>
+        <li><a href="#eines-segures-aula">5. Eines Segures a Primària</a></li>
+        <li><a href="#ia-secundaria">6. IA a Secundària: Tutor Socràtic i Plagi</a></li>
+        <li><a href="#banc-prompts-avaluacio">7. Banc de Prompts d'Avaluació</a></li>
+        <li><a href="#repte-rubrica">8. Repte Pràctic</a></li>
       </ul>
     </aside>
 
@@ -275,10 +285,96 @@
         </div>
       </section>
 
-      <!-- 6. Banc de Prompts d'Avaluació -->
+      <!-- 6. La IA a Secundària: Tutor Socràtic i Plagi -->
+      <section id="ia-secundaria" class="content-section">
+        <span class="section-badge">ESO, Batxillerat i FP</span>
+        <h2 class="section-title"><span class="icon">🎓</span> 6. La IA a Secundària: Tutor Socràtic, Plagi i Treball de Recerca</h2>
+        <p>
+          A partir de 3r d'ESO (14 anys fets), l'alumnat ja té accés autònom a la IA a casa seva. El repte docent a Secundària ja no és "prohibir-la", sinó <strong>redefinir com avaluem</strong> i ensenyar-los a utilitzar-la com un multiplicador del seu aprenentatge.
+        </p>
+
+        <!-- Tutor Socràtic -->
+        <div style="background: linear-gradient(to bottom right, #ffffff, #eff6ff); border: 2px solid #93c5fd; border-radius: var(--radius-md); padding: 1.5rem; margin: 1.5rem 0;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 1.5rem;">🏛️</span>
+              <h3 style="margin: 0; color: #1e40af; font-size: 1.15rem;">L'Estratègia del Tutor Socràtic</h3>
+            </div>
+            <span style="background: #dbeafe; color: #1e40af; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px;">Metodologia Clau</span>
+          </div>
+          <p style="font-size: 0.9rem; color: #334155; margin-bottom: 1rem;">
+            Si un alumne demana a Gemini <em>"Fes-me la redacció de la Guerra Civil"</em>, no aprèn res. Però si li ensenyem a programar la IA com a <strong>Tutor Socràtic</strong>, la màquina actua com un entrenador personal que fa preguntes reflexives, avalua el raonament pas a pas i <strong>no dona mai la solució directa</strong>.
+          </p>
+
+          <!-- Prompt Tutor Socràtic -->
+          <div class="prompt-card" style="margin-bottom: 0; background: white;">
+            <div class="prompt-header" style="background: #e0f2fe;">
+              <div class="prompt-title">
+                <span>💬</span> Prompt de Tutor Socràtic d'Estudi (Per a l'Alumnat)
+              </div>
+              <button class="btn-copy">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copiar Prompt
+              </button>
+            </div>
+            <div class="prompt-body">Actua com el meu tutor personal de [Matèria, ex: Història de 4t d'ESO / Física de 1r de Batxillerat].
+
+El tema que estic estudiant és [ex: La Restauració Borbònica a Catalunya / Les lleis de Newton].
+
+Regles imprescindibles del nostre diàleg:
+1. No em donis mai la resposta feta ni em facis el resum.
+2. Fes-me una sola pregunta clara a la vegada per comprovar si entenc el concepte.
+3. Espera la meva resposta: si és correcta, felicita'm breument i fes-me una pregunta més complexa. Si fallo, dona'm una pista conceptual perquè ho torni a intentar.
+4. Parla'm sempre en català, amb un to encoratjador i exigent. Comença fent-me la primera pregunta!</div>
+          </div>
+        </div>
+
+        <!-- La qüestió del Plagi i els Detectors -->
+        <h3 style="margin-top: 2rem; margin-bottom: 0.75rem;">Integritat Acadèmica: Com afrontar el Plagi a Secundària</h3>
+        <p>
+          La preocupació més gran a Secundària és: <em>"Com sé si aquest treball l'ha fet l'alumne o la IA?"</em>. Aquí tenim les dues conclusions pedagògiques clau:
+        </p>
+
+        <div class="comparison-grid">
+          <div class="comparison-box bad">
+            <h4>❌ El Mite dels "Detectors d'IA"</h4>
+            <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">
+              Eines com ZeroGPT, Turnitin AI o CopyLeaks <strong>NO són fiables</strong> (tenen taxes elevades de falsos positius, acusen textos ben redactats i penalitzen alumnes nouvinguts).
+            </p>
+            <p style="font-size: 0.82rem; color: #991b1b; margin-bottom: 0;">
+              <em>Advertència:</em> Cap administració educativa ni tribunal admet un detector d'IA com a prova jurídica de còpia.
+            </p>
+          </div>
+
+          <div class="comparison-box good">
+            <h4>✅ La Solució: Avaluar el Procés, no el Text</h4>
+            <p style="font-size: 0.88rem; margin-bottom: 0.5rem;">
+              La solució és el canvi d'enfocament avaluatiu:
+            </p>
+            <ul style="font-size: 0.82rem; padding-left: 1rem; margin-bottom: 0; color: #14532d;">
+              <li><strong>Defenses orals curtes:</strong> 2 minuts de preguntes a classe sobre el contingut del treball.</li>
+              <li><strong>Historial de versions:</strong> Revisar l'historial a Google Docs per veure el procés d'escriptura.</li>
+              <li><strong>Declaració d'ús de la IA:</strong> L'alumnat ha d'adjuntar els prompts que ha utilitzat i comentar críticament què ha millorat de la resposta de la màquina.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Treball de Recerca -->
+        <div class="callout callout-info" style="margin-top: 1.5rem;">
+          <div class="callout-title">📚 La IA al Treball de Recerca (TR) de Batxillerat</div>
+          <p style="margin-bottom: 0; font-size: 0.88rem;">
+            Al Treball de Recerca, la IA és un aliat potent per a la <strong>fase d'exploració</strong>: buscar línies d'investigació, contrastar fonts a <strong>Google NotebookLM</strong> (vegeu Bloc 3) i revisar l'estil formal. La normativa de Batxillerat (<strong>Decret 171/2022</strong>) premia la recerca empírica personal (entrevistes, enquestes, experiments) que la IA no pot fer per si mateixa.
+          </p>
+        </div>
+      </section>
+
+      <!-- 7. Banc de Prompts d'Avaluació -->
       <section id="banc-prompts-avaluacio" class="content-section">
         <span class="section-badge">Banc de Prompts</span>
-        <h2 class="section-title"><span class="icon">📋</span> 6. Banc de Prompts per a l'Avaluació Docent</h2>
+        <h2 class="section-title"><span class="icon">📋</span> 7. Banc de Prompts per a l'Avaluació Docent</h2>
 
         <!-- Prompt 1: Rúbrica Competencial -->
         <div class="prompt-card">
@@ -338,19 +434,18 @@ To: Proper, afectuós, assertiu i professional en català.</div>
 
       </section>
 
-      <!-- 7. Repte -->
+      <!-- 8. Repte -->
       <section id="repte-rubrica" class="content-section">
         <span class="section-badge">Taller Pràctic</span>
-        <h2 class="section-title"><span class="icon">🎯</span> 7. Repte: Crea una Diana d'Autoavaluació Visual</h2>
+        <h2 class="section-title"><span class="icon">🎯</span> 8. Repte: Crea un Instrument d'Avaluació Competencial</h2>
 
         <div class="activity-card">
           <span class="activity-badge">Activitat d'Equip · 20 minuts</span>
-          <h3 class="activity-title">Construir una diana d'avaluació per a un projecte de cicle</h3>
-          <p>En equips de cicle, dissenyarem un instrument d'autoavaluació visual:</p>
+          <h3 class="activity-title">Construir una diana o rúbrica de procés</h3>
+          <p>Trieu una de les dues opcions segons la vostra etapa docent:</p>
           <ol class="activity-steps">
-            <li>Trieu un repte o situació d'aprenentatge del vostre cicle (ex: *La fira dels experiments científics*).</li>
-            <li>Demaneu a Gemini 4 o 5 indicadors en primera persona (ex: <em>"He escoltat les idees dels meus companys", "He mantingut net l'espai de treball"</em>).</li>
-            <li>Genereu una taula o plantilla de diana de 4 nivells que els infants puguin pintar amb colors a l'aula.</li>
+            <li><strong>Opció A (Primària - Diana Visual):</strong> Trieu una situació d'aprenentatge (ex: *La fira dels experiments*), demaneu a Gemini 4 indicadors en primera persona (<em>"He escoltat els companys"</em>) i dissenyeu una diana de 4 nivells per pintar amb colors.</li>
+            <li><strong>Opció B (Secundària - Rúbrica de Procés o Defensa Oral):</strong> Trieu un projecte de matèria (ex: *Assaig històric a 4t d'ESO* o *Pràctica de laboratori a Batxillerat*) i demaneu a Gemini una rúbrica que avaluï la defensa oral, l'ús ètic de la IA i el procés d'investigació.</li>
           </ol>
         </div>
       </section>
@@ -369,6 +464,7 @@ To: Proper, afectuós, assertiu i professional en català.</div>
     <div class="container">
       <div class="footer-links">
         <a href="index.html">Inici</a>
+        <a href="bloc0.html">Bloc 0</a>
         <a href="bloc1.html">Bloc 1</a>
         <a href="bloc2.html">Bloc 2</a>
         <a href="bloc3.html">Bloc 3</a>

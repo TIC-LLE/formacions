@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IA a l'Educació Primària | Materials de Formació</title>
+  <title>IA a l'Educació · Primària i Secundària | Materials de Formació</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,12 +17,21 @@
           <span class="logo-area-badge">Àrea TEDR de Lleida</span>
         </div>
         <div class="logo-divider"></div>
-        <span class="logo-title">IA a l'Educació Primària</span>
+        <div class="logo-title">
+          <span class="logo-title-main">IA a l'Educació</span>
+          <span class="logo-title-sub">Primària i Secundària</span>
+        </div>
       </a>
       <button class="menu-toggle" aria-label="Obrir menú">☰</button>
       <nav>
         <ul class="nav-menu">
           <li><a href="index.html" class="nav-link active nav-link-single">Inici</a></li>
+          <li>
+            <a href="bloc0.html" class="nav-link">
+              <span class="nav-num">Bloc 0</span>
+              <span class="nav-title">Inici Ràpid</span>
+            </a>
+          </li>
           <li>
             <a href="bloc1.html" class="nav-link">
               <span class="nav-num">Bloc 1</span>
@@ -57,21 +66,26 @@
   <section class="hero">
     <div class="container">
       <div class="hero-tag">
-        <span>✨ Ecosistema Google Workspace & Gemini per a Docents de Primària</span>
+        <span>✨ Ecosistema Google Workspace & Gemini per a Docents (Primària, ESO i Batxillerat)</span>
       </div>
-      <h1 class="hero-title">Intel·ligència Artificial a l'Educació Primària</h1>
+      <h1 class="hero-title">Intel·ligència Artificial a l'Educació</h1>
       <p class="hero-subtitle">
-        Una guia pràctica, ètica i competencial per integrar la IA com a copilot docent, avaluar amb rigor (Decret 175/2022), crear materials didàctics multimèdia amb NotebookLM i automatitzar tasques amb Apps Script.
+        Una guia pràctica, ètica i competencial per integrar la IA com a copilot docent, avaluar amb rigor (Primària i Secundària), crear materials didàctics multimèdia amb NotebookLM, educar el pensament crític de l'alumnat i automatitzar tasques amb Apps Script.
       </p>
-      <div class="hero-stats">
+      <div style="margin-top: 1.75rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="bloc0.html" class="btn btn-primary" style="font-size: 1rem; padding: 0.7rem 1.4rem; box-shadow: 0 4px 12px rgba(26,115,232,0.25);">
+          🧭 Ets nou aquí? Comença pel Bloc 0: Guia del Curs ➔
+        </a>
+      </div>
+      <div class="hero-stats" style="margin-top: 2rem;">
         <div class="stat-item">
-          <span>🎯</span> <strong>3 Blocs + Laboratori IA</strong>
+          <span>🎯</span> <strong>Bloc 0 + 3 Blocs + Laboratori IA</strong>
         </div>
         <div class="stat-item">
-          <span>🔒</span> <strong>Marc Ètic i Pensament Crític</strong>
+          <span>🔒</span> <strong>Marc Legal: &lt;14 i &gt;14 anys (RGPD)</strong>
         </div>
         <div class="stat-item">
-          <span>📊</span> <strong>Avaluació & Google NotebookLM</strong>
+          <span>🧠</span> <strong>Tutor Socràtic & NotebookLM</strong>
         </div>
         <div class="stat-item">
           <span>⚡</span> <strong>Google Apps Script & Vibe Coding</strong>
@@ -86,19 +100,34 @@
     <div style="text-align: center; max-width: 700px; margin: 0 auto 2.5rem auto;">
       <h2>Itinerari Formatiu</h2>
       <p style="color: var(--text-muted);">
-        Aquest espai recull els continguts, plantilles de prompts, casos pràctics i activitats per al claustre. Fes clic a cada bloc per accedir al seu material complet:
+        Recursos aplicats tant per a mestres d'Educació Primària com per a professorat d'ESO, Batxillerat i FP. Fes clic a cada bloc per accedir als continguts complets:
       </p>
     </div>
 
     <div class="modules-grid">
       
+      <!-- Bloc 0 -->
+      <a href="bloc0.html" class="module-card" style="border-color: #38bdf8; background: linear-gradient(to bottom right, #ffffff, #f0f9ff);">
+        <div>
+          <span class="module-card-badge" style="background: #0284c7; color: white;">Bloc 0 · Comença Aquí</span>
+          <h3 class="module-card-title" style="color: #0369a1;">🧭 Guia d'Inici Ràpid i Panorama de la IA</h3>
+          <p class="module-card-desc">
+            Itineraris segons el teu objectiu, comparativa dels grans models (Gemini, ChatGPT, Claude, Perplexity, DeepSeek, Mistral) i mapa d'eines i dreceres del curs.
+          </p>
+        </div>
+        <div class="module-card-footer" style="color: #0284c7;">
+          <span>Explorar Bloc 0</span>
+          <span>→</span>
+        </div>
+      </a>
+
       <!-- Bloc 1 -->
       <a href="bloc1.html" class="module-card">
         <div>
           <span class="module-card-badge">Bloc 1</span>
           <h3 class="module-card-title">Desmitificant la IA, Marc Ètic/Legal i Gemini Docent</h3>
           <p class="module-card-desc">
-            Comprendre com funciona la IA generativa, les seves limitacions (al·lucinacions, biaixos, mandra intel·lectual), el marc de privadesa del Departament d'Educació (RGPD), les <strong>Gems de Gemini</strong> i el mètode de prompting PCRF.
+            Comprendre els LLM, al·lucinacions, biaix d'automatització, sostenibilitat, el marc del RGPD (la frontera dels 14 anys a l'ESO), <strong>Gems de Gemini</strong> i el mètode de prompting PCRF per a la gestió docent.
           </p>
         </div>
         <div class="module-card-footer">
@@ -113,7 +142,7 @@
           <span class="module-card-badge">Bloc 2</span>
           <h3 class="module-card-title">Avaluació Competencial, Situacions d'Aprenentatge i IA a l'Aula</h3>
           <p class="module-card-desc">
-            Generació de rúbriques i dianes d'autoavaluació competencials (Decret 175/2022), comentaris d'informes escolars, educació del <strong>pensament crític dels infants</strong> i eines 100% segures sense registre per a l'aula (AutoDraw, Teachable Machine).
+            Rúbriques competencials (Primària i ESO Decret 175/2022, Batxillerat 171/2022), la IA com a <strong>Tutor Socràtic</strong> d'estudi, com abordar el plagi i avaluar processos, i eines segures a l'aula (AutoDraw, Teachable Machine, Google Lens).
           </p>
         </div>
         <div class="module-card-footer">
@@ -128,7 +157,7 @@
           <span class="module-card-badge">Bloc 3</span>
           <h3 class="module-card-title">Materials Didàctics, Multimèdia i Google NotebookLM</h3>
           <p class="module-card-desc">
-            Recerca fiable sense al·lucinacions amb <strong>Google NotebookLM</strong>, il·lustracions de contes amb Canva Edu i Firefly, cançons curriculars en català amb <strong>Suno AI</strong>, QuestionWell i Napkin AI.
+            Recerca fiable sense al·lucinacions per a dossiers i Treballs de Recerca amb <strong>Google NotebookLM</strong>, presentacions en 20s amb <strong>Gamma App</strong>, QuestionWell (YouTube a Forms), esquemes amb Napkin AI i recursos visuals/sonors.
           </p>
         </div>
         <div class="module-card-footer">
@@ -154,18 +183,141 @@
 
     </div>
 
-    </div>
-
-    <!-- Extra Resources Card -->
+    <!-- Extra Resources Card: Promptoteca -->
     <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; margin-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; box-shadow: var(--shadow-sm);">
       <div>
-        <h3 style="margin-bottom: 0.5rem;">📚 Promptoteca: Banc de Prompts Llests per a Copiar</h3>
+        <h3 style="margin-bottom: 0.5rem;">💎 Promptoteca: Banc de Prompts Llests per a Copiar</h3>
         <p style="color: var(--text-muted); margin-bottom: 0; max-width: 650px;">
-          Accedeix a una col·lecció de plantilles de prompts dissenyades específicament per a l'Educació Primària (comunicats a famílies, adaptacions DUA, rúbriques, dinamització de tutoria i molt més).
+          Accedeix a una col·lecció de més de 20 plantilles de prompts per a Primària i Secundària (comunicats a famílies, adaptacions DUA, rúbriques competencials, tutor socràtic, Treballs de Recerca i Superprompts per a GEMS).
         </p>
       </div>
       <a href="prompts.html" class="btn btn-primary">Obrir la Promptoteca →</a>
     </div>
+
+    <!-- Secció: Marc Institucional i Recursos Oficials del Departament d'Educació -->
+    <section style="margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
+      <div style="text-align: center; max-width: 750px; margin: 0 auto 2.5rem auto;">
+        <span style="background: #e0f2fe; color: #0284c7; font-size: 0.78rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.5px;">Documentació Institucional</span>
+        <h2 style="margin-top: 0.75rem; margin-bottom: 0.5rem;">📚 Recursos Oficials del Departament d'Educació</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">
+          Guies marc, documents de referència de la Competència Digital Docent (CDD-IA) i materials de formació oberta del Departament d'Educació de la Generalitat de Catalunya per aprofundir en l'ús ètic i pedagògic de la IA.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem;">
+        
+        <!-- Recurs 1: Portal Oficial IA XTEC -->
+        <a href="https://projectes.xtec.cat/ia/" target="_blank" rel="noopener" class="tool-card" style="text-decoration: none; border-color: #38bdf8; background: linear-gradient(to bottom right, #ffffff, #f0f9ff);">
+          <div>
+            <div class="tool-header">
+              <div class="tool-icon-title">
+                <span class="tool-icon">🌐</span>
+                <div>
+                  <strong style="font-size: 1.05rem; color: #0369a1;">Portal Oficial de la IA en Educació</strong>
+                </div>
+              </div>
+              <span class="free-badge" style="background: #bae6fd; color: #0369a1;">XTEC · Generalitat</span>
+            </div>
+            <p style="font-size: 0.88rem; color: #334155; margin-bottom: 0.75rem;">
+              Repositori institucional central del Departament d'Educació que recull notícies, eines validades, bones pràctiques i recursos d'IA per a centres educatius.
+            </p>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 600; color: #0284c7; border-top: 1px solid #e0f2fe; padding-top: 0.75rem; margin-top: 0.5rem;">
+            <span>projectes.xtec.cat/ia</span>
+            <span>Obrir portal ↗</span>
+          </div>
+        </a>
+
+        <!-- Recurs 2: Guia per a Centres (PDF) -->
+        <a href="https://educacio.gencat.cat/web/.content/home/departament/publicacions/monografies/mon-digital/intelligencia-artificial-educacio/ia-educacio.pdf" target="_blank" rel="noopener" class="tool-card" style="text-decoration: none; border-color: #f59e0b; background: linear-gradient(to bottom right, #ffffff, #fffbeb);">
+          <div>
+            <div class="tool-header">
+              <div class="tool-icon-title">
+                <span class="tool-icon">🏛️</span>
+                <div>
+                  <strong style="font-size: 1.05rem; color: #b45309;">La Intel·ligència Artificial en l'Educació</strong>
+                </div>
+              </div>
+              <span class="free-badge" style="background: #fef3c7; color: #b45309;">Guia per a Centres · PDF</span>
+            </div>
+            <p style="font-size: 0.88rem; color: #451a03; margin-bottom: 0.75rem;">
+              Monografia oficial adreçada a equips directius i claustres docents. Estableix criteris d'actuació, ètica, protecció de dades i acords de centre per a l'ús de la IA.
+            </p>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 600; color: #d97706; border-top: 1px solid #fef3c7; padding-top: 0.75rem; margin-top: 0.5rem;">
+            <span>Monografies Món Digital</span>
+            <span>Descarregar PDF ↗</span>
+          </div>
+        </a>
+
+        <!-- Recurs 3: CDD-IA (Repositori) -->
+        <a href="https://repositori.educacio.gencat.cat/handle/20.500.12694/7714#page=1" target="_blank" rel="noopener" class="tool-card" style="text-decoration: none; border-color: #10b981; background: linear-gradient(to bottom right, #ffffff, #f0fdf4);">
+          <div>
+            <div class="tool-header">
+              <div class="tool-icon-title">
+                <span class="tool-icon">📜</span>
+                <div>
+                  <strong style="font-size: 1.05rem; color: #047857;">Competència Digital Docent en IA (CDD-IA)</strong>
+                </div>
+              </div>
+              <span class="free-badge" style="background: #dcfce7; color: #15803d;">Marc Docent</span>
+            </div>
+            <p style="font-size: 0.88rem; color: #064e3b; margin-bottom: 0.75rem;">
+              Document de referència del Departament d'Educació que detalla com la intel·ligència artificial s'alinea amb les àrees i nivells de la competència digital docent a Catalunya.
+            </p>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 600; color: #059669; border-top: 1px solid #dcfce7; padding-top: 0.75rem; margin-top: 0.5rem;">
+            <span>Repositori Educació Gencat</span>
+            <span>Consultar document ↗</span>
+          </div>
+        </a>
+
+        <!-- Recurs 4: Curs Odissea Binomi de Futur -->
+        <a href="https://odissea.xtec.cat/course/view.php?id=213441" target="_blank" rel="noopener" class="tool-card" style="text-decoration: none; border-color: #8b5cf6; background: linear-gradient(to bottom right, #ffffff, #faf5ff);">
+          <div>
+            <div class="tool-header">
+              <div class="tool-icon-title">
+                <span class="tool-icon">🎓</span>
+                <div>
+                  <strong style="font-size: 1.05rem; color: #6d28d9;">La IA i l'Educació: Un Binomi de Futur</strong>
+                </div>
+              </div>
+              <span class="free-badge" style="background: #ede9fe; color: #6d28d9;">Curs Odissea · 213441</span>
+            </div>
+            <p style="font-size: 0.88rem; color: #3b0764; margin-bottom: 0.75rem;">
+              Materials en obert de la formació institucional sobre fonaments de la IA generativa, impacte social, reptes ètics i reflexió pedagògica.
+            </p>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 600; color: #7c3aed; border-top: 1px solid #ede9fe; padding-top: 0.75rem; margin-top: 0.5rem;">
+            <span>odissea.xtec.cat</span>
+            <span>Accedir al curs obert ↗</span>
+          </div>
+        </a>
+
+        <!-- Recurs 5: Curs Odissea IA a l'Aula -->
+        <a href="https://odissea.xtec.cat/course/view.php?id=214781" target="_blank" rel="noopener" class="tool-card" style="text-decoration: none; border-color: #ec4899; background: linear-gradient(to bottom right, #ffffff, #fdf2f8);">
+          <div>
+            <div class="tool-header">
+              <div class="tool-icon-title">
+                <span class="tool-icon">💡</span>
+                <div>
+                  <strong style="font-size: 1.05rem; color: #be185d;">La IA a l'Aula: Millora del Procés d'E-A</strong>
+                </div>
+              </div>
+              <span class="free-badge" style="background: #fce7f3; color: #be185d;">Curs Odissea · 214781</span>
+            </div>
+            <p style="font-size: 0.88rem; color: #500724; margin-bottom: 0.75rem;">
+              Materials en obert de la formació institucional orientada a la pràctica d'aula: creació de situacions d'aprenentatge, metodologies actives i avaluació competencial.
+            </p>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; font-weight: 600; color: #db2777; border-top: 1px solid #fce7f3; padding-top: 0.75rem; margin-top: 0.5rem;">
+            <span>odissea.xtec.cat</span>
+            <span>Accedir al curs obert ↗</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
 
   </main>
 

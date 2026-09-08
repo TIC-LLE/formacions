@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bloc 1: Fonaments, Ètica i Gemini com a Copilot | IA a Primària</title>
+  <title>Bloc 1: Fonaments, Ètica i Gemini com a Copilot | IA a l'Educació</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,12 +17,21 @@
           <span class="logo-area-badge">Àrea TEDR de Lleida</span>
         </div>
         <div class="logo-divider"></div>
-        <span class="logo-title">IA a l'Educació Primària</span>
+        <div class="logo-title">
+          <span class="logo-title-main">IA a l'Educació</span>
+          <span class="logo-title-sub">Primària i Secundària</span>
+        </div>
       </a>
       <button class="menu-toggle" aria-label="Obrir menú">☰</button>
       <nav>
         <ul class="nav-menu">
           <li><a href="index.html" class="nav-link nav-link-single">Inici</a></li>
+          <li>
+            <a href="bloc0.html" class="nav-link">
+              <span class="nav-num">Bloc 0</span>
+              <span class="nav-title">Inici Ràpid</span>
+            </a>
+          </li>
           <li>
             <a href="bloc1.html" class="nav-link active">
               <span class="nav-num">Bloc 1</span>
@@ -199,14 +208,41 @@
         <span class="section-badge">Normativa i Protecció</span>
         <h2 class="section-title"><span class="icon">🔒</span> 4. Marc Ètic, Legal i RGPD a Catalunya</h2>
         <p>
-          A l'Educació Primària treballem amb menors d'edat (especialment vulnerables segons la legislació europea). El <strong>Reglament General de Protecció de Dades (RGPD)</strong> i les instruccions del Departament d'Educació de la Generalitat de Catalunya estableixen límits molt clars:
+          En l'àmbit educatiu treballem amb menors d'edat. El <strong>Reglament General de Protecció de Dades (RGPD)</strong>, la <strong>LOPD-GDD (art. 7)</strong> i les instruccions del Departament d'Educació de la Generalitat de Catalunya estableixen un doble marc segons l'edat de l'alumnat:
         </p>
 
+        <!-- Marc per Edats: Primària vs Secundària -->
+        <div class="comparison-grid" style="margin: 1.5rem 0;">
+          <div style="background: #f8fafc; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem;">
+            <span style="background: #e2e8f0; color: #334155; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px;">Etapa &lt; 14 Anys</span>
+            <h4 style="margin: 0.5rem 0 0.25rem 0; color: #1e293b;">Infantil, Primària i 1r / 2n d'ESO</h4>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.5rem;">
+              Els menors de 14 anys <strong>no tenen capacitat legal per consentir</strong> el tractament de les seves dades en plataformes d'IA obertes.
+            </p>
+            <ul style="font-size: 0.82rem; padding-left: 1.1rem; margin-bottom: 0; color: #334155;">
+              <li><strong>Norma:</strong> No poden crear comptes personals a eines com ChatGPT, Gemini o Copilot.</li>
+              <li><strong>Com s'usa:</strong> Eines 100% lliures sense registre (AutoDraw, Teachable Machine, Google Lens) o ús per part del docent a la PDI.</li>
+            </ul>
+          </div>
+
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-sm); padding: 1.25rem;">
+            <span style="background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 9999px;">Etapa &ge; 14 Anys</span>
+            <h4 style="margin: 0.5rem 0 0.25rem 0; color: #065f46;">3r / 4t d'ESO, Batxillerat i FP</h4>
+            <p style="font-size: 0.85rem; color: #166534; margin-bottom: 0.5rem;">
+              Segons la LOPD-GDD (art. 7), a partir dels 14 anys <strong>l'alumnat pot prestar el seu propi consentiment</strong> per a serveis digitals.
+            </p>
+            <ul style="font-size: 0.82rem; padding-left: 1.1rem; margin-bottom: 0; color: #14532d;">
+              <li><strong>Norma:</strong> Poden utilitzar eines d'IA amb el seu compte institucional sota pautes del centre.</li>
+              <li><strong>Com s'usa:</strong> Com a Tutor Socràtic, eina de recerca, programació o anàlisi de dades, sempre amb criteri ètic i citació de fonts.</li>
+            </ul>
+          </div>
+        </div>
+
         <div class="callout callout-danger">
-          <div class="callout-title">⛔ La Llista Vermella: El que MAI s'ha d'introduir a Gemini</div>
+          <div class="callout-title">⛔ La Llista Vermella: El que MAI s'ha d'introduir a eines d'IA obertes</div>
           <ul style="margin-bottom: 0; padding-left: 1.2rem;">
             <li><strong>Noms i cognoms reals</strong> d'alumnes o de les seves famílies.</li>
-            <li><strong>Dades personals sensibles:</strong> Informes mèdics, diagnòstics psicopedagògics individuals (NESE), situacions de vulnerabilitat social o dades familiars privades.</li>
+            <li><strong>Dades personals sensibles:</strong> Informes mèdics, diagnòstics psicopedagògics individuals (NESE/EAP), situacions de vulnerabilitat social o dades familiars privades.</li>
             <li><strong>Fotografies o vídeos de menors</strong> identificables.</li>
             <li><strong>Contrasenyes, DNIs o dades administratives privades</strong> del centre.</li>
           </ul>
@@ -528,7 +564,7 @@ Tasca: Redacta dos textos:
 
       <!-- Navegació entre blocs -->
       <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 3rem;">
-        <a href="index.html" class="btn btn-outline">← Tornar a l'Inici</a>
+        <a href="bloc0.html" class="btn btn-outline">← Anar al Bloc 0: Inici Ràpid</a>
         <a href="bloc2.html" class="btn btn-primary">Anar al Bloc 2: Avaluació i Aula →</a>
       </div>
 
@@ -540,6 +576,7 @@ Tasca: Redacta dos textos:
     <div class="container">
       <div class="footer-links">
         <a href="index.html">Inici</a>
+        <a href="bloc0.html">Bloc 0</a>
         <a href="bloc1.html">Bloc 1</a>
         <a href="bloc2.html">Bloc 2</a>
         <a href="bloc3.html">Bloc 3</a>
