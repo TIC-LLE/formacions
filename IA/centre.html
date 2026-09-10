@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directrius de Centre i Governança de la IA | IA a l'Educació</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Estils específics per a la pàgina de centre */
+    .risk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .risk-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.35rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      border-top: 5px solid;
+    }
+    .risk-card.prohibit { border-top-color: #ef4444; background: #fffbfb; }
+    .risk-card.alt { border-top-color: #f97316; background: #fffcf8; }
+    .risk-card.limitat { border-top-color: #0284c7; background: #f8fcff; }
+    .risk-card.minim { border-top-color: #10b981; background: #f8fdf9; }
+
+    .risk-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 0.75rem;
+      align-self: flex-start;
+    }
+    .risk-badge.prohibit { background: #fee2e2; color: #991b1b; }
+    .risk-badge.alt { background: #ffedd5; color: #9a3412; }
+    .risk-badge.limitat { background: #e0f2fe; color: #0369a1; }
+    .risk-badge.minim { background: #dcfce7; color: #166534; }
+
+    /* Taules estilitzades */
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      background: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+    .custom-table th, .custom-table td {
+      padding: 0.9rem 1.1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .custom-table th {
+      background: #f1f5f9;
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .custom-table tr:last-child td {
+      border-bottom: none;
+    }
+    .custom-table tr:hover td {
+      background: #f8fafc;
+    }
+
+    /* Targetes de sessions */
+    .session-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      border-left: 5px solid var(--primary);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .session-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .session-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Caixa copiable d'acords */
+    .nofc-box {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: var(--radius-md);
+      margin: 1.75rem 0;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+    .nofc-header {
+      background: #0f172a;
+      color: white;
+      padding: 1rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .nofc-content {
+      padding: 1.5rem;
+      background: #fbfcfe;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #1e293b;
+      max-height: 600px;
+      overflow-y: auto;
+      border-bottom: 1px solid var(--border);
+    }
+    .nofc-content h4 {
+      color: #0f172a;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.3rem;
+    }
+    .nofc-content h4:first-child {
+      margin-top: 0;
+    }
+    .nofc-content p, .nofc-content ul {
+      margin-bottom: 0.9rem;
+    }
+    .nofc-content ul {
+      padding-left: 1.4rem;
+    }
+
+    /* Badges de rol */
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #f1f5f9;
+      color: #334155;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header & Nav -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo-link">
+        <div class="logo-brand-group">
+          <span class="logo-dept">Departament d'Educació</span>
+          <span class="logo-area-badge">Àrea TEDR de Lleida</span>
+        </div>
+        <div class="logo-divider"></div>
+        <div class="logo-title">
+          <span class="logo-title-main">IA a l'Educació</span>
+          <span class="logo-title-sub">Primària i Secundària</span>
+        </div>
+      </a>
+      <button class="menu-toggle" aria-label="Obrir menú">☰</button>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link nav-link-single">Inici</a></li>
+          <li>
+            <a href="bloc0.html" class="nav-link">
+              <span class="nav-num">Bloc 0</span>
+              <span class="nav-title">Inici Ràpid</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloc1.html" class="nav-link">
+              <span class="nav-num">Bloc 1</span>
+              <span class="nav-title">Fonaments i Ètica</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloc2.html" class="nav-link">
+              <span class="nav-num">Bloc 2</span>
+              <span class="nav-title">Avaluació i Aula</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloc3.html" class="nav-link">
+              <span class="nav-num">Bloc 3</span>
+              <span class="nav-title">Materials i Multimèdia</span>
+            </a>
+          </li>
+          <li>
+            <a href="laboratori.html" class="nav-link">
+              <span class="nav-num">Laboratori IA</span>
+              <span class="nav-title">Vibe Coding</span>
+            </a>
+          </li>
+          <li>
+            <a href="centre.html" class="nav-link active">
+              <span class="nav-num" style="color: #7c3aed;">Directrius</span>
+              <span class="nav-title">de Centre</span>
+            </a>
+          </li>
+          <li><a href="prompts.html" class="nav-link nav-link-single">Promptoteca</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" style="background: linear-gradient(135deg, #ffffff 0%, #f5f3ff 100%);">
+    <div class="container">
+      <div class="hero-tag" style="background: #ede9fe; color: #6d28d9;">
+        <span>🏛️ Marc Institucional · Equips Directius, Coordinacions i Claustres</span>
+      </div>
+      <h1 class="hero-title" style="color: #4c1d95;">Directrius de Centre i Governança de la IA</h1>
+      <p class="hero-subtitle">
+        Com abordar l'impacte de la IA des de la perspectiva de centre: legislació europea (AI Act), frontera del RGPD, transició del model didàctic (Mantenir, Repensar, Transformar), avaluació autèntica davant el frau i <strong>esborrany d'acords llest per aprovar en Claustre i incorporar a la NOFC / EDC</strong>.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+        <a href="#acords-nofc" class="btn btn-primary" style="background: #7c3aed; border-color: #7c3aed;">
+          📋 Anar a l'Esborrany d'Acords per a la NOFC ➔
+        </a>
+        <a href="#transicio-didactica" class="btn btn-outline">
+          🔄 Model Mantenir-Repensar-Transformar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content with Sticky Sidebar -->
+  <div class="container page-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="page-sidebar">
+      <div class="sidebar-title">Índex de Directrius</div>
+      <ul class="sidebar-nav">
+        <li><a href="#introduccio" class="active">1. El Repte des del Centre</a></li>
+        <li><a href="#marc-normatiu">2. Marc Normatiu i AI Act</a></li>
+        <li><a href="#transicio-didactica">3. Mantenir, Repensar, Transformar</a></li>
+        <li><a href="#avaluacio-tracabilitat">4. Avaluació i Desmitificació del Plagi</a></li>
+        <li><a href="#governanca-rols">5. Governança i Línies Vermelles</a></li>
+        <li><a href="#pla-claustre">6. Proposta de Treball per a Claustres</a></li>
+        <li><a href="#acords-nofc">7. Esborrany d'Acords NOFC / EDC</a></li>
+        <li><a href="#assessorament">8. Pautes per a l'Assessorament</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- 1. El Repte des del Centre -->
+      <section id="introduccio" class="content-section">
+        <span class="section-badge" style="background: #ede9fe; color: #6d28d9;">Perspectiva Institucional</span>
+        <h2 class="section-title"><span class="icon">🎯</span> 1. Afrontar la IA des de la Perspectiva de Centre</h2>
+        <p>
+          L'accelerada penetració de la intel·ligència artificial generativa (IAG) planteja una <strong>reconfiguració de fons dels espais educatius</strong>. Lluny de ser una simple innovació instrumental, aquesta tecnologia impacta directament sobre l'accés al saber, el desenvolupament del pensament crític de l'adolescència i la validesa dels instruments tradicionals de qualificació.
+        </p>
+        <p>
+          El Departament d'Educació de la Generalitat de Catalunya estableix que la resposta dels centres de Secundària ha d'evitar dos extrems fallits:
+        </p>
+
+        <div class="comparison-grid">
+          <div class="comparison-box bad">
+            <h4 style="color: #991b1b;">❌ La Prohibició Inoperant</h4>
+            <p style="margin-bottom: 0; font-size: 0.9rem; color: #7f1d1d;">
+              Pretendre vetar la IA a casa o utilitzar programes "detectors de plagi" ineficaços genera un clima de desconfiança al claustre, provoca indefensió jurídica en l'alumnat i ignora una realitat tecnològica que l'alumnat ja utilitza de forma massiva.
+            </p>
+          </div>
+          <div class="comparison-box good">
+            <h4 style="color: #166534;">✅ L'Assimilació Crítica i Competencial</h4>
+            <p style="margin-bottom: 0; font-size: 0.9rem; color: #14532d;">
+              Situar la <strong>relació humana i el judici docent</strong> com a eixos centrals. Redissenyar l'avaluació cap a la traçabilitat del procés, educar l'alumnat en el sentit crític i aprovar criteris clars i compartits a les NOFC i a l'Estratègia Digital de Centre (EDC).
+            </p>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title">💡 La missió institucional de l'equip de centre</div>
+          <p style="margin-bottom: 0;">
+            El lideratge pedagògic de l'equip directiu i de les coordinacions no consisteix a "recomanar aplicacions", sinó a <strong>donar seguretat jurídica al professorat</strong>, protegir la privadesa dels menors, unificar criteris entre departaments i blindar l'esforç intel·lectual genuí de l'alumnat.
+          </p>
+        </div>
+      </section>
+
+      <!-- 2. Marc Normatiu, RGPD i AI Act -->
+      <section id="marc-normatiu" class="content-section">
+        <span class="section-badge" style="background: #fee2e2; color: #991b1b;">Seguretat Jurídica</span>
+        <h2 class="section-title"><span class="icon">⚖️</span> 2. Marc Normatiu, Protecció de Dades i l'AI Act Europeu</h2>
+        <p>
+          La incorporació de la IA s'emmarca en la confluència del <strong>Decret 175/2022</strong> (currículum competencial), el <strong>Marc de la Competència Digital Docent en IA</strong> (CDD-IA), les directrius de la UNESCO i el nou <strong>Reglament d'Intel·ligència Artificial de la Unió Europea (AI Act)</strong>.
+        </p>
+
+        <h3 style="margin-top: 1.5rem; margin-bottom: 0.75rem;">La Frontera dels 14 Anys (RGPD i LOPDGDD art. 7)</h3>
+        <p>
+          La normativa espanyola i catalana de protecció de dades fixa un criteri claríssim que tot institut ha d'aplicar de manera estricta a les seves programacions:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.25rem 0;">
+          <div style="background: #fff1f2; border: 1px solid #fecdd3; border-radius: var(--radius-md); padding: 1.25rem;">
+            <strong style="color: #9f1239; font-size: 1rem; display: block; margin-bottom: 0.4rem;">
+              🧒 Alumnat menor de 14 anys (1r i 2n d'ESO)
+            </strong>
+            <ul style="margin-bottom: 0; font-size: 0.88rem; color: #881337; padding-left: 1.2rem;">
+              <li><strong>Prohibició de registre individual</strong> en eines d'IAG comercial d'accés general (ChatGPT, Claude, etc.).</li>
+              <li>Ús exclusiu en <strong>entorns tancats i controlats pel centre</strong> o models educatius corporatius homologats sense recollida de dades.</li>
+              <li>Treball a l'aula sempre dinamitzat i projectat pel docent.</li>
+            </ul>
+          </div>
+
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-md); padding: 1.25rem;">
+            <strong style="color: #166534; font-size: 1rem; display: block; margin-bottom: 0.4rem;">
+              🧑 Alumnat a partir de 14 anys (3r, 4t ESO, Batxillerat i FP)
+            </strong>
+            <ul style="margin-bottom: 0; font-size: 0.88rem; color: #14532d; padding-left: 1.2rem;">
+              <li>Poden utilitzar serveis autoritzats sota <strong>consentiment exprés de les famílies</strong>.</li>
+              <li>Exigeix formació prèvia preceptiva en privadesa, petjada digital i biaixos.</li>
+              <li>Obligació de transparència: indicar sempre les instruccions emprades i declarar l'ús d'IA en els treballs.</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 0.75rem;">L'AI Act Europeu a l'Institut: Matriu de Riscos</h3>
+        <p>
+          El Reglament de la UE classifica les aplicacions d'intel·ligència artificial segons el seu nivell de perillositat per als drets fonamentals. Aquesta matriu determina què pot i què no pot fer un institut:
+        </p>
+
+        <div class="risk-grid">
+          <!-- Prohibit -->
+          <div class="risk-card prohibit">
+            <span class="risk-badge prohibit">Risc Inacceptable (Prohibit)</span>
+            <h4 style="margin-bottom: 0.5rem; color: #991b1b;">Reconeixement d'Emocions i Perfilat Social</h4>
+            <p style="font-size: 0.85rem; color: #7f1d1d; margin-bottom: 0.75rem;">
+              Programari destinat a monitorar estats anímics a l'aula, sistemes de videovigilància intel·ligent o rànquings conductuals de l'alumnat (<em>social scoring</em>).
+            </p>
+            <div style="margin-top: auto; font-size: 0.8rem; font-weight: 700; color: #dc2626;">
+              ⛔ PROHIBICIÓ TOTAL A L'INSTITUT
+            </div>
+          </div>
+
+          <!-- Risc Alt -->
+          <div class="risk-card alt">
+            <span class="risk-badge alt">Risc Alt (Molt Restringit)</span>
+            <h4 style="margin-bottom: 0.5rem; color: #9a3412;">Avaluació Automatitzada i Admissió</h4>
+            <p style="font-size: 0.85rem; color: #7c2d12; margin-bottom: 0.75rem;">
+              Sistemes d'IA que qualifiquen proves de manera autònoma o algorismes que decideixen promocions, assignació d'itineraris acadèmics o beques.
+            </p>
+            <div style="margin-top: auto; font-size: 0.8rem; font-weight: 700; color: #ea580c;">
+              ⚠️ EXIGEIX AUDITORIA I SUPERVISIÓ HUMANA DIRECTA (*Human-in-the-loop*)
+            </div>
+          </div>
+
+          <!-- Risc Limitat -->
+          <div class="risk-card limitat">
+            <span class="risk-badge limitat">Risc Limitat (Transparència)</span>
+            <h4 style="margin-bottom: 0.5rem; color: #0369a1;">Models Generatius (Gemini, ChatGPT...)</h4>
+            <p style="font-size: 0.85rem; color: #075985; margin-bottom: 0.75rem;">
+              Xatbots, assistents d'escriptura, generadors d'imatges i eines d'indagació interactiva.
+            </p>
+            <div style="margin-top: auto; font-size: 0.8rem; font-weight: 700; color: #0284c7;">
+              ℹ️ DEURE DE TRANSPARÈNCIA: Exigeix indicar expressament que el contingut és generat per IA
+            </div>
+          </div>
+
+          <!-- Risc Mínim -->
+          <div class="risk-card minim">
+            <span class="risk-badge minim">Risc Mínim (Permès)</span>
+            <h4 style="margin-bottom: 0.5rem; color: #166534;">Ofimàtica i Filtres Antispam</h4>
+            <p style="font-size: 0.85rem; color: #14532d; margin-bottom: 0.75rem;">
+              Filtres de correu corporatiu, cercadors web ordinaris i eines administratives estàndard de gestió escolar.
+            </p>
+            <div style="margin-top: auto; font-size: 0.8rem; font-weight: 700; color: #16a34a;">
+              ✅ ÚS AUTORITZAT SENSE RESTRICCIONS ADDICIONALS
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">🚨 Línia Vermella Absoluta de Protecció de Dades</div>
+          <p style="margin-bottom: 0;">
+            <strong>En cap cas es poden introduir dades personals identificatives de l'alumnat o del professorat</strong> (noms, cognoms, adreces, valoracions psicopedagògiques de l'EAP o informacions de vulnerabilitat sociofamiliar) en xats d'IAG comercials o plataformes digitals externes.
+          </p>
+        </div>
+      </section>
+
+      <!-- 3. Transició Didàctica: Mantenir, Repensar, Transformar -->
+      <section id="transicio-didactica" class="content-section">
+        <span class="section-badge" style="background: #e0e7ff; color: #3730a3;">Model Pedagògic</span>
+        <h2 class="section-title"><span class="icon">🔄</span> 3. Transició Didàctica: Què hem de Mantenir, Repensar i Transformar</h2>
+        <p>
+          Davant d'eines capaces de redactar assajos solvents, resumir textos i resoldre exercicis teòrics en segons, la reproducció passiva del coneixement ha quedat obsoleta. El Decret 175/2022 demana mobilitzar sabers en <strong>situacions contextualitzades</strong>. 
+        </p>
+        <p>
+          Per guiar els departaments didàctics sense desorientació curricular, el claustre ha de distingir clarament tres nivells d'acció:
+        </p>
+
+        <!-- Matriu Mantenir / Repensar / Transformar -->
+        <div style="overflow-x: auto;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">Dimensió Curricular</th>
+                <th style="width: 26%; background: #f0fdf4; color: #166534;">🛡️ Mantenir (Preservar)</th>
+                <th style="width: 26%; background: #fffbeb; color: #92400e;">⚠️ Repensar (Reorientar)</th>
+                <th style="width: 26%; background: #eff6ff; color: #1e40af;">🚀 Transformar (Evolucionar)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Sabers Bàsics i Currículum</strong></td>
+                <td>Sabers fundacionals; comprensió lectora profunda; raonament lògic, deductiu i creatiu.</td>
+                <td>Reducció radical d'activitats de memorització mecànica sense context competencial.</td>
+                <td>Inclusió explícita de l'alfabetització algorítmica, petjada de carboni i reflexió ètica de la IA.</td>
+              </tr>
+              <tr>
+                <td><strong>Situacions d'Aprenentatge (SA)</strong></td>
+                <td>Connexió amb problemes reals del context proper i enfocament interdisciplinari (Decret 175/2022).</td>
+                <td>Enunciats de redacció clàssica que conviden al copiar i enganxar o a la resposta automatitzada.</td>
+                <td>Cocreació de SA docent-IA; reptes d'auditoria algorítmica, millora de textos i diversificació DUA.</td>
+              </tr>
+              <tr>
+                <td><strong>Activitats d'Aula</strong></td>
+                <td>Debat físic presencial; escriptura a mà; pràctiques de laboratori; interacció humana i diàleg.</td>
+                <td>Deures individuals a casa consistents en recerques enciclopèdiques o resums teòrics aïllats.</td>
+                <td>Ús de la IA com a assistent d'indagació a l'aula, tutor de programació o sparring intel·lectual socràtic.</td>
+              </tr>
+              <tr>
+                <td><strong>Model d'Avaluació</strong></td>
+                <td>Observació directa, diàleg docent-alumne i avaluació formadora i metacognitiva continuada.</td>
+                <td>Exàmens basats en memòria reproductiva o valoració aïllada del treball escrit final lliurat.</td>
+                <td>Avaluació de la traçabilitat, defenses orals, carpetes d'aprenentatge i rúbriques de procés.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-warning">
+          <div class="callout-title">🧠 Blindar l'esforç cognitiu genuí</div>
+          <p style="margin-bottom: 0;">
+            L'automatització no ha de generar una <em>capitulació intel·lectual</em>. L'aprenentatge requereix consolidar sabers bàsics a la memòria a llarg termini per poder exercir funcions cognitives superiors (analitzar, sintetitzar, crear). L'alumnat ha de continuar sent capaç de llegir textos densos i resoldre problemes de forma autònoma.
+          </p>
+        </div>
+      </section>
+
+      <!-- 4. Avaluació Competencial i Desmitificació del Plagi -->
+      <section id="avaluacio-tracabilitat" class="content-section">
+        <span class="section-badge" style="background: #fef2f2; color: #b91c1c;">Avaluació Autèntica</span>
+        <h2 class="section-title"><span class="icon">🔍</span> 4. Avaluació Competencial: De la Qualificació del Producte a la Traçabilitat</h2>
+        
+        <p>
+          El repte més urgent per al professorat de Secundària és l'avaluació de treballs escrits. La temptació immediata de molts docents és recórrer a programes "detectors d'IA" (com ZeroGPT, Turnitin AI, etc.). <strong>Aquesta via és un greu error tècnic i jurídic.</strong>
+        </p>
+
+        <div class="callout callout-danger">
+          <div class="callout-title">⚠️ Per què els detectors d'IA NO són vàlids legalment ni científicament?</div>
+          <ul style="margin-bottom: 0; padding-left: 1.2rem;">
+            <li><strong>Taxes inacceptables de falsos positius:</strong> Els informes tècnics i la literatura científica demostren que acusen constantment alumnes innocents d'haver utilitzat IA.</li>
+            <li><strong>Biaix discriminatori:</strong> Penalitzen desproporcionadament textos redactats per alumnat nouvingut o amb NESE perquè la seva sintaxi més regular s'assembla a la dels models probabilístics.</li>
+            <li><strong>Indefensió jurídica:</strong> Cap informe d'un detector automàtic té validesa probatòria per sancionar un alumne o suspendre un Treball de Recerca davant una reclamació oficial o d'inspecció.</li>
+          </ul>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 0.75rem;">Els 4 Pilars de la Traçabilitat i l'Avaluació Autèntica</h3>
+        <p>
+          En lloc d'intentar detectar l'ús de la màquina al final, l'avaluació segons el Decret 175/2022 s'ha de centrar en el <strong>procés i l'evidència directa</strong> mitjançant 4 pilars:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
+          
+          <div class="tool-card" style="border-left: 4px solid var(--primary);">
+            <h4 style="color: var(--primary); margin-bottom: 0.5rem;">1. Evidències Intermèdies i Traçabilitat</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0;">
+              Pautar el treball en etapes dins l'aula: mapa d'idees inicial, registre de prompts emprats, llista d'al·lucinacions detectades i esborranys successius. La qualificació avalua com s'ha construït el saber.
+            </p>
+          </div>
+
+          <div class="tool-card" style="border-left: 4px solid var(--secondary);">
+            <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">2. Defenses Orals i Preguntes Situades</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0;">
+              Converses individuals breus docent-estudiant, presentacions públiques sense suport digital i preguntes sorpresa ("Per què vas descartar aquesta altra opció?"). L'oralitat fa transparent la comprensió real.
+            </p>
+          </div>
+
+          <div class="tool-card" style="border-left: 4px solid var(--accent);">
+            <h4 style="color: #b45309; margin-bottom: 0.5rem;">3. Tasques amb Errors Deliberats de la IA</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0;">
+              En lloc de demanar un redactat des de zero, es lliura un text generat per IA que conté errors conceptuals greus i anacronismes. La tasca de l'alumne consisteix a auditar-lo, corregir-lo i citar fonts fiables.
+            </p>
+          </div>
+
+          <div class="tool-card" style="border-left: 4px solid var(--success);">
+            <h4 style="color: #047857; margin-bottom: 0.5rem;">4. Declaració Ètica i Metacognició</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0;">
+              L'alumnat acompanya qualsevol lliurament d'una breu reflexió: en quin grau la IA li ha estat útil, quines respostes va haver de descartar i quina part del treball reflecteix la seva pròpia veu personal.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 5. Governança Escolar i Línies Vermelles per Rols -->
+      <section id="governanca-rols" class="content-section">
+        <span class="section-badge" style="background: #f1f5f9; color: #475569;">Organització Escolar</span>
+        <h2 class="section-title"><span class="icon">🏢</span> 5. Governança, Gestió Escolar i Línies Vermelles per Rols</h2>
+        <p>
+          La IA pot alliberar els equips directius i el professorat de tasques burocràtiques repetitives, però cal distingir entre el <strong>suport auxiliar</strong> i aquelles decisions que requereixen criteri humà indelegable.
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th style="width: 22%;">Àmbit del Centre</th>
+                <th style="width: 28%; color: #166534;">✅ Usos Recomanats i d'Alt Valor</th>
+                <th style="width: 25%; color: #0369a1;">👁️ Condicions d'Aplicació</th>
+                <th style="width: 25%; color: #991b1b;">⛔ Línies Vermelles (Prohibit)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="role-badge">🏛️ Secretaria i Administració</span></td>
+                <td>Redacció d'esborranys de circulars a famílies, extractes d'actes de claustre i plantilles de tramitació burocràtica.</td>
+                <td>Revisió humana preceptiva prèvia abans de la signatura o publicació de qualsevol document.</td>
+                <td>Càrrega de fitxers amb dades identificatives o mèdiques d'alumnes/famílies en eines externes obertes.</td>
+              </tr>
+              <tr>
+                <td><span class="role-badge">📐 Coordinació Pedagògica</span></td>
+                <td>Estructuració de plantilles de programació de SA, revisió d'alineament amb criteris del Decret 175/2022 i suport a la redacció de l'EDC.</td>
+                <td>Validació i ajust curricular final exclusiu per part de la Comissió Pedagògica del centre.</td>
+                <td>Delegació cega de la planificació d'àmbits o departaments en assistents d'IA sense debat docent.</td>
+              </tr>
+              <tr>
+                <td><span class="role-badge">🤝 Direcció i Convivència</span></td>
+                <td>Anàlisi de dades mètriques globals anonimitzades per detectar tendències d'absentisme o gestionar espais.</td>
+                <td>Les mesures de suport o intervenció socioeducativa les determinen sempre els professionals d'orientació.</td>
+                <td>Adopció de sistemes automàtics de decisió sancionadora o videovigilància de reconeixement facial/emocional.</td>
+              </tr>
+              <tr>
+                <td><span class="role-badge">🌱 Acció Tutorial i Orientació</span></td>
+                <td>Generació d'activitats multinivell, adaptacions de lectura fàcil i suport per a l'atenció a la diversitat (DUA).</td>
+                <td>Consentiment familiar previ per a l'ús d'eines a partir dels 14 anys. Supervisió estricta de l'orientació.</td>
+                <td>Bolcar dictàmens de l'EAP, informes mèdics o dades de vulnerabilitat de menors en models generatius.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 6. Proposta de Treball per a Claustres (3 Parts) -->
+      <section id="pla-claustre" class="content-section">
+        <span class="section-badge" style="background: #e0f2fe; color: #0284c7;">Itinerari de Treball per a Claustres</span>
+        <h2 class="section-title"><span class="icon">👥</span> 6. Proposta de Treball per a Claustres: Itinerari Modular en 3 Parts</h2>
+        <p>
+          Perquè els acords de centre no quedin en paper mullat, la seva construcció ha de néixer de la reflexió compartida del claustre. Aquest itinerari modular està organitzat en <strong>tres parts temàtiques</strong> que cada institut pot calendaritzar i distribuir amb total flexibilitat (jornades de reflexió pedagògica, reunions de departament, coordinacions de cicle o comissions de l'EDC):
+        </p>
+
+        <!-- Part 1 -->
+        <div class="session-card">
+          <div class="session-header">
+            <h3 style="color: var(--primary); margin-bottom: 0;">Part 1: Fonaments, Ètica i Marc Normatiu</h3>
+            <span style="background: var(--primary-light); color: var(--primary); font-weight: 700; font-size: 0.8rem; padding: 0.25rem 0.6rem; border-radius: var(--radius-sm);">
+              Sensibilització i Marc Legal
+            </span>
+          </div>
+          <p style="font-size: 0.95rem; color: #334155;">
+            <strong>Objectiu:</strong> Desmitificar la IA, analitzar els riscos reals de la generació automàtica i compartir el marc jurídic català i europeu (llindar dels 14 anys i AI Act).
+          </p>
+          <ul style="margin-bottom: 0.75rem; font-size: 0.9rem;">
+            <li>Com funcionen els LLM: probabilitat estadística, al·lucinacions, biaixos i privadesa de dades.</li>
+            <li>El marc del Departament d'Educació: protocols d'anonimització i configuració de comptes escolars.</li>
+            <li><strong>Dinàmica participativa:</strong> Treball en petits grups o departaments per elaborar una matriu DAFO dels usos actuals de la IA a l'institut.</li>
+          </ul>
+          <div style="background: #f8fafc; padding: 0.5rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.85rem; color: #475569;">
+            📌 <strong>Evidència / Producte esperat:</strong> Mapa de riscos, diagnosi inicial i necessitats d'intervenció prioritàries del centre.
+          </div>
+        </div>
+
+        <!-- Part 2 -->
+        <div class="session-card" style="border-left-color: var(--secondary);">
+          <div class="session-header">
+            <h3 style="color: var(--secondary); margin-bottom: 0;">Part 2: Repensar l'Aula: Situacions d'Aprenentatge i Nova Avaluació</h3>
+            <span style="background: var(--secondary-light); color: var(--secondary); font-weight: 700; font-size: 0.8rem; padding: 0.25rem 0.6rem; border-radius: var(--radius-sm);">
+              Pràctica Didàctica i Procés
+            </span>
+          </div>
+          <p style="font-size: 0.95rem; color: #334155;">
+            <strong>Objectiu:</strong> Redissenyar activitats curriculars i articular tècniques d'avaluació formativa centrades en la traçabilitat del procés (Decret 175/2022).
+          </p>
+          <ul style="margin-bottom: 0.75rem; font-size: 0.9rem;">
+            <li>Taller pràctic: cocreació de contextos d'aprenentatge i diversificació DUA amb suport de Gemini.</li>
+            <li>Laboratori didàctic: transformar una tasca clàssica vulnerable al frau en una prova d'avaluació autèntica basada en el procés.</li>
+            <li>Elaboració de rúbriques d'aprenentatge competencial i estratègies d'autoregulació i metacognició de l'alumnat.</li>
+          </ul>
+          <div style="background: #f8fafc; padding: 0.5rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.85rem; color: #475569;">
+            📌 <strong>Evidència / Producte esperat:</strong> Prototip d'una SA redissenyada per àmbits/departaments amb matriu d'avaluació de procés.
+          </div>
+        </div>
+
+        <!-- Part 3 -->
+        <div class="session-card" style="border-left-color: #7c3aed;">
+          <div class="session-header">
+            <h3 style="color: #7c3aed; margin-bottom: 0;">Part 3: Gestió, Límits i Aprovació dels Acords de Centre</h3>
+            <span style="background: #ede9fe; color: #7c3aed; font-weight: 700; font-size: 0.8rem; padding: 0.25rem 0.6rem; border-radius: var(--radius-sm);">
+              Governança i Normativa NOFC
+            </span>
+          </div>
+          <p style="font-size: 0.95rem; color: #334155;">
+            <strong>Objectiu:</strong> Optimitzar tasques organitzatives respectant les línies vermelles, i debatre i aprovar els acords institucionals per a la NOFC i l'EDC.
+          </p>
+          <ul style="margin-bottom: 0.75rem; font-size: 0.9rem;">
+            <li>Bones pràctiques d'agilització administrativa a secretaria, prefectura d'estudis i coordinacions.</li>
+            <li>Deliberació per departaments: normes d'ús per a l'alumnat, deures, criteris de citació i procediments davant el plagi.</li>
+            <li>Consens i redacció definitiva dels articles de funcionament del centre.</li>
+          </ul>
+          <div style="background: #f8fafc; padding: 0.5rem 0.85rem; border-radius: var(--radius-sm); font-size: 0.85rem; color: #475569;">
+            📌 <strong>Evidència / Producte esperat:</strong> Aprovació formal del document d'Acords de Centre sobre l'Ús de la IA per incorporar a la NOFC i a l'EDC.
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Esborrany d'Acords per a la NOFC / EDC -->
+      <section id="acords-nofc" class="content-section">
+        <span class="section-badge" style="background: #ede9fe; color: #6d28d9;">Document Operatiu Oficial</span>
+        <h2 class="section-title"><span class="icon">📋</span> 7. Esborrany d'Acords de Centre per a la NOFC i l'EDC</h2>
+        <p>
+          Aquest text normatiu formal està <strong>completament redactat i llest per ser adaptat i sotmès a votació pel Claustre de Professorat</strong>. Un cop aprovat, s'incorpora directament a les <em>Normes d'Organització i Funcionament de Centre</em> (NOFC) i a l'<em>Estratègia Digital de Centre</em> (EDC), aportant una seguretat jurídica total:
+        </p>
+
+        <!-- Caixa d'Acord Copiable -->
+        <div class="nofc-box">
+          <div class="nofc-header">
+            <div>
+              <strong style="font-size: 1.05rem;">📄 Acords de Claustre sobre l'Ús de la IA (Model NOFC / EDC)</strong>
+              <div style="font-size: 0.8rem; color: #94a3b8;">Format oficial per a instituts d'ESO, Batxillerat i FP</div>
+            </div>
+            <button class="btn-copy" onclick="copyNofcText(this)">
+              <span>📋 Copiar Acord Complet</span>
+            </button>
+          </div>
+          
+          <div class="nofc-content" id="nofc-draft">
+<h4>1. Preàmbul i Principis Institucionals</h4>
+<p>L'institut assumeix la integració de la intel·ligència artificial generativa (IAG) com una oportunitat per impulsar el desenvolupament competencial, la inclusió escolar i la millora dels processos formatius, sense substituir mai la reflexió crítica, l'esforç intel·lectual autònom ni la relació pedagògica humana entre professorat i alumnat. La comunitat educativa adopta com a valors rectors la dignitat humana, la justícia social, la transparència, la responsabilitat ètica i la protecció efectiva de la privadesa de les dades de tots els seus integrants.</p>
+
+<h4>2. Normes i Criteris d'Ús per a l'Alumnat</h4>
+<ul>
+  <li><strong>Transparència acadèmica i citació de fonts:</strong> L'alumnat només pot utilitzar eines d'IAG en aquelles activitats i matèries on el professorat ho hagi autoritzat de manera expressa. Quan se'n permeti l'ús, l'estudiant té l'obligació de declarar-ho mitjançant una nota formal que indiqui: nom del model utilitzat, enllaç al servei, instruccions utilitzades (<em>prompts</em>) i una breu explicació de com s'han verificat i reelaborat críticament les respostes obtingudes.</li>
+  <li><strong>Classificació per etapes escolars:</strong>
+    <ul>
+      <li><em>1r i 2n d'ESO (menors de 14 anys):</em> Es prohibeix la creació de comptes personals i l'ús individual d'aplicacions comercials d'IAG oberta (en compliment de l'art. 7 de la LOPDGDD). L'activitat didàctica amb IA es durà a terme exclusivament en entorns tancats guiats pel docent sense recollida de dades personals.</li>
+      <li><em>3r i 4t d'ESO, Batxillerat i Cicles Formatius:</em> L'ús individual d'eines d'IA requereix el consentiment informat previ de les famílies i una formació prèvia en privadesa, orientat sempre a tasques d'indagació, revisió d'esborranys personals o generació de codi tutoritzat.</li>
+    </ul>
+  </li>
+  <li><strong>Honestedat acadèmica i faltes:</strong> La presentació de textos, imatges o codi generats per sistemes d'IA com a obra pròpia sense citació constitueix una vulneració greu de les normes de convivència i aprenentatge del centre. Aquesta conducta comportarà la invalidació de la tasca, un procés de reflexió formadora amb l'alumnat i, si escau, l'aplicació de les mesures correctores previstes a les NOFC.</li>
+</ul>
+
+<h4>3. Compromisos Pedagògics de l'Equip Docent</h4>
+<ul>
+  <li><strong>Modelatge metodològic i avaluació autèntica:</strong> El professorat es compromet a adaptar les situacions d'aprenentatge perquè l'avaluació no recaigui exclusivament en productes finals que puguin ser generats de forma automatitzada per una màquina. Es prioritzarà la valoració de la traçabilitat del procés, les defenses orals, el treball d'indagació a l'aula i les proves situades.</li>
+  <li><strong>Protecció estricta de dades de l'alumnat:</strong> El professorat no introduirà en cap plataforma externa o assistent d'IAG dades de caràcter personal identificatives de l'alumnat, valoracions personals o familiars, informes mèdics, dictàmens d'escolarització de l'EAP ni treballs d'estudiants sense consentiment exprés.</li>
+  <li><strong>Supervisió avaluativa obligatòria (*Human-in-the-loop*):</strong> Queda expressament prohibit utilitzar eines d'IA per a la qualificació automatitzada d'activitats de l'alumnat o per a l'emissió de decisions acadèmiques d'expedient. El judici docent i l'orientació pedagògica personalitzada són indelegables.</li>
+  <li><strong>Renúncia als detectors automàtics de plagi:</strong> El centre desestima l'ús de programes detectors d'IAG com a base sancionadora a causa de la seva manca de validesa científica i l'alt risc de falsos positius i biaixos discriminatoris. Qualsevol dubte sobre l'autoria d'un treball s'aclarirà mitjançant una conversa d'indagació docent-alumne sobre el contingut i el procés d'elaboració.</li>
+</ul>
+
+<h4>4. Pautes d'Ús en la Gestió i Governança del Centre</h4>
+<ul>
+  <li><strong>Validació humana de comunicats:</strong> Les circulars informatives a les famílies, la documentació organitzativa o les actes elaborades amb el suport d'assistents generatius han de ser revisades i validades per l'equip directiu o càrrec de coordinació abans de la seva difusió.</li>
+  <li><strong>Prohibició de sistemes biomètrics:</strong> El centre no utilitzarà sistemes de reconeixement d'emocions, videovigilància intel·ligent o control biomètric en cap espai de les instal·lacions del centre (Reglament europeu d'IA - AI Act).</li>
+  <li><strong>Equitat en l'accés:</strong> Cap activitat curricular obligatòria o avaluativa podrà exigir l'ús de versions de pagament de sistemes d'intel·ligència artificial, garantint la igualtat d'oportunitats per a tot l'alumnat amb els recursos propis del centre.</li>
+</ul>
+
+<h4>5. Comissió de Seguiment i Revisió dels Acords</h4>
+<p>Es faculta la Comissió Digital de Centre (o la comissió pedagògica que es designi) com a òrgan encarregat de coordinar el desplegament d'aquests acords, resoldre dubtes i atendre les situacions no previstes en aquesta normativa. Aquests criteris seran sotmesos a una revisió preceptiva al final de cada curs escolar per ajustar-los a les orientacions del Departament d'Educació i a l'evolució del marc tecnològic i normatiu.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Pautes per a l'Assessorament Digital -->
+      <section id="assessorament" class="content-section">
+        <span class="section-badge" style="background: #f1f5f9; color: #334155;">Acompanyament a Centres</span>
+        <h2 class="section-title"><span class="icon">🧭</span> 8. Directrius per a l'Assessorament Digital i Coordinadors EDC</h2>
+        <p>
+          Per als mentors digitals, assessors de zona (SE) i coordinadors de l'Estratègia Digital de Centre (EDC), l'acompanyament ha d'allunyar-se de la simple prescripció d'eines puntuals (atesa la gran volatilitat del mercat tecnològic) i focalitzar-se en tres pilars estratègics:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 1.25rem;">
+          <div class="tool-card">
+            <h4 style="color: var(--primary); margin-bottom: 0.4rem;">1. Acompanyar el Canvi Avaluatiu</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0;">
+              Guiar el professorat perquè comprengui que la IA no elimina l'avaluació, sinó que fa insostenible el model reproductiu tradicional. El Decret 175/2022 ofereix el marc idoni per avaluar competències i processos.
+            </p>
+          </div>
+
+          <div class="tool-card">
+            <h4 style="color: var(--secondary); margin-bottom: 0.4rem;">2. Normalitzar la Cultura de la Transparència</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0;">
+              Quan els docents expliquen obertament com empren la IA en la preparació de classes i conviden l'alumnat a auditar-ne les respostes, es desactiva la temptació del frau i es construeix un pacte de confiança intel·lectual a l'aula.
+            </p>
+          </div>
+
+          <div class="tool-card">
+            <h4 style="color: #7c3aed; margin-bottom: 0.4rem;">3. Formalitzar els Consensos Institucionals</h4>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0;">
+              Els debats informals de passadís s'han de traduir en acords ferms a les NOFC i a les programacions de departament. Tenir normes conegudes per tothom aporta serenitat al professorat i regles de joc clares a les famílies.
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 2.5rem; text-align: center;">
+          <a href="bloc2.html" class="btn btn-outline" style="margin-right: 0.5rem;">
+            ← Veure Aplicació a l'Aula i Rúbriques (Bloc 2)
+          </a>
+          <a href="prompts.html" class="btn btn-primary">
+            Explorar la Promptoteca Docent →
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Inici</a>
+        <a href="bloc0.html">Bloc 0: Inici Ràpid</a>
+        <a href="bloc1.html">Bloc 1: Fonaments i Ètica</a>
+        <a href="bloc2.html">Bloc 2: Avaluació i Aula</a>
+        <a href="bloc3.html">Bloc 3: Materials</a>
+        <a href="laboratori.html">Laboratori IA</a>
+        <a href="centre.html">Directrius de Centre</a>
+        <a href="prompts.html">Promptoteca</a>
+      </div>
+      <p>
+        Materials de formació en Intel·ligència Artificial per a l'Educació Primària i Secundària.<br>
+        Àrea TEDR de Lleida · Departament d'Educació · Generalitat de Catalunya
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Responsive Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+      });
+    }
+
+    // Funció per copiar el text complet de la NOFC
+    function copyNofcText(button) {
+      const content = document.getElementById('nofc-draft');
+      if (!content) return;
+      
+      // Converteix el contingut HTML de l'esborrany en text pla ben estructurat
+      const textToCopy = content.innerText;
+
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalHtml = button.innerHTML;
+        button.innerHTML = '<span>✅ Acord Copiat!</span>';
+        button.classList.add('copied');
+        setTimeout(() => {
+          button.innerHTML = originalHtml;
+          button.classList.remove('copied');
+        }, 3000);
+      }).catch(err => {
+        console.error('Error en copiar:', err);
+      });
+    }
+
+    // Active state on scroll for sidebar
+    const sections = document.querySelectorAll('.content-section');
+    const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 120) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   copyButtons.forEach(button => {
     button.addEventListener('click', async () => {
       const card = button.closest('.prompt-card');
+      if (!card) return;
       const promptBody = card.querySelector('.prompt-body');
-      
       if (!promptBody) return;
       
       const textToCopy = promptBody.innerText.trim();
